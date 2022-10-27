@@ -1,0 +1,49 @@
+.select {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  width: 240px;
+  height: 46px;
+  background: var(--purple);
+
+  border-radius: 5px;
+
+  select {
+    cursor: pointer;
+    border-radius: 5px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+
+    outline: 0;
+    box-shadow: 0;
+    border: none;
+    background: var(--purple);
+    color: #fff;
+
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+
+    &::-ms-expand {
+      display: none;
+    }
+
+    flex: 1;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 26px;
+  }
+
+  &::after {
+    content: url('../../assets/icons/arrow-down.svg');
+    position: absolute;
+    top: 30%;
+    right: 14px;
+    cursor: pointer;
+    pointer-events: none;
+    transition: all 0.5s all ease;
+  }
+}

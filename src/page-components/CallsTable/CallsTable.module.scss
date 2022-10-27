@@ -1,0 +1,66 @@
+.callsTable {
+  position: relative;
+  padding-right: 10px;
+  padding-bottom: 10px;
+
+  overflow-x: scroll;
+
+  .top {
+    display: grid;
+    grid-template-columns: 30px 230px 230px 230px 270px minmax(315px, 1fr) 210px;
+
+    span {
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 21px;
+      color: var(--gray);
+
+      &:not(:first-child) {
+        padding: 0 10px;
+      }
+      text-align: center;
+    }
+  }
+
+  .rows {
+    margin-top: 7px;
+  }
+
+  .voidRow {
+    display: grid;
+    grid-template-columns: 30px 230px 230px 230px 270px minmax(315px, 1fr) 210px;
+
+    height: 55vh;
+
+    .voidCell {
+      border-right: 2px solid var(--border);
+      border-top: 3px solid var(--border);
+      border-bottom: 3px solid var(--border);
+      text-align: center;
+
+      background: var(--table);
+
+      .play {
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 21px;
+
+        margin-top: 40px;
+        padding: 9px 30px;
+        border-radius: 5px;
+      }
+    }
+
+    .noCalls {
+      position: absolute;
+      top: 65px;
+      left: 40%;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 21px;
+
+      color: var(--gray);
+    }
+  }
+}

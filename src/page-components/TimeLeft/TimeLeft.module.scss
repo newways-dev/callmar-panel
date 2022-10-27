@@ -1,0 +1,52 @@
+.timeWrapper {
+  @media screen and (max-width: 790px) {
+    padding: 0 20px;
+    width: 100%;
+  }
+
+  .timeLeft {
+    background: var(--purple);
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+
+    min-height: 60px;
+    height: 100%;
+
+    @media screen and (max-width: 790px) {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .date {
+      padding: 20px 30px;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 21px;
+      color: var(--white);
+
+      @media screen and (max-width: 390px) {
+        padding: 20px 25px;
+      }
+
+      span {
+        padding: 2px 8px;
+        background: var(--red);
+        border-radius: 5px;
+      }
+    }
+
+    .timeLeftButton {
+      padding: 20px 40px;
+      background: var(--purple);
+      font-weight: 900;
+      font-size: 18px;
+      line-height: 21px;
+      border-left: 3px solid var(--dark-purple);
+
+      @media screen and (max-width: 790px) {
+        display: none;
+      }
+    }
+  }
+}

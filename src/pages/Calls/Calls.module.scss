@@ -1,0 +1,67 @@
+.calls {
+  width: 100%;
+  padding-right: 10px;
+
+  .buttons {
+    margin-top: 5px;
+    margin-right: 20px;
+
+    display: grid;
+    grid-template-columns: auto 25px 370px 25px auto;
+    grid-template-areas: 'calendar . tabs . divider';
+
+    @media screen and (max-width: 1200px) {
+      grid-template-columns: 1fr;
+      gap: 10px;
+      grid-template-areas:
+        'calendar'
+        'tabs'
+        'divider';
+    }
+
+    .divider {
+      grid-area: divider;
+
+      display: grid;
+      grid-template-columns: 240px 40px 46px;
+      grid-template-areas: 'select . reset';
+      @media screen and (max-width: 1200px) {
+        grid-template-columns: 46px 15px 240px;
+        grid-template-areas: 'reset . select';
+      }
+    }
+
+    .calendar {
+      grid-area: calendar;
+    }
+
+    .tabs {
+      grid-area: tabs;
+    }
+
+    .reset {
+      grid-area: reset;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        margin-left: -2px;
+        margin-top: 3px;
+      }
+
+      width: 46px;
+      height: 46px;
+      background: var(--purple);
+      border-radius: 4px;
+    }
+
+    .select {
+      grid-area: select;
+    }
+  }
+
+  .table {
+    margin-top: 55px;
+  }
+}

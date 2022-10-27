@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+
+import { Layout } from './layout/Layout'
+import { useSelector } from 'react-redux'
+import { selectPages } from './redux/pages/selector'
+import { Calls, Login, Register, Widgets } from './pages'
 
 function App() {
+  const { page } = useSelector(selectPages)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Router>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Layout>
+                {page === 'calls' && <Calls />}
+                {page === 'widgets' && <Widgets />}
+              </Layout>
+            }
+          />
+          <Route path="*" element={<h1>Not Found</h1>} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </Router>
+    </>
+  )
 }
 
-export default App;
+export default App

@@ -1,0 +1,8 @@
+.cell {
+  min-height: 140px;
+  height: 100%;
+  background: var(--table);
+
+  border-right: 2px solid var(--border);
+  border-bottom: 2px solid var(--border);
+}

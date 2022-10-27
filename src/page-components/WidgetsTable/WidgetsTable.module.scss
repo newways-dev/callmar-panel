@@ -1,0 +1,82 @@
+.widgetsTable {
+  position: relative;
+  padding-bottom: 10px;
+
+  // overflow-x: scroll;
+
+  .top {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    color: var(--gray);
+
+    display: grid;
+    grid-template-columns: 224px 410px 380px 375px 130px;
+
+    span {
+      &:not(:first-child) {
+        padding: 0 50px;
+      }
+      text-align: center;
+    }
+  }
+
+  .rowsWrapper {
+    .rows {
+      margin-top: 7px;
+      overflow-x: scroll;
+      height: 55vh;
+      background: var(--table);
+
+      .row {
+        max-height: 140px;
+        height: 100%;
+
+        &:first-child {
+          .website,
+          .settings,
+          .status,
+          .widget,
+          .delete {
+            border-top: 3px solid var(--border);
+          }
+        }
+
+        .website {
+          padding-top: 18px;
+          padding-left: 18px;
+          text-align: left;
+        }
+
+        .status {
+          padding-top: 12px;
+          padding-left: 44px;
+
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 12px;
+        }
+
+        .settings {
+          padding-top: 30px;
+          display: flex;
+          justify-content: center;
+        }
+
+        .widget {
+          padding: 0 20px;
+          padding-top: 30px;
+          display: flex;
+          justify-content: center;
+        }
+
+        .delete {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+  }
+}

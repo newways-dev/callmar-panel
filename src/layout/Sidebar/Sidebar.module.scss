@@ -1,0 +1,36 @@
+.sidebar {
+  background: var(--purple);
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .logo {
+    margin-top: 50px;
+  }
+
+  .buttons {
+    width: 100%;
+    margin-top: 70px;
+    display: flex;
+    flex-direction: column;
+
+    .button {
+      height: 60px;
+      background: none;
+
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 28px;
+      color: var(--white);
+
+      border-bottom: 3px solid var(--dark-purple);
+    }
+
+    .active {
+      background: var(--red);
+      width: calc(100% + 4px);
+      border-radius: 0px 5px 5px 0px;
+    }
+  }
+}

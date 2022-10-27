@@ -1,0 +1,36 @@
+.callsRow {
+  display: grid;
+  grid-template-columns: 30px 1fr 1fr 1fr 1fr 1fr 1fr;
+
+  text-align: center;
+
+  border-bottom: 3px solid var(--border);
+
+  max-height: 140px;
+  height: 100%;
+
+  .lastCell {
+    border: none;
+
+    .play {
+      margin-top: 40px;
+      width: 100px;
+      height: 38px;
+      border-radius: 5px;
+
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 21px;
+    }
+  }
+}
+
+.widgetsCells {
+  display: grid;
+  grid-template-columns: 224px 410px 380px minmax(375px, 1fr) 130px;
+
+  text-align: center;
+
+  min-height: 140px;
+  height: 100%;
+}

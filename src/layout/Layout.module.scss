@@ -1,0 +1,80 @@
+.layout {
+  display: grid;
+  min-height: 100vh;
+  max-height: 100vh;
+
+  grid-template-columns: 225px 60px 1fr 100px;
+  grid-template-rows: auto auto auto 1fr;
+  grid-template-areas:
+    'sidebar . header .'
+    'sidebar . time .'
+    'sidebar . tariff .'
+    'sidebar . main .';
+
+  @media screen and (max-width: 1370px) {
+    grid-template-columns: 180px 20px 1fr 20px;
+  }
+
+  @media screen and (max-width: 790px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas:
+      'mobile-header'
+      'time'
+      'tariff'
+      'main';
+
+    .sidebar {
+      display: none;
+    }
+  }
+}
+
+.header {
+  grid-area: header;
+  padding-top: 76px;
+  padding-bottom: 60px;
+
+  @media screen and (max-width: 790px) {
+    display: none;
+  }
+}
+
+.mobileHeader {
+  margin-top: 45px;
+
+  grid-area: mobile-header;
+  display: none;
+
+  @media screen and (max-width: 790px) {
+    display: block;
+  }
+}
+
+.sidebar {
+  grid-area: sidebar;
+}
+
+.timeLeft {
+  grid-area: time;
+  justify-self: right;
+  justify-content: right;
+}
+
+.tariff {
+  margin-top: 25px;
+  grid-area: tariff;
+}
+
+.main {
+  grid-area: main;
+  outline: none;
+
+  overflow: scroll;
+  overflow-x: hidden;
+  margin-bottom: 30px;
+
+  @media screen and (max-width: 790px) {
+    padding-left: 20px;
+  }
+}

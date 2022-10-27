@@ -1,0 +1,12 @@
+.headingWrapper {
+  display: flex;
+  flex-direction: column;
+
+  .heading {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 42px;
+    color: var(--gray);
+    margin-bottom: 10px;
+  }
+}

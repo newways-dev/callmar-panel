@@ -1,0 +1,67 @@
+.badge {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 10px;
+
+  padding-left: 12px;
+  border-radius: 5px;
+}
+
+.title {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+}
+
+.success {
+  background: var(--success);
+  color: #fff;
+
+  width: 190px;
+  height: 30px;
+}
+
+.search,
+.instruction {
+  background: #d1d1d1;
+  color: var(--gray);
+
+  width: 268px;
+  height: 30px;
+}
+
+.alert {
+  background: var(--alert);
+  color: #fff;
+  width: 220px;
+  height: 30px;
+
+  svg {
+    margin-top: 3px;
+    width: 17px;
+    height: 17px;
+    fill: #fff;
+  }
+}
+
+.code,
+.copy {
+  background: #d1d1d1;
+  color: var(--gray);
+  width: 156px;
+  height: 30px;
+}
+
+.settings {
+  cursor: pointer;
+  width: 240px;
+  height: 35px;
+  color: #fff;
+  background: var(--red);
+
+  svg {
+    margin-left: 10px;
+    margin-top: 3px;
+  }
+}

@@ -1,0 +1,52 @@
+.button {
+  cursor: pointer;
+  border: none;
+  color: #fff;
+}
+
+.red {
+  background: var(--red);
+}
+
+.purple {
+  background: var(--purple);
+}
+
+.add {
+  cursor: pointer;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--red);
+  color: #fff;
+  border: none;
+
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+
+  svg {
+    margin-top: 7px;
+    width: 32px;
+    height: 32px;
+    path {
+      stroke: #fff;
+    }
+  }
+}
+
+.delete {
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: var(--red);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
