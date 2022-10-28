@@ -27,6 +27,10 @@
     font-size: 18px;
     line-height: 21px;
 
+    @media screen and (max-width: 1440px) {
+      font-size: 14px;
+    }
+
     &::-ms-expand {
       display: none;
     }

@@ -1,9 +1,9 @@
+import { useSelector } from 'react-redux'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
-import { Layout } from './layout/Layout'
-import { useSelector } from 'react-redux'
+import { Calls, Login, Register, Statistics, Widgets } from './pages'
 import { selectPages } from './redux/pages/selector'
-import { Calls, Login, Register, Widgets } from './pages'
+import { Layout } from './layout/Layout'
 
 function App() {
   const { page } = useSelector(selectPages)
@@ -18,6 +18,7 @@ function App() {
               <Layout>
                 {page === 'calls' && <Calls />}
                 {page === 'widgets' && <Widgets />}
+                {page === 'statistics' && <Statistics />}
               </Layout>
             }
           />

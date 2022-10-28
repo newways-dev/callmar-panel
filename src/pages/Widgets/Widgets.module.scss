@@ -9,6 +9,11 @@
     .add {
       padding: 5px 20px;
       padding-left: 15px;
+
+      @media screen and (max-width: 1440px) {
+        padding: 2px 15px;
+        gap: 10px;
+      }
     }
 
     @media screen and (max-width: 720px) {

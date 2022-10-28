@@ -27,6 +27,10 @@
   font-size: 24px;
   line-height: 28px;
 
+  @media screen and (max-width: 1440px) {
+    font-size: 14px;
+  }
+
   svg {
     margin-top: 7px;
     width: 32px;
@@ -45,6 +49,10 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 21px;
+
+  @media screen and (max-width: 1440px) {
+    font-size: 14px;
+  }
 
   display: flex;
   align-items: center;

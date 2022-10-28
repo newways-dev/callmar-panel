@@ -19,7 +19,7 @@ export const Layout = ({ children }: LayoutProps) => {
         <Header className={styles.header} />
         <MobileHeader className={styles.mobileHeader} />
         <TimeLeft className={styles.timeLeft} />
-        <ExpiredTariff className={styles.tariff} />
+        {/* <ExpiredTariff className={styles.tariff} /> */}
         <div className={styles.main}>{children}</div>
       </div>
     </>

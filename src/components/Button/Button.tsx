@@ -28,7 +28,7 @@ export const Button = ({
   switch (type) {
     case Buttons.Add:
       return (
-        <button className={clsx(styles.add, className)}>
+        <button className={clsx(styles.add, className)} {...props}>
           <ReactSVG src={add} />
           {children}
         </button>
@@ -36,7 +36,7 @@ export const Button = ({
 
     case Buttons.Delete:
       return (
-        <button className={clsx(styles.delete, className)}>
+        <button className={clsx(styles.delete, className)} {...props}>
           <ReactSVG src={remove} />
           Удалить
         </button>

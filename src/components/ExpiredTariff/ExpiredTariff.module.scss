@@ -13,6 +13,7 @@
   gap: 70px;
 
   @media screen and (max-width: 1450px) {
+    height: 120px;
     flex-direction: column;
     gap: 10px;
   }
@@ -24,7 +25,7 @@
     color: var(--gray);
 
     @media screen and (max-width: 1450px) {
-      font-size: 24px;
+      font-size: 20px;
       line-height: 28px;
     }
   }
@@ -33,17 +34,24 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media screen and (max-width: 1440px) {
+      svg {
+        margin-top: 3px;
+      }
+    }
+
     gap: 12px;
 
     padding: 15px 60px;
     border-radius: 5px;
 
     font-weight: 400;
-    font-size: 36px;
+    font-size: 32px;
     line-height: 42px;
 
     @media screen and (max-width: 1450px) {
-      font-size: 24px;
+      font-size: 20px;
       line-height: 28px;
 
       padding: 10px 40px;

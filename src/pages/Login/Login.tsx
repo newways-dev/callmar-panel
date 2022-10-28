@@ -13,7 +13,7 @@ export const Login = () => {
         <p className={styles.title}>Вход в личный кабинет</p>
         <form className={styles.form}>
           <Input type="email" placeholder="Ваш Email" />
-          <Input type="password" placeholder="Придумайте пароль" />
+          <Input type="password" placeholder="Пароль" />
           <Link className={styles.resetPassword} to="/">
             Вспомнить пароль
           </Link>

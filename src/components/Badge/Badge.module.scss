@@ -12,6 +12,10 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 21px;
+
+  @media screen and (max-width: 1440px) {
+    font-size: 14px;
+  }
 }
 
 .success {
@@ -29,6 +33,10 @@
 
   width: 268px;
   height: 30px;
+
+  @media screen and (max-width: 1450px) {
+    width: 230px;
+  }
 }
 
 .alert {
@@ -59,6 +67,10 @@
   height: 35px;
   color: #fff;
   background: var(--red);
+
+  @media screen and (max-width: 1450px) {
+    width: 200px;
+  }
 
   svg {
     margin-left: 10px;

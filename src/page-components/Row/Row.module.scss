@@ -29,6 +29,14 @@
   display: grid;
   grid-template-columns: 224px 410px 380px minmax(375px, 1fr) 130px;
 
+  @media screen and (max-width: 1450px) {
+    grid-template-columns: 120px 270px 250px minmax(270px, 1fr) 120px;
+  }
+
+  @media screen and (max-width: 790px) {
+    grid-template-columns: 100px 255px 230px minmax(250px, 1fr) 110px;
+  }
+
   text-align: center;
 
   min-height: 140px;

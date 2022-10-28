@@ -13,7 +13,7 @@ export const Calls = () => {
       <Heading heading="Звонки">
         <div className={styles.buttons}>
           <SelectCalendar className={styles.calendar} />
-          <Tabs className={styles.tabs} tabs={tabs} />
+          <Tabs type="main" className={styles.tabs} tabs={tabs} />
           <div className={styles.divider}>
             <Button className={styles.reset}>
               <ReactSVG src={reset} />
