@@ -11,7 +11,7 @@ export const TimeLeft = ({ className }: TimeLeftProps) => {
     <div className={clsx(styles.timeWrapper, className)}>
       <div className={styles.timeLeft}>
         <span className={styles.date}>
-          Осталось <span>13 мин.</span> до 12.11.21
+          Осталось <span> 13 мин.</span> до 12.11.21
         </span>
         <Button className={styles.timeLeftButton}>Оплатить</Button>
       </div>
