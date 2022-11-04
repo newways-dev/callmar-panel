@@ -1,0 +1,35 @@
+.buttons {
+  background: var(--table);
+
+  .wrapper {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 75px;
+
+    width: 100%;
+    border-top: 3px solid var(--border);
+  }
+
+  border-bottom: 3px solid var(--border);
+
+  .back {
+    border: none;
+    background: none;
+    color: var(--red);
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+  }
+  .save {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    color: #fff;
+    width: 314px;
+    height: 60px;
+    border-radius: 5px;
+  }
+}

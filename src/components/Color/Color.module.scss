@@ -1,0 +1,31 @@
+.color {
+  width: 39px;
+  height: 39px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.green {
+  background: #06be9d;
+}
+.lightGreen {
+  background: #06d369;
+}
+.blue {
+  background: #0292e8;
+}
+.lightPurple {
+  background: #a648b7;
+}
+.orange {
+  background: #a648b7;
+}
+.lightRed {
+  background: #f53214;
+}
+.gray {
+  background: #808080;
+}

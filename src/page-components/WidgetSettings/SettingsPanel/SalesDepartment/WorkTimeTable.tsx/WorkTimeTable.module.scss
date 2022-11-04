@@ -1,0 +1,115 @@
+.workTimeTable {
+  border-left: 3px solid var(--border);
+  border-right: 3px solid var(--border);
+  margin-bottom: 80px;
+
+  .row {
+    .cell {
+      min-height: 40px;
+
+      &:not(:first-child) {
+        display: flex;
+        align-items: center;
+        padding-left: 25px;
+      }
+    }
+  }
+
+  .top {
+    min-height: 40px;
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: 200px 280px 1fr;
+    align-items: center;
+
+    border-top: 3px solid var(--border);
+    border-bottom: 3px solid var(--border);
+
+    span {
+      height: 100%;
+      display: flex;
+      align-items: center;
+
+      border-right: 3px solid var(--border);
+
+      padding-left: 30px;
+      font-weight: 900;
+      font-size: 18px;
+      line-height: 150%;
+    }
+
+    div {
+      height: 100%;
+      padding-right: 30px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .settingsTime {
+        border-right: none;
+      }
+
+      .preview {
+        border-right: none;
+
+        &:last-child {
+          font-weight: 400;
+          font-size: 18px;
+          line-height: 150%;
+          color: var(--red);
+        }
+      }
+    }
+  }
+
+  .weekDays {
+    padding-top: 14px;
+    padding-bottom: 14px;
+    padding-left: 20px;
+    list-style: none;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+
+    span {
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 150%;
+      margin-left: 5px;
+    }
+  }
+
+  .cell {
+    .graph {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      .days {
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        .day {
+          background: #c4c4c4;
+          border-radius: 5px;
+          padding: 3px 7px;
+        }
+      }
+    }
+
+    .workTime {
+      background: var(--success);
+      border-radius: 5px;
+      color: #fff;
+      padding: 4px 8px;
+    }
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+}

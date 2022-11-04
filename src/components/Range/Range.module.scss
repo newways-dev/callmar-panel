@@ -1,0 +1,50 @@
+.range {
+  width: 90%;
+  padding-top: 5px;
+  padding-bottom: 20px;
+
+  .values {
+    padding: 0 100px;
+    margin-bottom: 15px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    color: var(--red);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .inputRange {
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    .track {
+      display: flex;
+      align-items: center;
+      background-color: #c4c4c4;
+      height: 8px;
+      border-radius: 5px;
+    }
+
+    .track:nth-child(2) {
+      display: flex;
+      align-items: center;
+      background-color: var(--red);
+      height: 8px;
+      border-radius: 5px;
+    }
+
+    .thumb {
+      width: 20px;
+      height: 20px;
+      background: var(--red);
+      border-radius: 50%;
+      cursor: pointer;
+      position: absolute;
+    }
+  }
+}

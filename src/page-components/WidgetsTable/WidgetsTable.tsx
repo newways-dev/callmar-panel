@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import { useState, DetailedHTMLProps, HTMLAttributes } from 'react'
-import { Badge, Button, Toggle } from '../../components'
+import { Badge, Button, Lable, Toggle } from '../../components'
 import { Buttons } from '../../types/buttons'
 import { BadgeType } from '../../types/badge'
 import { Cell } from '../Row/Cell/Cell'
@@ -36,10 +36,13 @@ export const WidgetsTable = ({ className }: WidgetsTableProps) => {
               <Badge variant={BadgeType.Settings} />
             </Cell>
             <Cell className={styles.widget}>
-              <Toggle
-                onClick={() => setToggle(toggle === 'off' ? 'on' : 'off')}
-                mode={toggle}
-              />
+              <div>
+                <Lable mode={toggle} />
+                <Toggle
+                  onClick={() => setToggle(toggle === 'off' ? 'on' : 'off')}
+                  mode={toggle}
+                />
+              </div>
             </Cell>
             <Cell className={styles.delete}>
               <Button type={Buttons.Delete} />
@@ -56,135 +59,18 @@ export const WidgetsTable = ({ className }: WidgetsTableProps) => {
               <Badge variant={BadgeType.Settings} />
             </Cell>
             <Cell className={styles.widget}>
-              <Toggle
-                onClick={() => setToggle(toggle === 'off' ? 'on' : 'off')}
-                mode={toggle}
-              />
+              <div>
+                <Lable mode={toggle} />
+                <Toggle
+                  onClick={() => setToggle(toggle === 'off' ? 'on' : 'off')}
+                  mode={toggle}
+                />
+              </div>
             </Cell>
             <Cell className={styles.delete}>
               <Button type={Buttons.Delete} />
             </Cell>
           </Row>
-          {/* <Row className={styles.row} table="widgets">
-            <Cell className={styles.website}>tehnix.su</Cell>
-            <Cell className={styles.status}>
-              <Badge variant={BadgeType.Success} />
-              <Badge variant={BadgeType.Search} />
-              <Badge variant={BadgeType.Instruction} />
-            </Cell>
-            <Cell className={styles.settings}>
-              <Badge variant={BadgeType.Settings} />
-            </Cell>
-            <Cell className={styles.widget}>
-              <Toggle
-                onClick={() => setToggle(toggle === 'off' ? 'on' : 'off')}
-                mode={toggle}
-              />
-            </Cell>
-            <Cell className={styles.delete}>
-              <Button type={Buttons.Delete} />
-            </Cell>
-          </Row> */}
-          {/* <Row className={styles.row} table="widgets">
-            <Cell className={styles.website}>tehnix.su</Cell>
-            <Cell className={styles.status}>
-              <Badge variant={BadgeType.Success} />
-              <Badge variant={BadgeType.Search} />
-              <Badge variant={BadgeType.Instruction} />
-            </Cell>
-            <Cell className={styles.settings}>
-              <Badge variant={BadgeType.Settings} />
-            </Cell>
-            <Cell className={styles.widget}>
-              <Toggle
-                onClick={() => setToggle(toggle === 'off' ? 'on' : 'off')}
-                mode={toggle}
-              />
-            </Cell>
-            <Cell className={styles.delete}>
-              <Button type={Buttons.Delete} />
-            </Cell>
-          </Row>
-          <Row className={styles.row} table="widgets">
-            <Cell className={styles.website}>tehnix.su</Cell>
-            <Cell className={styles.status}>
-              <Badge variant={BadgeType.Success} />
-              <Badge variant={BadgeType.Search} />
-              <Badge variant={BadgeType.Instruction} />
-            </Cell>
-            <Cell className={styles.settings}>
-              <Badge variant={BadgeType.Settings} />
-            </Cell>
-            <Cell className={styles.widget}>
-              <Toggle
-                onClick={() => setToggle(toggle === 'off' ? 'on' : 'off')}
-                mode={toggle}
-              />
-            </Cell>
-            <Cell className={styles.delete}>
-              <Button type={Buttons.Delete} />
-            </Cell>
-          </Row>
-          <Row className={styles.row} table="widgets">
-            <Cell className={styles.website}>tehnix.su</Cell>
-            <Cell className={styles.status}>
-              <Badge variant={BadgeType.Success} />
-              <Badge variant={BadgeType.Search} />
-              <Badge variant={BadgeType.Instruction} />
-            </Cell>
-            <Cell className={styles.settings}>
-              <Badge variant={BadgeType.Settings} />
-            </Cell>
-            <Cell className={styles.widget}>
-              <Toggle
-                onClick={() => setToggle(toggle === 'off' ? 'on' : 'off')}
-                mode={toggle}
-              />
-            </Cell>
-            <Cell className={styles.delete}>
-              <Button type={Buttons.Delete} />
-            </Cell>
-          </Row> */}
-          {/* <Row className={styles.row} table="widgets">
-            <Cell className={styles.website}>tehnix.su</Cell>
-            <Cell className={styles.status}>
-              <Badge variant={BadgeType.Success} />
-              <Badge variant={BadgeType.Search} />
-              <Badge variant={BadgeType.Instruction} />
-            </Cell>
-            <Cell className={styles.settings}>
-              <Badge variant={BadgeType.Settings} />
-            </Cell>
-            <Cell className={styles.widget}>
-              <Toggle
-                onClick={() => setToggle(toggle === 'off' ? 'on' : 'off')}
-                mode={toggle}
-              />
-            </Cell>
-            <Cell className={styles.delete}>
-              <Button type={Buttons.Delete} />
-            </Cell>
-          </Row>
-          <Row className={styles.row} table="widgets">
-            <Cell className={styles.website}>Новый сайт</Cell>
-            <Cell className={styles.status}>
-              <Badge variant={BadgeType.Alert} />
-              <Badge variant={BadgeType.Code} />
-              <Badge variant={BadgeType.Copy} />
-            </Cell>
-            <Cell className={styles.settings}>
-              <Badge variant={BadgeType.Settings} />
-            </Cell>
-            <Cell className={styles.widget}>
-              <Toggle
-                onClick={() => setToggle(toggle === 'off' ? 'on' : 'off')}
-                mode={toggle}
-              />
-            </Cell>
-            <Cell className={styles.delete}>
-              <Button type={Buttons.Delete} />
-            </Cell>
-          </Row> */}
         </div>
       </div>
     </div>

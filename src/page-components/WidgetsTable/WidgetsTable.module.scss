@@ -83,8 +83,14 @@
         .widget {
           padding: 0 20px;
           padding-top: 30px;
-          display: flex;
-          justify-content: center;
+
+          div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            height: 40px;
+          }
         }
 
         .delete {

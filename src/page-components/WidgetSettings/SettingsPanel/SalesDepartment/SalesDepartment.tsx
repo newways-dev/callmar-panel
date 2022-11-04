@@ -1,10 +1,18 @@
 import { ReactSVG } from 'react-svg'
 import { SettingsSection } from '../SettingsSection/SettingsSection'
 import styles from './SalesDepartment.module.scss'
+import { Buttons } from '../../../../types/buttons'
+import { Buttons as Bottom } from '../Buttons/Buttons'
 
 import drag from '../../../../assets/icons/drag.svg'
-import { Button, DragPhone, Select } from '../../../../components'
-import { Buttons } from '../../../../types/buttons'
+import {
+  Button,
+  DragPhone,
+  Explanation,
+  Select,
+  Toggle,
+} from '../../../../components'
+import { WorkTimeTable } from './WorkTimeTable.tsx/WorkTimeTable'
 
 export const SalesDepartment = () => {
   const desc = (
@@ -21,7 +29,7 @@ export const SalesDepartment = () => {
   return (
     <div className={styles.salesDepartment}>
       <SettingsSection
-        title='Номер телефона для приема звонкой'
+        title="Номер телефона для приема звонкой"
         description={desc}
       >
         <div className={styles.phones}>
@@ -36,14 +44,14 @@ export const SalesDepartment = () => {
           <Button type={Buttons.Add}>Добавить еще номер</Button>
         </div>
       </SettingsSection>
-      <SettingsSection title='Как звонить на номера для приема звонков?'>
+      <SettingsSection title="Как звонить на номера для приема звонков?">
         <div className={styles.callMethod}>
           <div>
             <p>Способ дозвона</p>
             <Select
               className={styles.select}
-              placeholder='По количеству звонков'
-              variant='gray'
+              placeholder="По количеству звонков"
+              variant="gray"
               options={['По количеству звонков', 'По порядку']}
             />
           </div>
@@ -60,11 +68,37 @@ export const SalesDepartment = () => {
         </div>
       </SettingsSection>
       <SettingsSection
-        title='График работы отдела продаж'
-        description='Укажите время работы вашего отдела продаж. В рабочее время виджет соеденять потенциальных клиентов с продажниками, а в нерабочее и выходные дни - будет собирать телефоны.'
+        title="График работы отдела продаж"
+        description="Укажите время работы вашего отдела продаж. В рабочее время виджет соеденять потенциальных клиентов с продажниками, а в нерабочее и выходные дни - будет собирать телефоны."
       >
-        434
+        <div className={styles.workTime}>
+          <div className={styles.row}>
+            <p className={styles.title}>Часовой пояс виджета</p>
+            <Select
+              className={styles.select}
+              placeholder="GMT+03:00 - Москва, Санкт-Петербург"
+              options={['GMT+03:00 - Москва, Санкт-Петербург']}
+              variant="gray"
+            />
+          </div>
+          <div className={styles.row}>
+            <p className={styles.title}>Единый график работы в будни</p>
+            <div>
+              <Toggle className={styles.toggle} mode="on" />
+              <Explanation text="Если у вас разное рабочее время по дням недели, отключите эту опцию." />
+            </div>
+          </div>
+          <div className={styles.row}>
+            <p className={styles.title}>Учитывать праздники</p>
+            <div>
+              <Toggle className={styles.toggle} mode="off" />
+              <Explanation text="Если включено, то в праздники, попавшие неа будни, виджет будет использовать выходной день" />
+            </div>
+          </div>
+        </div>
+        <WorkTimeTable />
       </SettingsSection>
+      <Bottom />
     </div>
   )
 }

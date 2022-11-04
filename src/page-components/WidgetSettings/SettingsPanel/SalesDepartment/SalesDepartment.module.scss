@@ -1,4 +1,7 @@
 .salesDepartment {
+  display: flex;
+  flex-direction: column;
+
   .phones {
     display: flex;
     flex-direction: column;
@@ -12,7 +15,8 @@
 
     button {
       margin-top: 40px;
-      max-width: 314px;
+      max-width: 325px;
+      padding: 5px 0px;
       width: 100%;
     }
   }
@@ -42,5 +46,44 @@
     font-weight: 500;
     font-size: 18px;
     line-height: 21px;
+  }
+
+  .workTime {
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 55px;
+
+    margin-bottom: 80px;
+
+    .row {
+      &:first-child {
+        display: flex;
+        align-items: center;
+      }
+
+      display: flex;
+      align-items: flex-start;
+      gap: 50px;
+
+      text-align: right;
+
+      .title {
+        width: 350px;
+        text-align: right;
+
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 150%;
+      }
+
+      .toggle {
+        margin-bottom: 15px;
+      }
+
+      .select {
+        width: 450px;
+      }
+    }
   }
 }

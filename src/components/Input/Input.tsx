@@ -12,8 +12,8 @@ export interface InputProps
     HTMLAttributes<HTMLInputElement>,
     HTMLInputElement
   > {
-  placeholder: string
-  type: 'text' | 'password' | 'email' | 'phone' | 'edit'
+  placeholder?: string
+  type: 'text' | 'password' | 'email' | 'phone' | 'edit' | 'checkbox'
 }
 
 export const Input = ({
@@ -77,6 +77,8 @@ export const Input = ({
           </Button>
         </div>
       )
+    case 'checkbox':
+      return <input type="checkbox" />
 
     default:
       return <></>
