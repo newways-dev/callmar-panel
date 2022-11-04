@@ -1,8 +1,19 @@
-import { Tabs } from '../../../components'
+import { useState } from 'react'
+import { SettingsTabs } from '../../../components'
+import { SettingsPages } from '../../../types/pages'
+import { Behavior } from './Behavior/Behavior'
+import { CallSettings } from './CallSettings/CallSettings'
+import { Chat } from './Chat/Chat'
+import { Decor } from './Decor/Decor'
+import { SalesDepartment } from './SalesDepartment/SalesDepartment'
+
 import styles from './SettingsPanel.module.scss'
-import { SettingsSection } from './SettingsSection/SettingsSection'
+import { WidgetCode } from './WidgetCode/WidgetCode'
 
 export const SettinsPanel = () => {
+  const [settingsPage, setSettingsPage] =
+    useState<SettingsPages>('sales-department')
+
   const tabs = [
     'Отдел продаж',
     'Оформление',
@@ -13,20 +24,14 @@ export const SettinsPanel = () => {
   ]
 
   return (
-    <div className={styles.panel}>
-      <Tabs tabs={tabs} type="settings" />
-      <SettingsSection
-        title="Номер телефона для приема звонкой"
-        description={
-          <div>
-            Укажите список номеров для приема звонков с сайта. Дозвон будет
-            производиться по списку сверху вниз. Порядок номеров можно менять
-            потащив за !!! около номера.
-          </div>
-        }
-      >
-        434-300-34
-      </SettingsSection>
+    <div className={styles.settingsPanel}>
+      <SettingsTabs setPage={setSettingsPage} tabs={tabs} />
+      {settingsPage === 'sales-department' && <SalesDepartment />}
+      {settingsPage === 'decor' && <Decor />}
+      {settingsPage === 'behavior' && <Behavior />}
+      {settingsPage === 'chat' && <Chat />}
+      {settingsPage === 'call-settings' && <CallSettings />}
+      {settingsPage === 'widget-code' && <WidgetCode />}
     </div>
   )
 }

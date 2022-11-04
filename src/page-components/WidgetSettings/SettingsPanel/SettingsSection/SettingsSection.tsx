@@ -5,7 +5,7 @@ import styles from './SettingsSection.module.scss'
 export interface SettingsSectionProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   title: string
-  description: ReactNode
+  description?: ReactNode
   children: ReactNode
 }
 

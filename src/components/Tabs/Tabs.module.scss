@@ -43,23 +43,3 @@
     background: var(--red);
   }
 }
-
-.settingsTabs {
-  height: 48px;
-
-  .settingsTab {
-    padding: 12px 24px;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 21px;
-    background: none;
-    border: none;
-    color: var(--gray);
-  }
-
-  .settingsTabActive {
-    background: #eeeeee;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-  }
-}

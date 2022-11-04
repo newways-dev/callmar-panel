@@ -7,18 +7,24 @@ import reset from '../../assets/icons/reset.svg'
 
 export const Calls = () => {
   const tabs = ['Сегодня', 'Вчера', 'Неделя']
+  const options = ['one', 'two']
 
   return (
     <div className={styles.calls}>
-      <Heading heading="Звонки">
+      <Heading heading='Звонки'>
         <div className={styles.buttons}>
           <SelectCalendar className={styles.calendar} />
-          <Tabs type="main" className={styles.tabs} tabs={tabs} />
+          <Tabs className={styles.tabs} tabs={tabs} />
           <div className={styles.divider}>
             <Button className={styles.reset}>
               <ReactSVG src={reset} />
             </Button>
-            <Select className={styles.select} placeholder="Все виджеты" />
+            <Select
+              variant='purple'
+              options={options}
+              className={styles.select}
+              placeholder='Все виджеты'
+            />
           </div>
         </div>
       </Heading>

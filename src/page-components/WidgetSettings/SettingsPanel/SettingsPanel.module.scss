@@ -1,7 +1,11 @@
-.tabs {
-  background: none;
+.settingsPanel {
+  margin-top: 60px;
 
-  button {
-    background: red;
+  .tabs {
+    background: none;
+
+    button {
+      background: red;
+    }
   }
 }

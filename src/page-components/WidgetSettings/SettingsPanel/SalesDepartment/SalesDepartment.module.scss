@@ -1,0 +1,46 @@
+.salesDepartment {
+  .phones {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+    p {
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 150%;
+    }
+
+    button {
+      margin-top: 40px;
+      max-width: 314px;
+      width: 100%;
+    }
+  }
+
+  .callMethod {
+    display: flex;
+    flex-direction: column;
+
+    div {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+
+      .select {
+        width: 340px;
+      }
+    }
+
+    .desc {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 5px;
+    }
+
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+  }
+}
