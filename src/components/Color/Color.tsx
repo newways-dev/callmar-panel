@@ -4,12 +4,12 @@ import { DetailedHTMLProps, HTMLAttributes } from 'react'
 import styles from './Color.module.scss'
 
 import ok from '../../assets/icons/checked.svg'
-import { Colors } from '../../types/colors'
+import { WidgetColor } from '../../types/colors'
 
 export interface ColorProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   checked: boolean
-  variant: Colors
+  variant: WidgetColor
 }
 
 export const Color = ({
@@ -23,13 +23,13 @@ export const Color = ({
       return (
         <div
           className={clsx(styles.color, className, {
-            [styles.green]: variant === Colors.Green,
-            [styles.lightGreen]: variant === Colors.LightGreen,
-            [styles.blue]: variant === Colors.Blue,
-            [styles.lightPurple]: variant === Colors.LightPurple,
-            [styles.orange]: variant === Colors.Orange,
-            [styles.lightRed]: variant === Colors.LightRed,
-            [styles.gray]: variant === Colors.Gray,
+            [styles.green]: variant === 'Green',
+            [styles.lightGreen]: variant === 'LightGreen',
+            [styles.blue]: variant === 'Blue',
+            [styles.lightPurple]: variant === 'LightPurple',
+            [styles.orange]: variant === 'Orange',
+            [styles.lightRed]: variant === 'LightRed',
+            [styles.gray]: variant === 'Gray',
           })}
           {...props}
         >
@@ -40,14 +40,15 @@ export const Color = ({
       return (
         <div
           className={clsx(styles.color, className, {
-            [styles.green]: variant === Colors.Green,
-            [styles.lightGreen]: variant === Colors.LightGreen,
-            [styles.blue]: variant === Colors.Blue,
-            [styles.lightPurple]: variant === Colors.LightPurple,
-            [styles.orange]: variant === Colors.Orange,
-            [styles.lightRed]: variant === Colors.LightRed,
-            [styles.gray]: variant === Colors.Gray,
+            [styles.green]: variant === 'Green',
+            [styles.lightGreen]: variant === 'LightGreen',
+            [styles.blue]: variant === 'Blue',
+            [styles.lightPurple]: variant === 'LightPurple',
+            [styles.orange]: variant === 'Orange',
+            [styles.lightRed]: variant === 'LightRed',
+            [styles.gray]: variant === 'Gray',
           })}
+          {...props}
         />
       )
     default:

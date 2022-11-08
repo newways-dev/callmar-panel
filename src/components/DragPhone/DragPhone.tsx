@@ -11,10 +11,17 @@ export interface DragPhoneProps
     HTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
   > {
-  position: number
+  position?: number
+  clientname: string
+  clientphone: number
 }
 
-export const DragPhone = ({ position, className }: DragPhoneProps) => {
+export const DragPhone = ({
+  clientname,
+  clientphone,
+  position,
+  className,
+}: DragPhoneProps) => {
   const [phone, setPhone] = useState('')
   const [name, setName] = useState('')
 
@@ -29,13 +36,17 @@ export const DragPhone = ({ position, className }: DragPhoneProps) => {
         variant='gray'
       />
       <input
+        defaultValue={clientphone}
         type='text'
-        placeholder='Номер сотрудника'
+        placeholder={
+          clientphone === 0 ? 'Номер клиента' : clientphone.toString()
+        }
         value={phone}
         onChange={(e) => setPhone(e.target.value)}
       />
       <input
-        placeholder='Имя сотрудника'
+        defaultValue={clientname}
+        placeholder={clientname === '' ? 'Имя клиента' : clientname}
         type='text'
         value={name}
         onChange={(e) => setName(e.target.value)}

@@ -5,24 +5,23 @@ import styles from './Decor.module.scss'
 
 import widget from '../../../../assets/icons/widget-icon.svg'
 import { Buttons } from '../Buttons/Buttons'
+import { Row } from '../Row/Row'
 
 export const Decor = () => {
   return (
     <div className={styles.decor}>
-      <SettingsSection title="Цвет и текст виджета">
+      <SettingsSection title='Цвет и текст виджета'>
         <div className={styles.decorWrapper}>
-          <div className={styles.row}>
-            <span>Настройки окна виджета</span>
+          <Row title='Настройки окна виджета'>
             <Button className={styles.button}>Настроить окно...</Button>
-          </div>
-          <div className={styles.row}>
-            <span>Настройки плавающей кнопки</span>
+          </Row>
+          <Row title='Настройки плавающей кнопки'>
             <div className={styles.image}>
               <ReactSVG src={widget} />
               <span>Ваша кнопка</span>
             </div>
             <Button className={styles.button}>Настроить кнопку...</Button>
-          </div>
+          </Row>
         </div>
       </SettingsSection>
       <Buttons />

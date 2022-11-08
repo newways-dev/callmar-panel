@@ -1,9 +1,10 @@
+import { Reorder } from 'framer-motion'
 import { ReactSVG } from 'react-svg'
 import { SettingsSection } from '../SettingsSection/SettingsSection'
+import { WorkTimeTable } from './WorkTimeTable.tsx/WorkTimeTable'
 import styles from './SalesDepartment.module.scss'
 import { Buttons } from '../../../../types/buttons'
 import { Buttons as Bottom } from '../Buttons/Buttons'
-
 import drag from '../../../../assets/icons/drag.svg'
 import {
   Button,
@@ -12,9 +13,18 @@ import {
   Select,
   Toggle,
 } from '../../../../components'
-import { WorkTimeTable } from './WorkTimeTable.tsx/WorkTimeTable'
+import { useState } from 'react'
+import { Row } from '../Row/Row'
+
+const defaultClients = [
+  { id: 1, name: 'ClientName', number: +71234567890 },
+  { id: 2, name: 'ClientName2', number: +71234567890 },
+  { id: 3, name: 'ClientName3', number: +71234567890 },
+]
 
 export const SalesDepartment = () => {
+  const [clients, setClients] = useState(defaultClients)
+
   const desc = (
     <>
       <span>
@@ -26,32 +36,55 @@ export const SalesDepartment = () => {
     </>
   )
 
+  console.log(clients.length)
+
+  const addClient = () => {
+    const id = clients.length + 1
+    const newClient = { id: id, name: '', number: 0 }
+    setClients((prev) => [...prev, newClient])
+  }
+
   return (
     <div className={styles.salesDepartment}>
       <SettingsSection
-        title="Номер телефона для приема звонкой"
+        title='Номер телефона для приема звонкой'
         description={desc}
       >
         <div className={styles.phones}>
-          <DragPhone position={1} />
-          <DragPhone position={2} />
-          <DragPhone position={3} />
+          <Reorder.Group
+            as='ul'
+            axis='y'
+            values={clients}
+            onReorder={setClients}
+          >
+            {clients.map((client, index) => (
+              <Reorder.Item key={index} value={client}>
+                <DragPhone
+                  clientname={client.name}
+                  clientphone={client.number}
+                  position={index + 1}
+                />
+              </Reorder.Item>
+            ))}
+          </Reorder.Group>
           <p>
             Можно использовать сотовые и городские номера (через 7 или 8), а
             также sip номера
           </p>
 
-          <Button type={Buttons.Add}>Добавить еще номер</Button>
+          <Button onClick={addClient} type={Buttons.Add}>
+            Добавить еще номер
+          </Button>
         </div>
       </SettingsSection>
-      <SettingsSection title="Как звонить на номера для приема звонков?">
+      <SettingsSection title='Как звонить на номера для приема звонков?'>
         <div className={styles.callMethod}>
           <div>
             <p>Способ дозвона</p>
             <Select
               className={styles.select}
-              placeholder="По количеству звонков"
-              variant="gray"
+              placeholder='По количеству звонков'
+              variant='gray'
               options={['По количеству звонков', 'По порядку']}
             />
           </div>
@@ -68,33 +101,36 @@ export const SalesDepartment = () => {
         </div>
       </SettingsSection>
       <SettingsSection
-        title="График работы отдела продаж"
-        description="Укажите время работы вашего отдела продаж. В рабочее время виджет соеденять потенциальных клиентов с продажниками, а в нерабочее и выходные дни - будет собирать телефоны."
+        title='График работы отдела продаж'
+        description='Укажите время работы вашего отдела продаж. В рабочее время виджет соеденять потенциальных клиентов с продажниками, а в нерабочее и выходные дни - будет собирать телефоны.'
       >
         <div className={styles.workTime}>
-          <div className={styles.row}>
-            <p className={styles.title}>Часовой пояс виджета</p>
+          <Row title='Часовой пояс виджета'>
             <Select
               className={styles.select}
-              placeholder="GMT+03:00 - Москва, Санкт-Петербург"
+              placeholder='GMT+03:00 - Москва, Санкт-Петербург'
               options={['GMT+03:00 - Москва, Санкт-Петербург']}
-              variant="gray"
+              variant='gray'
             />
-          </div>
-          <div className={styles.row}>
-            <p className={styles.title}>Единый график работы в будни</p>
+          </Row>
+          <Row title='Единый график работы в будни'>
             <div>
-              <Toggle className={styles.toggle} mode="on" />
-              <Explanation text="Если у вас разное рабочее время по дням недели, отключите эту опцию." />
+              <Toggle className={styles.toggle} mode='on' />
+              <Explanation
+                className={styles.exp}
+                text='Если у вас разное рабочее время по дням недели, отключите эту опцию.'
+              />
             </div>
-          </div>
-          <div className={styles.row}>
-            <p className={styles.title}>Учитывать праздники</p>
+          </Row>
+          <Row title='Учитывать праздники'>
             <div>
-              <Toggle className={styles.toggle} mode="off" />
-              <Explanation text="Если включено, то в праздники, попавшие неа будни, виджет будет использовать выходной день" />
+              <Toggle className={styles.toggle} mode='off' />
+              <Explanation
+                className={styles.exp}
+                text='Если включено, то в праздники, попавшие неа будни, виджет будет использовать выходной день'
+              />
             </div>
-          </div>
+          </Row>
         </div>
         <WorkTimeTable />
       </SettingsSection>

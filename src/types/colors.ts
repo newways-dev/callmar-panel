@@ -1,11 +1,13 @@
 export enum Colors {
   Purple,
   Red,
-  Green,
-  LightGreen,
-  Blue,
-  LightPurple,
-  Orange,
-  LightRed,
-  Gray,
 }
+
+export type WidgetColor =
+  | 'Green'
+  | 'LightGreen'
+  | 'Blue'
+  | 'LightPurple'
+  | 'Orange'
+  | 'LightRed'
+  | 'Gray'

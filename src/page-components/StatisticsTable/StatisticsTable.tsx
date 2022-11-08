@@ -1,43 +1,51 @@
 import clsx from 'clsx'
 import { DetailedHTMLProps, HTMLAttributes } from 'react'
-import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts'
+import {
+  LineChart,
+  Line,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+} from 'recharts'
 import styles from './StatisticsTable.module.scss'
 
 const data = [
   {
     name: '18.12',
-    uv: 2,
-    pv: 3,
+    Звонки: 2,
+    Показы: 3,
     amt: 5,
   },
   {
     name: '19.12',
-    uv: 3,
-    pv: 3,
+    Звонки: 3,
+    Показы: 3,
     amt: 2210,
   },
   {
     name: '20.12',
-    uv: 4,
-    pv: 5,
+    Звонки: 4,
+    Показы: 5,
     amt: 100,
   },
   {
     name: '21.12',
-    uv: 5,
-    pv: 5,
+    Звонки: 5,
+    Показы: 5,
     amt: 100,
   },
   {
     name: '22.12',
-    uv: 6,
-    pv: 4,
+    Звонки: 6,
+    Показы: 4,
     amt: 100,
   },
   {
     name: '23.12',
-    uv: 7,
-    pv: 3,
+    Звонки: 7,
+    Показы: 3,
     amt: 100,
   },
 ]
@@ -45,11 +53,13 @@ const data = [
 const Chart = () => {
   return (
     <LineChart width={1100} height={300} data={data}>
+      <Legend />
       <XAxis dataKey='name' />
       <YAxis />
-      <CartesianGrid stroke='#eee' strokeDasharray='5 5' />
-      <Line type='monotone' dataKey='uv' stroke='#81D880' />
-      <Line type='monotone' dataKey='pv' stroke='#D75C78' />
+      <CartesianGrid stroke='#999' strokeLinecap='square' strokeWidth={1} />
+      <Line type='monotone' dataKey='Звонки' strokeWidth={4} stroke='#81D880' />
+      <Line type='monotone' dataKey='Показы' strokeWidth={4} stroke='#D75C78' />
+      <Tooltip />
     </LineChart>
   )
 }

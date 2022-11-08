@@ -7,7 +7,7 @@ export const WidgetSettings = () => {
     <div className={styles.widgetSettings}>
       <div className={styles.top}>
         <p className={styles.title}>Настройки виджета</p>
-        <Input type="edit" placeholder="website.com" />
+        <Input type='edit' placeholder='website.com' />
       </div>
       <SettinsPanel />
     </div>
