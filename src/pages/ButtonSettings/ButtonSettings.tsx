@@ -30,6 +30,7 @@ export const ButtonSettings = () => {
           <div className={styles.color}>
             <p className={styles.settingTitle}>Цвет кнопки</p>
             <ColorsList
+              type='button'
               className={styles.colors}
               colors={[
                 'Gray',

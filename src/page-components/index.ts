@@ -10,3 +10,5 @@ export * from './WidgetSettings/WidgetSettings'
 
 export * from './SidebarSettings/SidebarSettings'
 export * from './SidebarSettings/Section/Section'
+
+export * from './NewWidgetModal/NewWidgetModal'

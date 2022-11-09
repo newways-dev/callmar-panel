@@ -4,12 +4,12 @@ import { DetailedHTMLProps, HTMLAttributes } from 'react'
 import styles from './Color.module.scss'
 
 import ok from '../../assets/icons/checked.svg'
-import { WidgetColor } from '../../types/colors'
+import { ColorsType } from '../../types/colors'
 
 export interface ColorProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   checked: boolean
-  variant: WidgetColor
+  variant: ColorsType
 }
 
 export const Color = ({

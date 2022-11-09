@@ -1,5 +1,4 @@
 import clsx from 'clsx'
-import { useSwipeable } from 'react-swipeable'
 import { useEffect, useState, DetailedHTMLProps, HTMLAttributes } from 'react'
 import { ReactSVG } from 'react-svg'
 import styles from './MobileHeader.module.scss'
@@ -10,18 +9,6 @@ import { Sidebar } from '../Sidebar/Sidebar'
 
 export interface MobileHeaderProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
-
-export const Swipe = () => {
-  const handlers = useSwipeable({
-    onSwiped: (eventData) => console.log('User Swiped!', eventData),
-  })
-  return (
-    <div style={{ cursor: 'grab' }} {...handlers}>
-      {' '}
-      You can swipe here{' '}
-    </div>
-  )
-}
 
 export const MobileHeader = ({ className }: MobileHeaderProps) => {
   const [open, setOpen] = useState<boolean>(false)

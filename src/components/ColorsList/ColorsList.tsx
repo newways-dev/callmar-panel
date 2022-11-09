@@ -1,51 +1,63 @@
 import clsx from 'clsx'
 import { useState, DetailedHTMLProps, HTMLAttributes } from 'react'
 import { Color } from '../Color/Color'
-import { WidgetColor } from '../../types/colors'
+import { ColorsType } from '../../types/colors'
 import styles from './ColorsList.module.scss'
+import { useDispatch } from 'react-redux'
+import { setChatColor } from '../../redux/colors/slice'
 
 export interface ColorsProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  colors: WidgetColor[]
+  colors: ColorsType[]
+  type: 'widget' | 'chat' | 'button'
 }
 
-export const ColorsList = ({ className }: ColorsProps) => {
-  const [selected, setSelected] = useState<WidgetColor>('Green')
+export const ColorsList = ({ type, className }: ColorsProps) => {
+  const [selected, setSelected] = useState<ColorsType>('Green')
+  const dispatch = useDispatch()
+
+  const handleClick = (color: ColorsType) => {
+    setSelected(color)
+
+    if (type === 'chat') {
+      dispatch(setChatColor(color))
+    }
+  }
 
   return (
     <div className={clsx(styles.colors, className)}>
       <Color
-        onClick={() => setSelected('Green')}
+        onClick={() => handleClick('Green')}
         checked={selected === 'Green'}
         variant={'Green'}
       />
       <Color
-        onClick={() => setSelected('LightGreen')}
+        onClick={() => handleClick('LightGreen')}
         checked={selected === 'LightGreen'}
         variant={'LightGreen'}
       />
       <Color
-        onClick={() => setSelected('Blue')}
+        onClick={() => handleClick('Blue')}
         checked={selected === 'Blue'}
         variant={'Blue'}
       />
       <Color
-        onClick={() => setSelected('LightPurple')}
+        onClick={() => handleClick('LightPurple')}
         checked={selected === 'LightPurple'}
         variant={'LightPurple'}
       />
       <Color
-        onClick={() => setSelected('Orange')}
+        onClick={() => handleClick('Orange')}
         checked={selected === 'Orange'}
         variant={'Orange'}
       />
       <Color
-        onClick={() => setSelected('LightRed')}
+        onClick={() => handleClick('LightRed')}
         checked={selected === 'LightRed'}
         variant={'LightRed'}
       />
       <Color
-        onClick={() => setSelected('Gray')}
+        onClick={() => handleClick('Gray')}
         checked={selected === 'Gray'}
         variant={'Gray'}
       />

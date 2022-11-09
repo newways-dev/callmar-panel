@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux'
 import { ReactSVG } from 'react-svg'
 import {
   Button,
@@ -14,10 +15,14 @@ import styles from './Chat.module.scss'
 
 import closeChat from '../../../../assets/icons/closeChat.svg'
 import operator from '../../../../assets/images/operator.png'
+import { selectChatColor } from '../../../../redux/colors/selector'
 import play from '../../../../assets/icons/play.svg'
 import { useState } from 'react'
+import clsx from 'clsx'
 
 export const Chat = () => {
+  const chat = useSelector(selectChatColor)
+
   const [greet, setGreet] = useState<string>('Здравствуйте!')
   const [cta, setCta] = useState<string>('Хотите узнать подробнее?')
   const [offer, setOffer] = useState<string>(
@@ -33,6 +38,7 @@ export const Chat = () => {
         </Row>
         <Row title='Цвет чата'>
           <ColorsList
+            type='chat'
             colors={[
               'Green',
               'Blue',
@@ -76,7 +82,17 @@ export const Chat = () => {
             </div>
             <div className={styles.preview}>
               <div className={styles.messageWrapper}>
-                <div className={styles.message}>
+                <div
+                  className={clsx(styles.message, {
+                    [styles.green]: chat === 'Green',
+                    [styles.blue]: chat === 'Blue',
+                    [styles.gray]: chat === 'Gray',
+                    [styles.lightGreen]: chat === 'LightGreen',
+                    [styles.lightPurple]: chat === 'LightPurple',
+                    [styles.lightRed]: chat === 'LightRed',
+                    [styles.orange]: chat === 'Orange',
+                  })}
+                >
                   <ReactSVG src={closeChat} />
                   <p className={styles.title}>Оператор:</p>
                   <p className={styles.text}>
@@ -87,6 +103,7 @@ export const Chat = () => {
                 </div>
                 <div className={styles.operator}>
                   <img src={operator} alt='' />
+                  <span className={styles.messagesCount}>1</span>
                 </div>
               </div>
             </div>

@@ -79,7 +79,6 @@
           padding: 15px;
           border-radius: 5px;
           padding-bottom: 25px;
-          background: lightcoral;
 
           position: relative;
           &::after {
@@ -122,11 +121,74 @@
             }
           }
         }
+
+        .green {
+          background: #06be9d;
+          &::after {
+            border-top: 50px solid #06be9d;
+          }
+        }
+        .blue {
+          background: #0292e8;
+          &::after {
+            border-top: 50px solid #0292e8;
+          }
+        }
+        .gray {
+          background: #808080;
+          &::after {
+            border-top: 50px solid #808080;
+          }
+        }
+        .orange {
+          background: #f77600;
+          &::after {
+            border-top: 50px solid #f77600;
+          }
+        }
+        .lightGreen {
+          background: #06d369;
+          &::after {
+            border-top: 50px solid #06d369;
+          }
+        }
+        .lightPurple {
+          background: #a648b7;
+          &::after {
+            border-top: 50px solid #a648b7;
+          }
+        }
+        .lightRed {
+          background: #f53214;
+          &::after {
+            border-top: 50px solid #f53214;
+          }
+        }
+
         .operator {
           display: flex;
           margin-top: 30px;
           margin-right: 40px;
           justify-content: right;
+
+          position: relative;
+
+          .messagesCount {
+            position: absolute;
+            top: 0;
+            right: 10px;
+            background: #ff8f28;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            color: #fff;
+            font-weight: 500;
+            font-size: 9px;
+            line-height: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
         }
       }
     }

@@ -5,16 +5,21 @@ import { Sidebar } from './Sidebar/Sidebar'
 import { Header } from './Header/Header'
 
 import styles from './Layout.module.scss'
-import { TimeLeft } from '../page-components'
+import { NewWidgetModal, TimeLeft } from '../page-components'
+import { useSelector } from 'react-redux'
+import { selectNewWidgetModal } from '../redux/modals/selector'
 
 interface LayoutProps {
   children: ReactNode
 }
 
 export const Layout = ({ children }: LayoutProps) => {
+  const newWidget = useSelector(selectNewWidgetModal)
+
   return (
     <>
       <div className={styles.layout}>
+        {newWidget && <NewWidgetModal className={styles.newWidget} />}
         <Sidebar className={styles.sidebar} />
         <Header className={styles.header} />
         <MobileHeader className={styles.mobileHeader} />

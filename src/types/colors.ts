@@ -3,7 +3,7 @@ export enum Colors {
   Red,
 }
 
-export type WidgetColor =
+export type ColorsType =
   | 'Green'
   | 'LightGreen'
   | 'Blue'
