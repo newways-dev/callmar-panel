@@ -12,8 +12,6 @@ export interface ColorsProps
 export const ColorsList = ({ className }: ColorsProps) => {
   const [selected, setSelected] = useState<WidgetColor>('Green')
 
-  console.log(selected)
-
   return (
     <div className={clsx(styles.colors, className)}>
       <Color

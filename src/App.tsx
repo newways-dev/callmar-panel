@@ -1,7 +1,15 @@
 import { useSelector } from 'react-redux'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
-import { Calls, Login, Register, Statistics, Widgets } from './pages'
+import {
+  ButtonSettings,
+  Calls,
+  Login,
+  Register,
+  Statistics,
+  Widgets,
+  WidgetSettings,
+} from './pages'
 import { selectPages } from './redux/pages/selector'
 import { Layout } from './layout/Layout'
 
@@ -13,7 +21,7 @@ function App() {
       <Router>
         <Routes>
           <Route
-            path="/"
+            path='/'
             element={
               <Layout>
                 {page === 'calls' && <Calls />}
@@ -22,9 +30,11 @@ function App() {
               </Layout>
             }
           />
-          <Route path="*" element={<h1>Not Found</h1>} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
+          <Route path='/button-settings' element={<ButtonSettings />} />
+          <Route path='/widget-settings' element={<WidgetSettings />} />
+          <Route path='*' element={<h1>Not Found</h1>} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/login' element={<Login />} />
         </Routes>
       </Router>
     </>

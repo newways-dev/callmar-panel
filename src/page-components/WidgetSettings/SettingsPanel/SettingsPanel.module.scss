@@ -1,7 +1,9 @@
 .settingsPanel {
   margin-top: 60px;
 
-  overflow-y: scroll;
+  max-width: 1320px;
+  width: 100%;
+  overflow-x: scroll;
 
   .tabs {
     background: none;

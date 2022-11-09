@@ -7,19 +7,22 @@ export interface SelectProps
   placeholder: string
   options: string[]
   variant: 'purple' | 'gray'
+  onChange?: () => void
 }
 
 export const Select = ({
   variant,
+  onChange,
   options,
   placeholder,
   className,
+  ...props
 }: SelectProps) => {
   switch (variant) {
     case 'purple':
       return (
-        <div className={clsx(styles.select, className)}>
-          <select>
+        <div {...props} className={clsx(styles.select, className)}>
+          <select onChange={onChange}>
             <option selected disabled>
               {placeholder}
             </option>
@@ -31,8 +34,8 @@ export const Select = ({
       )
     case 'gray':
       return (
-        <div className={clsx(styles.selectGray, className)}>
-          <select>
+        <div {...props} className={clsx(styles.selectGray, className)}>
+          <select onChange={onChange}>
             <option selected disabled>
               {placeholder}
             </option>

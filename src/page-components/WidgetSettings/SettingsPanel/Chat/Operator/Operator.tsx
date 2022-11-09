@@ -9,6 +9,8 @@ import { ReactSVG } from 'react-svg'
 import { Colors } from '../../../../../types/colors'
 
 export const Operator = () => {
+  const setAvatar = () => {}
+
   return (
     <div className={styles.operator}>
       <div className={styles.profile}>
@@ -25,7 +27,7 @@ export const Operator = () => {
               <ReactSVG src={login} />
               логин и пароль для приложения
             </Button>
-            <Button className={styles.avatar}>
+            <Button onClick={() => setAvatar()} className={styles.avatar}>
               <ReactSVG src={avatar} />
               Настроить аватар
             </Button>
