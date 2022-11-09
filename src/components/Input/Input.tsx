@@ -13,7 +13,7 @@ export interface InputProps
     HTMLInputElement
   > {
   placeholder?: string
-  type: 'text' | 'password' | 'email' | 'phone' | 'edit' | 'checkbox'
+  type: 'text' | 'password' | 'email' | 'phone' | 'edit' | 'checkbox' | 'main'
 }
 
 export const Input = ({
@@ -23,12 +23,20 @@ export const Input = ({
   ...props
 }: InputProps) => {
   switch (type) {
+    case 'main':
+      return (
+        <input
+          placeholder={placeholder}
+          className={clsx(styles.main, className)}
+          {...props}
+        />
+      )
     case 'text':
       return (
         <div className={styles.inputWrapper}>
           <p className={styles.placeholder}>{placeholder}</p>
           <input
-            type="text"
+            type='text'
             className={clsx(styles.input, className)}
             {...props}
           />
@@ -39,7 +47,7 @@ export const Input = ({
         <div className={styles.inputWrapper}>
           <p className={styles.placeholder}>{placeholder}</p>
           <input
-            type="email"
+            type='email'
             className={clsx(styles.input, className)}
             {...props}
           />
@@ -50,7 +58,7 @@ export const Input = ({
         <div className={styles.inputWrapper}>
           <p className={styles.placeholder}>{placeholder}</p>
           <input
-            type="password"
+            type='password'
             className={clsx(styles.input, className)}
             {...props}
           />
@@ -78,7 +86,7 @@ export const Input = ({
         </div>
       )
     case 'checkbox':
-      return <input type="checkbox" />
+      return <input type='checkbox' />
 
     default:
       return <></>
