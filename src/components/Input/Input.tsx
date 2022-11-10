@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { DetailedHTMLProps, HTMLAttributes } from 'react'
+import { ChangeEvent, DetailedHTMLProps, HTMLAttributes } from 'react'
 import { ReactSVG } from 'react-svg'
 import { Button } from '../Button/Button'
 import styles from './Input.module.scss'
@@ -14,10 +14,13 @@ export interface InputProps
   > {
   placeholder?: string
   type: 'text' | 'password' | 'email' | 'phone' | 'edit' | 'checkbox' | 'main'
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void
+  value?: string
 }
 
 export const Input = ({
   placeholder,
+  onChange,
   type,
   className,
   ...props
@@ -26,6 +29,7 @@ export const Input = ({
     case 'main':
       return (
         <input
+          onChange={onChange}
           placeholder={placeholder}
           className={clsx(styles.main, className)}
           {...props}

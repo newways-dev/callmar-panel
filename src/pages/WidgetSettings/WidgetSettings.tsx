@@ -1,12 +1,21 @@
-import { ReactSVG } from 'react-svg'
+import { ChangeEvent, useState } from 'react'
 import { Button, ColorsList, Input, Select, Toggle } from '../../components'
 import { Section, SidebarSettings } from '../../page-components'
 import styles from './WidgetSettings.module.scss'
 
 import dropLogo from '../../assets/icons/drop-logo.svg'
-import timer from '../../assets/icons/timer.svg'
+// import timer from '../../assets/icons/timer.svg'
 
 export const WidgetSettings = () => {
+  const [heading, setHeading] = useState<string>('У Вас остались вопросы?')
+  const [text, setText] = useState<string>(
+    'Хотите, перезвоним вам за 27 секунд?'
+  )
+  const [noWorkText, setNoWorkText] = useState<string>(
+    'Сейчас мы уже не работаем, но мы можем перезвонить вам завтра.'
+  )
+  const [buttonText, setButtonText] = useState<string>('Жду звонка!')
+
   return (
     <div className={styles.widgetSettings}>
       <div className={styles.previewMode}>
@@ -64,11 +73,20 @@ export const WidgetSettings = () => {
                 </div>
                 <div className={styles.heading}>
                   <p className={styles.settingTitle}>Заголовок:</p>
-                  <Input className={styles.input} type='main' />
+                  <Input
+                    value={heading}
+                    onChange={(e) => setHeading(e.target.value)}
+                    className={styles.input}
+                    type='main'
+                  />
                 </div>
                 <div className={styles.text}>
                   <p className={styles.settingTitle}>Текст:</p>
                   <Input
+                    value={text}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                      setText(e.target.value)
+                    }
                     type='main'
                     placeholder='Хотите, перезвоним вам за %seconds%?'
                   />
@@ -82,13 +100,20 @@ export const WidgetSettings = () => {
                     Текст в нерабочее время:
                   </p>
                   <Input
+                    value={noWorkText}
+                    onChange={(e) => setNoWorkText(e.target.value)}
                     type='main'
                     placeholder='Сейчас мы уже не работаем, но мы можем перезвонить вам завтра.'
                   />
                 </div>
                 <div className={styles.buttonText}>
                   <p className={styles.settingTitle}>Текст кнопки:</p>
-                  <Input type='main' placeholder='Жду звонка!' />
+                  <Input
+                    value={buttonText}
+                    onChange={(e) => setButtonText(e.target.value)}
+                    type='main'
+                    placeholder='Жду звонка!'
+                  />
                 </div>
                 <div className={styles.buttonText}>
                   <p className={styles.settingTitle}>Текст кнопки:</p>
@@ -107,18 +132,14 @@ export const WidgetSettings = () => {
         </div>
         <div className={styles.preview}>
           <div className={styles.wrapper}>
-            <p className={styles.heading}></p>
-            <p className={styles.text}></p>
+            <p className={styles.heading}>{heading}</p>
+            <p className={styles.text}>{text}</p>
             <div className={styles.actions}>
-              <Input type='phone' placeholder='' />
-              <div>
-                <Button>Жду звонка!</Button>
+              <Input className={styles.input} type='phone' />
+              <div className={styles.buttonRight}>
+                <Button>{buttonText}</Button>
                 <p>Звонок бесплатный</p>
               </div>
-            </div>
-            <div className={styles.time}>
-              <ReactSVG src={timer} />
-              <p>0:28,00</p>
             </div>
           </div>
         </div>

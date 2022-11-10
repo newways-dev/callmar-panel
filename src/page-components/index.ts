@@ -12,3 +12,5 @@ export * from './SidebarSettings/SidebarSettings'
 export * from './SidebarSettings/Section/Section'
 
 export * from './NewWidgetModal/NewWidgetModal'
+export * from './AvatarsSlider/AvatarsSlider'
+export * from './AvatarModal/AvatarModal'

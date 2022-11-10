@@ -4,6 +4,7 @@ import { ModalSliceState } from './types'
 const initialState: ModalSliceState = {
   modal: {
     newWidget: false,
+    avatar: false,
   },
 }
 
@@ -14,9 +15,12 @@ const modalSlice = createSlice({
     setNewWidgetModal: (state, action: PayloadAction<boolean>) => {
       state.modal.newWidget = action.payload
     },
+    setAvatarModal: (state, action: PayloadAction<boolean>) => {
+      state.modal.avatar = action.payload
+    },
   },
 })
 
-export const { setNewWidgetModal } = modalSlice.actions
+export const { setNewWidgetModal, setAvatarModal } = modalSlice.actions
 
 export default modalSlice.reducer

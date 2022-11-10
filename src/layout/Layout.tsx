@@ -5,9 +5,12 @@ import { Sidebar } from './Sidebar/Sidebar'
 import { Header } from './Header/Header'
 
 import styles from './Layout.module.scss'
-import { NewWidgetModal, TimeLeft } from '../page-components'
+import { AvatarModal, NewWidgetModal, TimeLeft } from '../page-components'
 import { useSelector } from 'react-redux'
-import { selectNewWidgetModal } from '../redux/modals/selector'
+import {
+  selectAvatarModal,
+  selectNewWidgetModal,
+} from '../redux/modals/selector'
 
 interface LayoutProps {
   children: ReactNode
@@ -15,11 +18,13 @@ interface LayoutProps {
 
 export const Layout = ({ children }: LayoutProps) => {
   const newWidget = useSelector(selectNewWidgetModal)
+  const avatar = useSelector(selectAvatarModal)
 
   return (
     <>
       <div className={styles.layout}>
         {newWidget && <NewWidgetModal className={styles.newWidget} />}
+        {avatar && <AvatarModal className={styles.avatarModal} />}
         <Sidebar className={styles.sidebar} />
         <Header className={styles.header} />
         <MobileHeader className={styles.mobileHeader} />

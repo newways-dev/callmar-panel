@@ -1,13 +1,14 @@
 import clsx from 'clsx'
 import { useEffect, DetailedHTMLProps, HTMLAttributes } from 'react'
 import { ReactSVG } from 'react-svg'
-import { Button, Toggle } from '../../components'
+import { Toggle } from '../../components'
 import styles from './NewWidgetModal.module.scss'
 
 import close from '../../assets/icons/close-modal.svg'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectNewWidgetModal } from '../../redux/modals/selector'
 import { setNewWidgetModal } from '../../redux/modals/slice'
+import { ModalButtons } from '../ModalButtons/ModalButtons'
 
 export interface NewWidgetModalProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
@@ -49,10 +50,7 @@ export const NewWidgetModal = ({ className }: NewWidgetModalProps) => {
             <Toggle mode='on' />
           </div>
         </div>
-        <div className={styles.buttons}>
-          <Button className={styles.closeButton}>Закрыть</Button>
-          <Button className={styles.saveButton}>Сохранить</Button>
-        </div>
+        <ModalButtons />
       </div>
     </div>
   )

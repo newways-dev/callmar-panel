@@ -159,16 +159,73 @@
       background-size: 100%;
       overflow-y: hidden;
 
-      // .showcase {
-      //   height: 400px;
-      //   width: 100%;
-      //   background: hotpink;
-      // }
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-      // .background {
-      //   background: url('../../assets/images/website-back-big.png');
-      //   background-size: 100%;
-      // }
+      .wrapper {
+        text-align: center;
+        color: #fff;
+
+        .heading {
+          font-size: 32px;
+          font-weight: 600;
+        }
+
+        .text {
+          margin-top: 10px;
+          font-size: 28px;
+          font-weight: 500;
+        }
+
+        .actions {
+          display: flex;
+          align-items: flex-start;
+
+          gap: 30px;
+
+          margin-top: 50px;
+
+          .input {
+            height: 50px;
+            flex: 1;
+          }
+
+          .buttonRight {
+            margin-top: 3px;
+            display: flex;
+            flex-direction: column;
+
+            p {
+              margin-top: 10px;
+              font-size: 10px;
+              opacity: 0.8;
+            }
+
+            button {
+              width: 230px;
+              height: 50px;
+              background: var(--red);
+              border-radius: 5px;
+              color: #fff;
+              font-size: 22px;
+            }
+          }
+        }
+        .time {
+          margin-top: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 20px;
+
+          svg {
+            width: 45px;
+            height: 45px;
+            fill: #fff;
+          }
+        }
+      }
     }
   }
 }

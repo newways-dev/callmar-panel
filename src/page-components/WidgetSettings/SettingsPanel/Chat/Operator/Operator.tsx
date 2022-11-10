@@ -7,9 +7,11 @@ import login from '../../../../../assets/icons/login.svg'
 import avatar from '../../../../../assets/icons/avatar.svg'
 import { ReactSVG } from 'react-svg'
 import { Colors } from '../../../../../types/colors'
+import { useDispatch } from 'react-redux'
+import { setAvatarModal } from '../../../../../redux/modals/slice'
 
 export const Operator = () => {
-  const setAvatar = () => {}
+  const dispatch = useDispatch()
 
   return (
     <div className={styles.operator}>
@@ -27,7 +29,10 @@ export const Operator = () => {
               <ReactSVG src={login} />
               логин и пароль для приложения
             </Button>
-            <Button onClick={() => setAvatar()} className={styles.avatar}>
+            <Button
+              onClick={() => dispatch(setAvatarModal(true))}
+              className={styles.avatar}
+            >
               <ReactSVG src={avatar} />
               Настроить аватар
             </Button>
