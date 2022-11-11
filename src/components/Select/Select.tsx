@@ -8,11 +8,13 @@ export interface SelectProps
   options: string[]
   variant: 'purple' | 'gray'
   onChange?: () => void
+  defaultValue?: string
 }
 
 export const Select = ({
   variant,
   onChange,
+  defaultValue,
   options,
   placeholder,
   className,
@@ -22,10 +24,7 @@ export const Select = ({
     case 'purple':
       return (
         <div {...props} className={clsx(styles.select, className)}>
-          <select onChange={onChange}>
-            <option selected disabled>
-              {placeholder}
-            </option>
+          <select defaultValue={defaultValue} onChange={onChange}>
             {options.map((option, index) => (
               <option key={index}>{option}</option>
             ))}
@@ -35,10 +34,7 @@ export const Select = ({
     case 'gray':
       return (
         <div {...props} className={clsx(styles.selectGray, className)}>
-          <select onChange={onChange}>
-            <option selected disabled>
-              {placeholder}
-            </option>
+          <select defaultValue={defaultValue} onChange={onChange}>
             {options.map((option, index) => (
               <option key={index}>{option}</option>
             ))}

@@ -7,7 +7,7 @@ import reset from '../../assets/icons/reset.svg'
 
 export const Calls = () => {
   const tabs = ['Сегодня', 'Вчера', 'Неделя']
-  const options = ['one', 'two']
+  const options = ['Все виджеты', 'two']
 
   return (
     <div className={styles.calls}>
@@ -20,6 +20,7 @@ export const Calls = () => {
               <ReactSVG src={reset} />
             </Button>
             <Select
+              defaultValue={'Все виджеты'}
               variant='purple'
               options={options}
               className={styles.select}

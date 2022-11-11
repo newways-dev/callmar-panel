@@ -8,7 +8,7 @@ export interface RadioButtonProps
     HTMLInputElement
   > {
   checked: boolean
-  label: string
+  label?: string
 }
 
 export const RadioButton = ({
@@ -19,7 +19,7 @@ export const RadioButton = ({
 }: RadioButtonProps) => {
   return (
     <div className={clsx(styles.radioButton, className)}>
-      <input checked={checked} type="radio" {...props} />
+      <input checked={checked} type='radio' {...props} />
       <span className={clsx(styles.label, { [styles.red]: checked })}>
         {label}
       </span>

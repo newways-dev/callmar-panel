@@ -1,6 +1,7 @@
 .avatarSlider {
   margin-top: 30px;
   margin-bottom: 50px;
+  width: 800px;
 
   svg {
     cursor: pointer;
@@ -12,43 +13,14 @@
     line-height: 21px;
   }
 
-  .wrapper {
+  .slider {
+    height: 200px;
     display: flex;
     align-items: center;
-    gap: 50px;
+    gap: 40px;
 
-    width: 100%;
-
-    .slider {
+    .slick-slide {
       display: flex;
-      width: 100%;
-    }
-
-    .list {
-      ::-webkit-scrollbar {
-        display: none;
-      }
-      -ms-overflow-style: none; /* IE and Edge */
-      scrollbar-width: none; /* Firefox */
-
-      max-width: 800px;
-      width: 100%;
-
-      overflow-x: scroll;
-
-      display: flex;
-      align-items: center;
-      gap: 40px;
-      list-style: none;
-
-      .item {
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        gap: 15px;
-      }
     }
   }
 }

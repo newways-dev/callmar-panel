@@ -1,23 +1,28 @@
 import { Button, Toggle } from '../../../../../components'
 import styles from './Operator.module.scss'
 
-import photo from '../../../../../assets/images/photo.png'
 import card from '../../../../../assets/icons/card.svg'
 import login from '../../../../../assets/icons/login.svg'
 import avatar from '../../../../../assets/icons/avatar.svg'
 import { ReactSVG } from 'react-svg'
 import { Colors } from '../../../../../types/colors'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setAvatarModal } from '../../../../../redux/modals/slice'
+
+import { avatars } from '../../../../../assets/images/avatars'
+import { selectAvatar } from '../../../../../redux/avatar/selector'
 
 export const Operator = () => {
   const dispatch = useDispatch()
+  const avatarImg = useSelector(selectAvatar)
+
+  const avatarPhoto = avatars[avatarImg]
 
   return (
     <div className={styles.operator}>
       <div className={styles.profile}>
         <Toggle mode='on' />
-        <img src={photo} alt='' />
+        <img src={avatarPhoto} alt='' />
         <div className={styles.settings}>
           <div className={styles.top}>
             <p className={styles.name}>Оператор 1</p>

@@ -36,8 +36,6 @@ export const SalesDepartment = () => {
     </>
   )
 
-  console.log(clients.length)
-
   const addClient = () => {
     const id = clients.length + 1
     const newClient = { id: id, name: '', number: 0 }

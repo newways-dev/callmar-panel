@@ -25,7 +25,6 @@ export const AvatarModal = ({ className }: AvatarModalProps) => {
       <div className={styles.wrapper}>
         <p>Загрузите фото сотрудника</p>
         <div className={styles.dragAndDrop}>
-          {/* <img src={background} alt='' /> */}
           <div className={styles.dadWrapper}>
             <ReactSVG src={drop} />
             <p>

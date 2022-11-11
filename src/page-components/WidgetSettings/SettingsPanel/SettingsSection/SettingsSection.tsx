@@ -19,7 +19,7 @@ export const SettingsSection = ({
     <div className={clsx(styles.settingsSection, className)}>
       <p className={styles.title}>{title}</p>
       <div className={styles.divider} />
-      <p className={styles.description}>{description}</p>
+      <div className={styles.description}>{description}</div>
       <div className={styles.settingsWrapper}>{children}</div>
     </div>
   )

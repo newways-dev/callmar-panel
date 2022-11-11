@@ -25,7 +25,7 @@ export const WidgetsTable = ({ className }: WidgetsTableProps) => {
 
       <div className={styles.rowsWrapper}>
         <div className={styles.rows}>
-          <Row className={styles.row} table="widgets">
+          <Row className={styles.row} table='widgets'>
             <Cell className={styles.website}>tehnix.su</Cell>
             <Cell className={styles.status}>
               <Badge variant={BadgeType.Success} />
@@ -48,7 +48,7 @@ export const WidgetsTable = ({ className }: WidgetsTableProps) => {
               <Button type={Buttons.Delete} />
             </Cell>
           </Row>
-          <Row className={styles.row} table="widgets">
+          <Row className={styles.row} table='widgets'>
             <Cell className={styles.website}>tehnix.su</Cell>
             <Cell className={styles.status}>
               <Badge variant={BadgeType.Success} />

@@ -36,7 +36,6 @@ export const DragPhone = ({
         variant='gray'
       />
       <input
-        defaultValue={clientphone}
         type='text'
         placeholder={
           clientphone === 0 ? 'Номер клиента' : clientphone.toString()
@@ -45,7 +44,6 @@ export const DragPhone = ({
         onChange={(e) => setPhone(e.target.value)}
       />
       <input
-        defaultValue={clientname}
         placeholder={clientname === '' ? 'Имя клиента' : clientname}
         type='text'
         value={name}

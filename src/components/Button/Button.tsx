@@ -16,6 +16,7 @@ export interface ButtonProps
   children?: ReactNode
   variant?: Colors
   type?: Buttons
+  onClick?: () => void
 }
 
 export const Button = ({
@@ -23,12 +24,17 @@ export const Button = ({
   type,
   className,
   children,
+  onClick,
   ...props
 }: ButtonProps) => {
   switch (type) {
     case Buttons.Add:
       return (
-        <button className={clsx(styles.add, className)} {...props}>
+        <button
+          onClick={onClick}
+          className={clsx(styles.add, className)}
+          {...props}
+        >
           <ReactSVG src={add} />
           {children}
         </button>
@@ -45,6 +51,7 @@ export const Button = ({
     default:
       return (
         <button
+          onClick={onClick}
           className={clsx(
             styles.button,
             { [styles.red]: variant === Colors.Red },

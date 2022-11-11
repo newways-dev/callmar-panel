@@ -10,6 +10,8 @@ import puzzle from '../../assets/icons/puzzle.svg'
 import alert from '../../assets/icons/alert.svg'
 import copy from '../../assets/icons/copy.svg'
 import settings from '../../assets/icons/settings.svg'
+import { useDispatch } from 'react-redux'
+import { setWidgetSettings } from '../../redux/pages/slice'
 
 export interface BadgeProps
   extends DetailedHTMLProps<
@@ -20,6 +22,8 @@ export interface BadgeProps
 }
 
 export const Badge = ({ variant, className }: BadgeProps) => {
+  const dispatch = useDispatch()
+
   switch (variant) {
     case BadgeType.Success:
       return (
@@ -66,7 +70,10 @@ export const Badge = ({ variant, className }: BadgeProps) => {
       )
     case BadgeType.Settings:
       return (
-        <div className={clsx(styles.badge, styles.settings, className)}>
+        <div
+          onClick={() => dispatch(setWidgetSettings(true))}
+          className={clsx(styles.badge, styles.settings, className)}
+        >
           <ReactSVG src={settings} />
           <span className={styles.title}>Настройки виджета</span>
         </div>
