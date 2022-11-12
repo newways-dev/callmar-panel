@@ -4,7 +4,7 @@ import { Section, SidebarSettings } from '../../page-components'
 import styles from './WidgetSettings.module.scss'
 
 import dropLogo from '../../assets/icons/drop-logo.svg'
-// import timer from '../../assets/icons/timer.svg'
+import { SelectWrapper } from '../../components/SelectWrapper/SelectWrapper'
 
 export const WidgetSettings = () => {
   const [heading, setHeading] = useState<string>('У Вас остались вопросы?')
@@ -24,22 +24,20 @@ export const WidgetSettings = () => {
       </div>
       <div className={styles.container}>
         <div className={styles.sidebarWrapper}>
-          <SidebarSettings className={styles.sidebar} title='Настройки виджета'>
+          <SidebarSettings className={styles.sidebar} title="Настройки виджета">
             <div className={styles.wrapper}>
               <div className={styles.layout}>
                 <p className={styles.settingTitle}>Шаблон виджета</p>
-                <Select
-                  variant='gray'
-                  options={['Стандартный']}
-                  placeholder='Стандартный'
-                />
+                <SelectWrapper variant="gray">
+                  <Select options={['Стандартный']} placeholder="Стандартный" />
+                </SelectWrapper>
               </div>
               <div className={styles.color}>
                 <p className={styles.settingTitle}>
                   Цветовая схема виджета <span> сбросить</span>
                 </p>
                 <ColorsList
-                  type='widget'
+                  type="widget"
                   colors={[
                     'Blue',
                     'Gray',
@@ -52,22 +50,22 @@ export const WidgetSettings = () => {
                 />
               </div>
             </div>
-            <Section title='Таймер обратного звонка'>
+            <Section title="Таймер обратного звонка">
               <div className={styles.wrapper}>
                 <div className={styles.timer}>
                   <p>Скрыть таймер обратного осчета заказа звонка</p>
-                  <Toggle mode='off' />
+                  <Toggle mode="off" />
                 </div>
               </div>
             </Section>
-            <Section title='Настройка текста'>
+            <Section title="Настройка текста">
               <div className={styles.wrapper}>
                 <div className={styles.logo}>
                   <p className={styles.settingTitle}>
                     Логотип (не менее 35 пикселей по любой из сторон):
                   </p>
                   <div className={styles.dad}>
-                    <img src={dropLogo} alt='' />
+                    <img src={dropLogo} alt="" />
                     <p>Перетащите файл или нажмите чтобы установить логотип</p>
                   </div>
                 </div>
@@ -77,7 +75,7 @@ export const WidgetSettings = () => {
                     value={heading}
                     onChange={(e) => setHeading(e.target.value)}
                     className={styles.input}
-                    type='main'
+                    type="main"
                   />
                 </div>
                 <div className={styles.text}>
@@ -87,8 +85,8 @@ export const WidgetSettings = () => {
                     onChange={(e: ChangeEvent<HTMLInputElement>) =>
                       setText(e.target.value)
                     }
-                    type='main'
-                    placeholder='Хотите, перезвоним вам за %seconds%?'
+                    type="main"
+                    placeholder="Хотите, перезвоним вам за %seconds%?"
                   />
                   <p>
                     Используйте <span>%seconds%</span> для замены на число
@@ -102,8 +100,8 @@ export const WidgetSettings = () => {
                   <Input
                     value={noWorkText}
                     onChange={(e) => setNoWorkText(e.target.value)}
-                    type='main'
-                    placeholder='Сейчас мы уже не работаем, но мы можем перезвонить вам завтра.'
+                    type="main"
+                    placeholder="Сейчас мы уже не работаем, но мы можем перезвонить вам завтра."
                   />
                 </div>
                 <div className={styles.buttonText}>
@@ -111,15 +109,15 @@ export const WidgetSettings = () => {
                   <Input
                     value={buttonText}
                     onChange={(e) => setButtonText(e.target.value)}
-                    type='main'
-                    placeholder='Жду звонка!'
+                    type="main"
+                    placeholder="Жду звонка!"
                   />
                 </div>
                 <div className={styles.buttonText}>
                   <p className={styles.settingTitle}>Текст кнопки:</p>
                   <Input
-                    type='main'
-                    placeholder='Мы обязательно перезвоним вам  %callDate% в %callTime%.'
+                    type="main"
+                    placeholder="Мы обязательно перезвоним вам  %callDate% в %callTime%."
                   />
                   <p className={styles.desc}>
                     Используйте <span>%callDate%</span> для замены на дату и
@@ -135,7 +133,7 @@ export const WidgetSettings = () => {
             <p className={styles.heading}>{heading}</p>
             <p className={styles.text}>{text}</p>
             <div className={styles.actions}>
-              <Input className={styles.input} type='phone' />
+              <Input className={styles.input} type="phone" />
               <div className={styles.buttonRight}>
                 <Button>{buttonText}</Button>
                 <p>Звонок бесплатный</p>

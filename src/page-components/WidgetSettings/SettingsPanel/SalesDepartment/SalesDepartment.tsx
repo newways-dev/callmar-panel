@@ -15,6 +15,7 @@ import {
 } from '../../../../components'
 import { useState } from 'react'
 import { Row } from '../Row/Row'
+import { SelectWrapper } from '../../../../components/SelectWrapper/SelectWrapper'
 
 const defaultClients = [
   { id: 1, name: 'ClientName', number: +71234567890 },
@@ -45,13 +46,13 @@ export const SalesDepartment = () => {
   return (
     <div className={styles.salesDepartment}>
       <SettingsSection
-        title='Номер телефона для приема звонкой'
+        title="Номер телефона для приема звонкой"
         description={desc}
       >
         <div className={styles.phones}>
           <Reorder.Group
-            as='ul'
-            axis='y'
+            as="ul"
+            axis="y"
             values={clients}
             onReorder={setClients}
           >
@@ -75,16 +76,16 @@ export const SalesDepartment = () => {
           </Button>
         </div>
       </SettingsSection>
-      <SettingsSection title='Как звонить на номера для приема звонков?'>
+      <SettingsSection title="Как звонить на номера для приема звонков?">
         <div className={styles.callMethod}>
           <div>
             <p>Способ дозвона</p>
-            <Select
+            {/* <Select
               className={styles.select}
               placeholder='По количеству звонков'
               variant='gray'
               options={['По количеству звонков', 'По порядку']}
-            />
+            /> */}
           </div>
           <div className={styles.desc}>
             <p>
@@ -99,33 +100,33 @@ export const SalesDepartment = () => {
         </div>
       </SettingsSection>
       <SettingsSection
-        title='График работы отдела продаж'
-        description='Укажите время работы вашего отдела продаж. В рабочее время виджет соеденять потенциальных клиентов с продажниками, а в нерабочее и выходные дни - будет собирать телефоны.'
+        title="График работы отдела продаж"
+        description="Укажите время работы вашего отдела продаж. В рабочее время виджет соеденять потенциальных клиентов с продажниками, а в нерабочее и выходные дни - будет собирать телефоны."
       >
         <div className={styles.workTime}>
-          <Row title='Часовой пояс виджета'>
-            <Select
-              className={styles.select}
-              placeholder='GMT+03:00 - Москва, Санкт-Петербург'
-              options={['GMT+03:00 - Москва, Санкт-Петербург']}
-              variant='gray'
-            />
+          <Row title="Часовой пояс виджета">
+            <SelectWrapper variant="gray">
+              <Select
+                className={styles.select}
+                options={['GMT+03:00 - Москва, Санкт-Петербург']}
+              />
+            </SelectWrapper>
           </Row>
-          <Row title='Единый график работы в будни'>
+          <Row title="Единый график работы в будни">
             <div>
-              <Toggle className={styles.toggle} mode='on' />
+              <Toggle className={styles.toggle} mode="on" />
               <Explanation
                 className={styles.exp}
-                text='Если у вас разное рабочее время по дням недели, отключите эту опцию.'
+                text="Если у вас разное рабочее время по дням недели, отключите эту опцию."
               />
             </div>
           </Row>
-          <Row title='Учитывать праздники'>
+          <Row title="Учитывать праздники">
             <div>
-              <Toggle className={styles.toggle} mode='off' />
+              <Toggle className={styles.toggle} mode="off" />
               <Explanation
                 className={styles.exp}
-                text='Если включено, то в праздники, попавшие неа будни, виджет будет использовать выходной день'
+                text="Если включено, то в праздники, попавшие неа будни, виджет будет использовать выходной день"
               />
             </div>
           </Row>

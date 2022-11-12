@@ -4,6 +4,7 @@ import { CallsTable, Heading } from '../../page-components'
 
 import styles from './Calls.module.scss'
 import reset from '../../assets/icons/reset.svg'
+import { SelectWrapper } from '../../components/SelectWrapper/SelectWrapper'
 
 export const Calls = () => {
   const tabs = ['Сегодня', 'Вчера', 'Неделя']
@@ -11,7 +12,7 @@ export const Calls = () => {
 
   return (
     <div className={styles.calls}>
-      <Heading heading='Звонки'>
+      <Heading heading="Звонки">
         <div className={styles.buttons}>
           <SelectCalendar className={styles.calendar} />
           <Tabs className={styles.tabs} tabs={tabs} />
@@ -19,13 +20,9 @@ export const Calls = () => {
             <Button className={styles.reset}>
               <ReactSVG src={reset} />
             </Button>
-            <Select
-              defaultValue={'Все виджеты'}
-              variant='purple'
-              options={options}
-              className={styles.select}
-              placeholder='Все виджеты'
-            />
+            <SelectWrapper variant="gray">
+              <Select options={options} className={styles.select} />
+            </SelectWrapper>
           </div>
         </div>
       </Heading>

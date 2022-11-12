@@ -5,6 +5,7 @@ import clsx from 'clsx'
 
 import drag from '.././../assets/icons/drag.svg'
 import { Select } from '../Select/Select'
+import { SelectWrapper } from '../SelectWrapper/SelectWrapper'
 
 export interface DragPhoneProps
   extends DetailedHTMLProps<
@@ -29,14 +30,11 @@ export const DragPhone = ({
     <div className={clsx(styles.dragPhone, className)}>
       <ReactSVG src={drag} />
       <div className={styles.position}>{position}</div>
-      <Select
-        className={styles.select}
-        options={['Тел.']}
-        placeholder='Тел.'
-        variant='gray'
-      />
+      <SelectWrapper variant="gray">
+        <Select className={styles.select} options={['Тел.']} />
+      </SelectWrapper>
       <input
-        type='text'
+        type="text"
         placeholder={
           clientphone === 0 ? 'Номер клиента' : clientphone.toString()
         }
@@ -45,7 +43,7 @@ export const DragPhone = ({
       />
       <input
         placeholder={clientname === '' ? 'Имя клиента' : clientname}
-        type='text'
+        type="text"
         value={name}
         onChange={(e) => setName(e.target.value)}
       />

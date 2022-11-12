@@ -1,11 +1,15 @@
 .sidebarSettings {
-  min-width: 480px;
+  max-width: 480px;
+  width: 100%;
+
+  @media screen and (max-width: 1400px) {
+    max-width: 350px;
+  }
 
   height: 100%;
 
   max-height: calc(100vh - 70px);
   overflow-y: scroll;
 
-  // border-right: 4px solid var(--border);
   backdrop-filter: blur(12px);
 }

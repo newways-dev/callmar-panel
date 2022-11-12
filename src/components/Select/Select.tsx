@@ -1,48 +1,33 @@
 import clsx from 'clsx'
-import { DetailedHTMLProps, HTMLAttributes } from 'react'
+import { ChangeEvent, DetailedHTMLProps, HTMLAttributes } from 'react'
 import styles from './Select.module.scss'
 
 export interface SelectProps
-  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  placeholder: string
+  extends DetailedHTMLProps<
+    HTMLAttributes<HTMLSelectElement>,
+    HTMLSelectElement
+  > {
   options: string[]
-  variant: 'purple' | 'gray'
-  onChange?: () => void
-  defaultValue?: string
+  onChange?: (event: ChangeEvent<HTMLSelectElement>) => void
 }
 
 export const Select = ({
-  variant,
   onChange,
   defaultValue,
   options,
   placeholder,
   className,
-  ...props
 }: SelectProps) => {
-  switch (variant) {
-    case 'purple':
-      return (
-        <div {...props} className={clsx(styles.select, className)}>
-          <select defaultValue={defaultValue} onChange={onChange}>
-            {options.map((option, index) => (
-              <option key={index}>{option}</option>
-            ))}
-          </select>
-        </div>
-      )
-    case 'gray':
-      return (
-        <div {...props} className={clsx(styles.selectGray, className)}>
-          <select defaultValue={defaultValue} onChange={onChange}>
-            {options.map((option, index) => (
-              <option key={index}>{option}</option>
-            ))}
-          </select>
-        </div>
-      )
-
-    default:
-      return <></>
-  }
+  return (
+    <select
+      onChange={onChange}
+      defaultValue={defaultValue}
+      placeholder={placeholder}
+      className={clsx(styles.select, className)}
+    >
+      {options.map((option, index) => (
+        <option key={index}>{option}</option>
+      ))}
+    </select>
+  )
 }
