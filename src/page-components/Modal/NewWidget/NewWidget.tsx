@@ -1,19 +1,19 @@
 import clsx from 'clsx'
 import { useEffect, DetailedHTMLProps, HTMLAttributes } from 'react'
 import { ReactSVG } from 'react-svg'
-import { Toggle } from '../../components'
-import styles from './NewWidgetModal.module.scss'
+import { Toggle } from '../../../components'
+import styles from './NewWidget.module.scss'
 
-import close from '../../assets/icons/close-modal.svg'
+import close from '../../../assets/icons/close-modal.svg'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectNewWidgetModal } from '../../redux/modals/selector'
-import { setNewWidgetModal } from '../../redux/modals/slice'
-import { ModalButtons } from '../ModalButtons/ModalButtons'
+import { selectNewWidgetModal } from '../../../redux/modals/selector'
+import { setNewWidgetModal } from '../../../redux/modals/slice'
+import { ModalButtons } from '../../ModalButtons/ModalButtons'
 
 export interface NewWidgetModalProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
 
-export const NewWidgetModal = ({ className }: NewWidgetModalProps) => {
+export const NewWidget = ({ className }: NewWidgetModalProps) => {
   const newWidget = useSelector(selectNewWidgetModal)
   const dispatch = useDispatch()
 

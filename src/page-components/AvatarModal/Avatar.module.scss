@@ -45,7 +45,8 @@
     .dragAndDrop {
       background: url('../../assets/images/avatar-back.png') no-repeat;
       background-size: 100%;
-      width: 800px;
+      max-width: 800px;
+      width: 100%;
       height: 400px;
 
       display: flex;

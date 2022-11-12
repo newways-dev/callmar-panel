@@ -1,7 +1,8 @@
 .avatarSlider {
   margin-top: 30px;
   margin-bottom: 50px;
-  width: 800px;
+  max-width: 800px;
+  width: 100%;
 
   svg {
     cursor: pointer;

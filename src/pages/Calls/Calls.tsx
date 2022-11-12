@@ -20,7 +20,7 @@ export const Calls = () => {
             <Button className={styles.reset}>
               <ReactSVG src={reset} />
             </Button>
-            <SelectWrapper variant="gray">
+            <SelectWrapper variant="purple">
               <Select options={options} className={styles.select} />
             </SelectWrapper>
           </div>

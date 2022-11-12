@@ -5,11 +5,13 @@ import { Sidebar } from './Sidebar/Sidebar'
 import { Header } from './Header/Header'
 
 import styles from './Layout.module.scss'
-import { AvatarModal, NewWidgetModal, TimeLeft } from '../page-components'
+import { AvatarModal, Modal, TimeLeft } from '../page-components'
 import { useSelector } from 'react-redux'
 import {
   selectAvatarModal,
   selectNewWidgetModal,
+  selectOperatorDataModal,
+  selectOperatorPaymentModal,
 } from '../redux/modals/selector'
 
 interface LayoutProps {
@@ -18,12 +20,16 @@ interface LayoutProps {
 
 export const Layout = ({ children }: LayoutProps) => {
   const newWidget = useSelector(selectNewWidgetModal)
+  const operatorData = useSelector(selectOperatorDataModal)
+  const operatorPayment = useSelector(selectOperatorPaymentModal)
   const avatar = useSelector(selectAvatarModal)
 
   return (
     <>
       <div className={styles.layout}>
-        {newWidget && <NewWidgetModal className={styles.newWidget} />}
+        {newWidget && <Modal modal="new-widget" />}
+        {operatorData && <Modal modal="operator-data" />}
+        {operatorPayment && <Modal modal="oparators-payment" />}
         {avatar && <AvatarModal className={styles.avatarModal} />}
         <Sidebar className={styles.sidebar} />
         <Header className={styles.header} />

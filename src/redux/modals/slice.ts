@@ -5,6 +5,8 @@ const initialState: ModalSliceState = {
   modal: {
     newWidget: false,
     avatar: false,
+    operatorData: false,
+    operatorPayment: false,
   },
 }
 
@@ -18,9 +20,20 @@ const modalSlice = createSlice({
     setAvatarModal: (state, action: PayloadAction<boolean>) => {
       state.modal.avatar = action.payload
     },
+    setOperatorDataModal: (state, action: PayloadAction<boolean>) => {
+      state.modal.operatorData = action.payload
+    },
+    setOperatorPaymentModal: (state, action: PayloadAction<boolean>) => {
+      state.modal.operatorPayment = action.payload
+    },
   },
 })
 
-export const { setNewWidgetModal, setAvatarModal } = modalSlice.actions
+export const {
+  setNewWidgetModal,
+  setAvatarModal,
+  setOperatorDataModal,
+  setOperatorPaymentModal,
+} = modalSlice.actions
 
 export default modalSlice.reducer
