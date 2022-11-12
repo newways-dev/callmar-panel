@@ -31,14 +31,14 @@ export const Chat = () => {
 
   return (
     <div className={styles.chat}>
-      <SettingsSection title='Настройки чата'>
-        <Row title='Показывать чат на сайте'>
-          <Toggle mode='on' />
-          <Explanation text='Если опция включена, то рядом с кнопкой обратного звонка будет кнопка онлайн чата.' />
+      <SettingsSection title="Настройки чата">
+        <Row title="Показывать чат на сайте">
+          <Toggle mode="on" />
+          <Explanation text="Если опция включена, то рядом с кнопкой обратного звонка будет кнопка онлайн чата." />
         </Row>
-        <Row title='Цвет чата'>
+        <Row title="Цвет чата">
           <ColorsList
-            type='chat'
+            type="chat"
             colors={[
               'Green',
               'Blue',
@@ -50,11 +50,11 @@ export const Chat = () => {
             ]}
           />
         </Row>
-        <Row title='Вовлекать в диалог с оператором'>
-          <Toggle mode='on' />
-          <Explanation text='Если опция включена, то чат завлекает в диалог новых посетителей эмулируя печать оператора. Вовлекает когда Ваши операторы в Online.' />
+        <Row title="Вовлекать в диалог с оператором">
+          <Toggle mode="on" />
+          <Explanation text="Если опция включена, то чат завлекает в диалог новых посетителей эмулируя печать оператора. Вовлекает когда Ваши операторы в Online." />
           <p>Вовлекать через... секунд после открытия страницы сайта</p>
-          <NumInput />
+          <NumInput defaultValue={20} />
           <div className={styles.previewWrapper}>
             <div className={styles.fields}>
               <label>Приветствие</label>
@@ -102,7 +102,7 @@ export const Chat = () => {
                   </p>
                 </div>
                 <div className={styles.operator}>
-                  <img src={operator} alt='' />
+                  <img src={operator} alt="" />
                   <span className={styles.messagesCount}>1</span>
                 </div>
               </div>
@@ -110,7 +110,7 @@ export const Chat = () => {
           </div>
         </Row>
       </SettingsSection>
-      <SettingsSection title='Оператор' description='Вкл./Выкл. оператора'>
+      <SettingsSection title="Оператор" description="Вкл./Выкл. оператора">
         <Operator />
       </SettingsSection>
       <Buttons />

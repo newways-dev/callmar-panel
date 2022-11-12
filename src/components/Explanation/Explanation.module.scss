@@ -8,6 +8,10 @@
     font-size: 18px;
     line-height: 150%;
 
+    @media screen and (max-width: 1400px) {
+      font-size: 14px;
+    }
+
     span {
       cursor: pointer;
       color: var(--red);

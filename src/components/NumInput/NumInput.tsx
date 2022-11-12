@@ -6,8 +6,16 @@ export interface NumInputProps
   extends DetailedHTMLProps<
     HTMLAttributes<HTMLInputElement>,
     HTMLInputElement
-  > {}
+  > {
+  defaultValue: number
+}
 
-export const NumInput = ({ className }: NumInputProps) => {
-  return <input type='number' className={clsx(styles.numInput, className)} />
+export const NumInput = ({ className, defaultValue }: NumInputProps) => {
+  return (
+    <input
+      type="number"
+      defaultValue={defaultValue}
+      className={clsx(styles.numInput, className)}
+    />
+  )
 }

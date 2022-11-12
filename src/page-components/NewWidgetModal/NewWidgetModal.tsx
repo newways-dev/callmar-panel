@@ -38,16 +38,18 @@ export const NewWidgetModal = ({ className }: NewWidgetModalProps) => {
         <div className={styles.wrapper}>
           <div className={styles.address}>
             <p>Адрес сайта:</p>
-            <input placeholder='tehnix.su' className={styles.input} />
+            <input placeholder="tehnix.su" className={styles.input} />
             <p>Сайт куда будет установлен виджет</p>
           </div>
-          <div className={styles.toggle}>
-            <p>Включить звонки</p>
-            <Toggle mode='on' />
-          </div>
-          <div className={styles.toggle}>
-            <p>Включить чат</p>
-            <Toggle mode='on' />
+          <div className={styles.toggles}>
+            <div className={styles.toggle}>
+              <p>Включить звонки</p>
+              <Toggle mode="on" />
+            </div>
+            <div className={styles.toggle}>
+              <p>Включить чат</p>
+              <Toggle mode="on" />
+            </div>
           </div>
         </div>
         <ModalButtons />

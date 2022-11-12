@@ -7,11 +7,11 @@ export const Statistics = () => {
 
   return (
     <div className={styles.statistics}>
-      <Heading heading='Статистика' />
+      <Heading heading="Статистика" />
       <div className={styles.buttons}>
         <SelectCalendar />
         <Button className={styles.button}>По дням</Button>
-        <Select variant='purple' options={options} placeholder='Все виджеты' />
+        <Select variant="purple" options={options} placeholder="Все виджеты" />
       </div>
       <StatisticsTable className={styles.table} />
     </div>

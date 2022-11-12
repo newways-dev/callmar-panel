@@ -44,5 +44,9 @@
   .settingsWrapper {
     padding: 0 30px;
     padding-top: 30px;
+
+    @media screen and (max-width: 1400px) {
+      padding-left: 15px;
+    }
   }
 }

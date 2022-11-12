@@ -9,6 +9,7 @@ import {
   Tooltip,
   Legend,
 } from 'recharts'
+import useWindowSize from '../../hooks/useWindowSize'
 import styles from './StatisticsTable.module.scss'
 
 const data = [
@@ -51,14 +52,27 @@ const data = [
 ]
 
 const Chart = () => {
+  const width = useWindowSize()
+
+  const chartWidth =
+    width && width > 2300
+      ? 2000
+      : width && width > 1800
+      ? 1500
+      : width && width > 1400
+      ? 1300
+      : width && width < 800
+      ? 600
+      : 1100
+
   return (
-    <LineChart width={1100} height={300} data={data}>
+    <LineChart width={chartWidth} height={400} data={data}>
       <Legend />
-      <XAxis dataKey='name' />
+      <XAxis dataKey="name" />
       <YAxis />
-      <CartesianGrid stroke='#999' strokeLinecap='square' strokeWidth={1} />
-      <Line type='monotone' dataKey='Звонки' strokeWidth={4} stroke='#81D880' />
-      <Line type='monotone' dataKey='Показы' strokeWidth={4} stroke='#D75C78' />
+      <CartesianGrid stroke="#999" strokeLinecap="square" strokeWidth={1} />
+      <Line type="monotone" dataKey="Звонки" strokeWidth={4} stroke="#81D880" />
+      <Line type="monotone" dataKey="Показы" strokeWidth={4} stroke="#D75C78" />
       <Tooltip />
     </LineChart>
   )
