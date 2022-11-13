@@ -5,6 +5,7 @@ import {
   ButtonSettings,
   Calls,
   Login,
+  Payment,
   Register,
   Statistics,
   Widgets,
@@ -21,7 +22,7 @@ function App() {
       <Router>
         <Routes>
           <Route
-            path='/'
+            path="/"
             element={
               <Layout>
                 {page === 'calls' && <Calls />}
@@ -30,11 +31,19 @@ function App() {
               </Layout>
             }
           />
-          <Route path='/button-settings' element={<ButtonSettings />} />
-          <Route path='/widget-settings' element={<WidgetSettings />} />
-          <Route path='*' element={<h1>Not Found</h1>} />
-          <Route path='/register' element={<Register />} />
-          <Route path='/login' element={<Login />} />
+          <Route
+            path="/service-payment"
+            element={
+              <Layout>
+                <Payment />
+              </Layout>
+            }
+          />
+          <Route path="/button-settings" element={<ButtonSettings />} />
+          <Route path="/widget-settings" element={<WidgetSettings />} />
+          <Route path="*" element={<h1>Not Found</h1>} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </Router>
     </>

@@ -4,7 +4,7 @@ import { StatisticsTable } from '../../page-components'
 import styles from './Statistics.module.scss'
 
 export const Statistics = () => {
-  const options = ['one']
+  const options = ['Все виджеты']
 
   return (
     <div className={styles.statistics}>

@@ -1,4 +1,3 @@
-import clsx from 'clsx'
 import { useDispatch } from 'react-redux'
 import { ReactSVG } from 'react-svg'
 import { setOperatorDataModal } from '../../../redux/modals/slice'
@@ -11,22 +10,57 @@ export const OperatorData = () => {
   const dispatch = useDispatch()
 
   return (
-    <div className={styles.newWidget}>
+    <div className={styles.operatorData}>
       <div className={styles.title}>
-        <p>Новый виджет</p>
+        <p>Данные оператора для приложения</p>
         <ReactSVG
           onClick={() => dispatch(setOperatorDataModal(false))}
           src={close}
         />
       </div>
       <div className={styles.wrapper}>
-        <div className={styles.address}>
-          <p>Адрес сайта:</p>
-          <input placeholder="tehnix.su" className={styles.input} />
-          <p>Сайт куда будет установлен виджет</p>
+        <div className={styles.description}>
+          <p>
+            Эти данные оператор 1 должен использовать для входа в чат приложения
+            оператора. Само приложение можно скачать внизу страницы настроек
+            чата или вы можете{' '}
+            <span>
+              {' '}
+              отправить логин/пароль с инструкциями оператору на Email.
+            </span>
+          </p>
+        </div>
+        <div className={styles.rows}>
+          <div className={styles.row}>
+            <p className={styles.rowTitle}>Логин оператора</p>
+            <div>
+              <input />
+              <p>Это логин для приложения оператора.</p>
+            </div>
+          </div>
+          <div className={styles.row}>
+            <p className={styles.rowTitle}>Пароль оператора</p>
+            <div>
+              <input type="password" />
+              <p>Это пароль для приложения оператора.</p>
+            </div>
+          </div>
+          <div className={styles.row}>
+            <p className={styles.rowTitle}>
+              Укажите Email сотрудника куда отправить данные
+            </p>
+            <div>
+              <input />
+              <p>
+                На Email будет высланы данные для оператора (его логин и
+                пароль), а так же ссылки скачивания приложений и инструкции по
+                их настройке.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-      <ModalButtons />
+      <ModalButtons action="Отправить на Email" />
     </div>
   )
 }

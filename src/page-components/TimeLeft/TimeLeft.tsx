@@ -1,5 +1,6 @@
 import clsx from 'clsx'
 import { DetailedHTMLProps, HTMLAttributes } from 'react'
+import { Link } from 'react-router-dom'
 import { Button } from '../../components/Button/Button'
 import styles from './TimeLeft.module.scss'
 
@@ -13,7 +14,9 @@ export const TimeLeft = ({ className }: TimeLeftProps) => {
         <span className={styles.date}>
           Осталось <span> 13 мин.</span> до 12.11.21
         </span>
-        <Button className={styles.timeLeftButton}>Оплатить</Button>
+        <Link to="/service-payment">
+          <Button className={styles.timeLeftButton}>Оплатить</Button>
+        </Link>
       </div>
     </div>
   )

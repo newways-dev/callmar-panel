@@ -80,12 +80,12 @@ export const SalesDepartment = () => {
         <div className={styles.callMethod}>
           <div>
             <p>Способ дозвона</p>
-            {/* <Select
-              className={styles.select}
-              placeholder='По количеству звонков'
-              variant='gray'
-              options={['По количеству звонков', 'По порядку']}
-            /> */}
+            <SelectWrapper variant="gray">
+              <Select
+                className={styles.select}
+                options={['По количеству звонков', 'По порядку']}
+              />
+            </SelectWrapper>
           </div>
           <div className={styles.desc}>
             <p>

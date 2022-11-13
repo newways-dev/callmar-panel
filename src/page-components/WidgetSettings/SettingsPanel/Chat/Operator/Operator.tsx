@@ -7,7 +7,11 @@ import avatar from '../../../../../assets/icons/avatar.svg'
 import { ReactSVG } from 'react-svg'
 import { Colors } from '../../../../../types/colors'
 import { useDispatch, useSelector } from 'react-redux'
-import { setAvatarModal } from '../../../../../redux/modals/slice'
+import {
+  setAvatarModal,
+  setOperatorDataModal,
+  setOperatorPaymentModal,
+} from '../../../../../redux/modals/slice'
 
 import { avatars } from '../../../../../assets/images/avatars'
 import { selectAvatar } from '../../../../../redux/avatar/selector'
@@ -21,8 +25,8 @@ export const Operator = () => {
   return (
     <div className={styles.operator}>
       <div className={styles.profile}>
-        <Toggle mode='on' />
-        <img src={avatarPhoto} alt='' />
+        <Toggle mode="on" />
+        <img src={avatarPhoto} alt="" />
         <div className={styles.settings}>
           <div className={styles.top}>
             <p className={styles.name}>Оператор 1</p>
@@ -30,7 +34,10 @@ export const Operator = () => {
             <Button className={styles.delete}>удалить</Button>
           </div>
           <div className={styles.bottom}>
-            <Button className={styles.login}>
+            <Button
+              onClick={() => dispatch(setOperatorDataModal(true))}
+              className={styles.login}
+            >
               <ReactSVG src={login} />
               логин и пароль для приложения
             </Button>
@@ -50,7 +57,11 @@ export const Operator = () => {
           можете оплатить нужное кол-во. Оплаченные операторы будут доступны на
           всех ваших сайтах.
         </p>
-        <Button className={styles.pay} variant={Colors.Red}>
+        <Button
+          onClick={() => dispatch(setOperatorPaymentModal(true))}
+          className={styles.pay}
+          variant={Colors.Red}
+        >
           <ReactSVG src={card} />
           Оплатить дополнительных операторов
         </Button>
