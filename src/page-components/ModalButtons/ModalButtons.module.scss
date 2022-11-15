@@ -4,7 +4,7 @@
   justify-content: right;
   gap: 30px;
 
-  padding: 20px 0;
+  padding: 10px 0;
 
   @media screen and (max-width: 1300px) {
     flex-direction: column;
@@ -13,7 +13,7 @@
     gap: 10px;
   }
 
-  height: 130px;
+  height: 80px;
   padding-right: 40px;
   background: #d9d9d9;
   border-radius: 0px 0px 5px 5px;

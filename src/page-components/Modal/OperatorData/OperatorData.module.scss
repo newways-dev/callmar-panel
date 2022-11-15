@@ -2,11 +2,16 @@
   background: var(--background);
   border-radius: 5px;
   width: 70%;
+  max-height: 85vh;
 
   .title {
     padding: 40px;
     padding-bottom: 30px;
     border-bottom: 3px solid var(--border);
+
+    @media screen and (max-width: 1400px) {
+      padding: 20px;
+    }
 
     svg {
       cursor: pointer;
@@ -30,6 +35,10 @@
 
 .wrapper {
   padding: 40px;
+
+  @media screen and (max-width: 1400px) {
+    padding: 20px;
+  }
 
   @media screen and (max-width: 1300px) {
     flex-direction: column;
@@ -57,6 +66,13 @@
     background: #ffe3f1;
     border-radius: 0px 0px 5px 5px;
 
+    @media screen and (max-width: 1400px) {
+      p {
+        font-size: 14px;
+      }
+      padding: 10px 15px;
+    }
+
     span {
       color: var(--red);
       text-decoration: underline;
@@ -69,11 +85,20 @@
     flex-direction: column;
     gap: 40px;
 
+    @media screen and (max-width: 1400px) {
+      gap: 10px;
+    }
+
     .row {
       display: grid;
       grid-template-columns: 150px 1fr;
       align-items: center;
       gap: 40px;
+
+      @media screen and (max-width: 1400px) {
+        grid-template-columns: 130px 1fr;
+        gap: 20px;
+      }
 
       @media screen and (max-width: 1100px) {
         display: flex;
@@ -84,6 +109,14 @@
 
       .rowTitle {
         text-align: right;
+        @media screen and (max-width: 1400px) {
+          font-size: 14px;
+        }
+      }
+
+      p {
+        font-size: 14px;
+        max-width: 600px;
       }
 
       input {
@@ -96,6 +129,11 @@
         line-height: 21px;
         color: #d75c78;
         height: 48px;
+
+        @media screen and (max-width: 1400px) {
+          font-size: 16px;
+          height: 40px;
+        }
       }
     }
   }

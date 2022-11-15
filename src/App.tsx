@@ -15,38 +15,29 @@ import { selectPages } from './redux/pages/selector'
 import { Layout } from './layout/Layout'
 
 function App() {
-  const { page } = useSelector(selectPages)
+  const page = useSelector(selectPages)
 
   return (
-    <>
-      <Router>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Layout>
-                {page === 'calls' && <Calls />}
-                {page === 'widgets' && <Widgets />}
-                {page === 'statistics' && <Statistics />}
-              </Layout>
-            }
-          />
-          <Route
-            path="/service-payment"
-            element={
-              <Layout>
-                <Payment />
-              </Layout>
-            }
-          />
-          <Route path="/button-settings" element={<ButtonSettings />} />
-          <Route path="/widget-settings" element={<WidgetSettings />} />
-          <Route path="*" element={<h1>Not Found</h1>} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
-      </Router>
-    </>
+    <Router>
+      <Routes>
+        <Route
+          path='/'
+          element={
+            <Layout>
+              {page === 'calls' && <Calls />}
+              {page === 'widgets' && <Widgets />}
+              {page === 'statistics' && <Statistics />}
+              {page === 'payment' && <Payment />}
+            </Layout>
+          }
+        />
+        <Route path='/button-settings' element={<ButtonSettings />} />
+        <Route path='/widget-settings' element={<WidgetSettings />} />
+        <Route path='*' element={<h1>Not Found</h1>} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/login' element={<Login />} />
+      </Routes>
+    </Router>
   )
 }
 

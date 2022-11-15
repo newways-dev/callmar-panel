@@ -37,9 +37,7 @@
     .image {
       display: flex;
       align-items: center;
-      justify-content: center;
       flex-direction: column;
-      gap: 10px;
 
       font-weight: 400;
       font-size: 14px;
@@ -48,9 +46,14 @@
       background: #ffffff;
       border: 3px solid #bbbbbb;
       border-radius: 5px;
-      width: 137px;
-      height: 153px;
+
+      min-width: 120px;
+      min-height: 130px;
       text-align: center;
+
+      .widget {
+        height: 30px;
+      }
 
       @media screen and (max-width: 1400px) {
         width: 90px;

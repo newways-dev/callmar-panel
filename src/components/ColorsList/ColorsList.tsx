@@ -5,11 +5,12 @@ import { ColorsType } from '../../types/colors'
 import styles from './ColorsList.module.scss'
 import { useDispatch } from 'react-redux'
 import { setChatColor } from '../../redux/colors/slice'
+import { setWidgetColor } from '../../redux/widget/slice'
 
 export interface ColorsProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  colors: ColorsType[]
-  type: 'widget' | 'chat' | 'button'
+  colors?: ColorsType[]
+  type: 'widget' | 'chat'
 }
 
 export const ColorsList = ({ type, className }: ColorsProps) => {
@@ -21,6 +22,10 @@ export const ColorsList = ({ type, className }: ColorsProps) => {
 
     if (type === 'chat') {
       dispatch(setChatColor(color))
+    }
+
+    if (type === 'widget') {
+      dispatch(setWidgetColor(color))
     }
   }
 
@@ -56,11 +61,13 @@ export const ColorsList = ({ type, className }: ColorsProps) => {
         checked={selected === 'LightRed'}
         variant={'LightRed'}
       />
-      <Color
-        onClick={() => handleClick('Gray')}
-        checked={selected === 'Gray'}
-        variant={'Gray'}
-      />
+      {type !== 'widget' && (
+        <Color
+          onClick={() => handleClick('Gray')}
+          checked={selected === 'Gray'}
+          variant={'Gray'}
+        />
+      )}
     </div>
   )
 }

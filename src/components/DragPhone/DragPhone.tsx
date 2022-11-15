@@ -30,11 +30,11 @@ export const DragPhone = ({
     <div className={clsx(styles.dragPhone, className)}>
       <ReactSVG src={drag} />
       <div className={styles.position}>{position}</div>
-      <SelectWrapper variant="gray">
+      <SelectWrapper className={styles.select} variant='gray'>
         <Select className={styles.select} options={['Тел.']} />
       </SelectWrapper>
       <input
-        type="text"
+        type='text'
         placeholder={
           clientphone === 0 ? 'Номер клиента' : clientphone.toString()
         }
@@ -43,7 +43,7 @@ export const DragPhone = ({
       />
       <input
         placeholder={clientname === '' ? 'Имя клиента' : clientname}
-        type="text"
+        type='text'
         value={name}
         onChange={(e) => setName(e.target.value)}
       />

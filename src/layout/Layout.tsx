@@ -27,9 +27,9 @@ export const Layout = ({ children }: LayoutProps) => {
   return (
     <>
       <div className={styles.layout}>
-        {newWidget && <Modal modal="new-widget" />}
-        {operatorData && <Modal modal="operator-data" />}
-        {operatorPayment && <Modal modal="oparators-payment" />}
+        {newWidget && <Modal modal='new-widget' />}
+        {operatorData && <Modal modal='operator-data' />}
+        {operatorPayment && <Modal modal='oparators-payment' />}
         {avatar && <AvatarModal className={styles.avatarModal} />}
         <Sidebar className={styles.sidebar} />
         <Header className={styles.header} />

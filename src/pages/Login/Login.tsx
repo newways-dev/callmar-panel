@@ -8,17 +8,19 @@ import { Link } from 'react-router-dom'
 export const Login = () => {
   return (
     <div className={styles.login}>
-      <ReactSVG className={styles.close} src={close} />
+      <Link to='/'>
+        <ReactSVG className={styles.close} src={close} />
+      </Link>
       <div className={styles.wrapper}>
         <p className={styles.title}>Вход в личный кабинет</p>
         <form className={styles.form}>
-          <Input type="email" placeholder="Ваш Email" />
-          <Input type="password" placeholder="Пароль" />
-          <Link className={styles.resetPassword} to="/">
+          <Input type='email' placeholder='Ваш Email' />
+          <Input type='password' placeholder='Пароль' />
+          <Link className={styles.resetPassword} to='/'>
             Вспомнить пароль
           </Link>
           <Button className={styles.button}>Войти</Button>
-          <Link className={styles.register} to="/register">
+          <Link className={styles.register} to='/register'>
             Регистрация
           </Link>
         </form>

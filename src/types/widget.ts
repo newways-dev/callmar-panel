@@ -9,3 +9,5 @@ export type ActiveWidgetType =
   | 'round-home'
   | 'square'
   | 'round-square'
+
+export type WidgetLayout = 'standart' | 'foto' | 'banner' | 'full-screen'

@@ -15,7 +15,7 @@ export interface InputProps
   placeholder?: string
   type: 'text' | 'password' | 'email' | 'phone' | 'edit' | 'checkbox' | 'main'
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void
-  value?: string
+  value?: string | number
 }
 
 export const Input = ({

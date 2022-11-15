@@ -1,9 +1,7 @@
-import { ReactSVG } from 'react-svg'
-import { Button } from '../../../../components'
+import { Button, Widget } from '../../../../components'
 import { SettingsSection } from '../SettingsSection/SettingsSection'
 import styles from './Decor.module.scss'
 
-import widget from '../../../../assets/icons/widget-icon.svg'
 import { Buttons } from '../Buttons/Buttons'
 import { Row } from '../Row/Row'
 import { Link } from 'react-router-dom'
@@ -20,7 +18,7 @@ export const Decor = () => {
           </Row>
           <Row title='Настройки плавающей кнопки'>
             <div className={styles.image}>
-              <ReactSVG src={widget} />
+              <Widget className={styles.widget} />
               <span>Ваша кнопка</span>
             </div>
             <Link to='/button-settings'>

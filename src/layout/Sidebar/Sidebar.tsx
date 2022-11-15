@@ -15,13 +15,13 @@ export interface SidebarProps
 }
 
 export const Sidebar = ({ mobile, className }: SidebarProps) => {
-  const { page } = useSelector(selectPages)
+  const page = useSelector(selectPages)
   const dispatch = useDispatch()
 
   return (
     <div className={clsx(styles.sidebar, className)}>
       <div className={styles.logo}>
-        <img src={logo} alt="" />
+        <img src={logo} alt='' />
       </div>
       <div className={styles.buttons}>
         <Button
