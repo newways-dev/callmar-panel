@@ -36,9 +36,9 @@
     align-items: flex-start;
 
     .sidebarWrapper {
-      // display: flex;
-      // align-items: flex-start;
-      // max-height: calc(100vh);
+      min-width: 400px;
+      max-width: 400px;
+      width: 400px;
 
       .wrapper {
         padding-left: 40px;
@@ -143,96 +143,6 @@
             span {
               color: var(--red);
             }
-          }
-        }
-      }
-    }
-
-    .preview {
-      width: 100%;
-      max-height: calc(100vh);
-      height: calc(100vh);
-      overflow: hidden;
-
-      background: url('../../assets/images/background.png');
-      background-size: 100%;
-      overflow-y: hidden;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      .wrapper {
-        text-align: center;
-        color: #fff;
-
-        .heading {
-          font-size: 32px;
-          font-weight: 600;
-        }
-
-        .text {
-          margin-top: 10px;
-          font-size: 28px;
-          font-weight: 500;
-        }
-
-        .actions {
-          display: flex;
-          align-items: flex-start;
-
-          gap: 30px;
-
-          margin-top: 50px;
-
-          .input {
-            outline: 0;
-            border-radius: 5px;
-            padding-left: 15px;
-            font-weight: 500;
-            font-size: 16px;
-            margin-top: 4px;
-            height: 50px;
-            flex: 1;
-          }
-
-          .buttonRight {
-            margin-top: 3px;
-            display: flex;
-            flex-direction: column;
-
-            p {
-              margin-top: 10px;
-              font-size: 10px;
-              opacity: 0.8;
-            }
-
-            button {
-              width: 230px;
-              height: 50px;
-              background: var(--red);
-              border-radius: 5px;
-              color: #fff;
-              font-size: 22px;
-            }
-          }
-        }
-        .timer {
-          margin-top: 20px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 20px;
-
-          span {
-            font-size: 22px;
-            font-weight: 600;
-          }
-
-          svg {
-            width: 45px;
-            height: 45px;
-            fill: #fff;
           }
         }
       }

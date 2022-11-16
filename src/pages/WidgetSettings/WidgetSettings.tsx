@@ -1,12 +1,12 @@
 import { ChangeEvent, useState } from 'react'
-import { Button, ColorsList, Input, Select, Toggle } from '../../components'
+import { ColorsList, Input, Select, Toggle } from '../../components'
 import { SelectWrapper } from '../../components/SelectWrapper/SelectWrapper'
 import { Section, SidebarSettings } from '../../page-components'
 import styles from './WidgetSettings.module.scss'
 
 import dropLogo from '../../assets/icons/drop-logo.svg'
-import timerIcon from '../../assets/icons/timer.svg'
-import { ReactSVG } from 'react-svg'
+import { WidgetLayout } from '../../types/widget'
+import { Preview } from './Preview/Preview'
 
 export const WidgetSettings = () => {
   const [heading, setHeading] = useState<string>('У Вас остались вопросы?')
@@ -16,7 +16,22 @@ export const WidgetSettings = () => {
   )
   const [buttonText, setButtonText] = useState<string>('Жду звонка!')
   const [showTimer, setShowTimer] = useState<boolean>(false)
-  // const [layout, setLayout] = useState<>()
+  const [layout, setLayout] = useState<WidgetLayout>('standart')
+
+  const handleSelectLayout = (value: string) => {
+    if (value === 'Стандартный') {
+      setLayout('standart')
+    }
+    if (value === 'С фото сотрудника') {
+      setLayout('foto')
+    }
+    if (value === 'Баннер') {
+      setLayout('banner')
+    }
+    if (value === 'На весь экран') {
+      setLayout('full-screen')
+    }
+  }
 
   return (
     <div className={styles.widgetSettings}>
@@ -32,6 +47,9 @@ export const WidgetSettings = () => {
                 <p className={styles.settingTitle}>Шаблон виджета</p>
                 <SelectWrapper variant='gray'>
                   <Select
+                    onChange={(e: ChangeEvent<HTMLSelectElement>) =>
+                      handleSelectLayout(e.target.value)
+                    }
                     options={[
                       'Стандартный',
                       'С фото сотрудника',
@@ -140,27 +158,13 @@ export const WidgetSettings = () => {
             </Section>
           </SidebarSettings>
         </div>
-        <div className={styles.preview}>
-          <div className={styles.wrapper}>
-            <p className={styles.heading}>{heading}</p>
-            <p className={styles.text}>
-              Хотите, позвоним вам через {callSeconds} секунд?
-            </p>
-            <div className={styles.actions}>
-              <input placeholder='+7' className={styles.input} type='phone' />
-              <div className={styles.buttonRight}>
-                <Button>{buttonText}</Button>
-                <p>Звонок бесплатный</p>
-              </div>
-            </div>
-            {!showTimer && (
-              <div className={styles.timer}>
-                <ReactSVG src={timerIcon} />
-                <span>0:{callSeconds},00</span>
-              </div>
-            )}
-          </div>
-        </div>
+        <Preview
+          layout={layout}
+          heading={heading}
+          showTimer={showTimer}
+          buttonText={buttonText}
+          callSeconds={callSeconds}
+        />
       </div>
     </div>
   )

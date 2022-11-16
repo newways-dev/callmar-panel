@@ -17,11 +17,12 @@ export const CallSettings = () => {
 
   return (
     <div className={styles.callSettings}>
-      <SettingsSection title="Настройки звонка">
+      <SettingsSection title='Настройки звонка'>
         <div className={styles.greet}>
-          <Row title="Приветствие проговариваемое менеджеру перед соеденением с клиентом">
+          <Row title='Приветствие проговариваемое менеджеру перед соеденением с клиентом'>
             {greetings.map((greet, index) => (
               <RadioButton
+                onChange={() => {}}
                 onClick={() => setChecked(index)}
                 checked={checked === index}
                 label={greet}
@@ -31,10 +32,10 @@ export const CallSettings = () => {
           </Row>
         </div>
         <div className={styles.websiteName}>
-          <Row title="Как роботу програмировать название сайта в приветствии">
+          <Row title='Как роботу програмировать название сайта в приветствии'>
             <div>
-              <Input type="main" />
-              <Explanation text="Напишите как робот должен называть ваш сайт когда менеджер поднимает трубку. Можно писать на русском. По умолчанию используеться адрес сайта." />
+              <Input type='main' />
+              <Explanation text='Напишите как робот должен называть ваш сайт когда менеджер поднимает трубку. Можно писать на русском. По умолчанию используеться адрес сайта.' />
             </div>
           </Row>
         </div>
