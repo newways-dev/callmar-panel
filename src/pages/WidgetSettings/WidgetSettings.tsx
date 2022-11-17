@@ -143,17 +143,6 @@ export const WidgetSettings = () => {
                     placeholder='Жду звонка!'
                   />
                 </div>
-                <div className={styles.buttonText}>
-                  <p className={styles.settingTitle}>Текст кнопки:</p>
-                  <Input
-                    type='main'
-                    placeholder='Мы обязательно перезвоним вам  %callDate% в %callTime%.'
-                  />
-                  <p className={styles.desc}>
-                    Используйте <span>%callDate%</span> для замены на дату и
-                    <span> %callTime%</span> для времени, когда будет звонок.
-                  </p>
-                </div>
               </div>
             </Section>
           </SidebarSettings>

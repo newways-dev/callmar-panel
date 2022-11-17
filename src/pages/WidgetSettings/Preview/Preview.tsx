@@ -60,7 +60,7 @@ export const Preview = ({
       )
     case 'standart':
       return (
-        <div className={styles.preview}>
+        <div className={styles.website}>
           <Standart
             heading={heading}
             callSeconds={callSeconds}

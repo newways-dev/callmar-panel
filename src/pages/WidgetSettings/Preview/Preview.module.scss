@@ -1,4 +1,5 @@
-.preview {
+.preview,
+.website {
   width: 100%;
   max-height: 100vh;
   height: 100vh;
@@ -11,4 +12,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.website {
+  background: url('../../../assets/images/website-back-big.png');
 }

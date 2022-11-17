@@ -10,7 +10,7 @@ import { setWidgetColor } from '../../redux/widget/slice'
 export interface ColorsProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   colors?: ColorsType[]
-  type: 'widget' | 'chat'
+  type: 'widget' | 'chat' | 'button'
 }
 
 export const ColorsList = ({ type, className }: ColorsProps) => {
@@ -61,7 +61,7 @@ export const ColorsList = ({ type, className }: ColorsProps) => {
         checked={selected === 'LightRed'}
         variant={'LightRed'}
       />
-      {type !== 'widget' && (
+      {type !== 'widget' && type !== 'chat' && (
         <Color
           onClick={() => handleClick('Gray')}
           checked={selected === 'Gray'}
