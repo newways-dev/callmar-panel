@@ -1,46 +1,182 @@
-# Getting Started with Create React App
+# 📞 Callmar Panel - Widget Management Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
 
-## Available Scripts
+![React](https://img.shields.io/badge/React-18.2.0-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-4.8.4-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Redux Toolkit](https://img.shields.io/badge/Redux_Toolkit-1.8.6-764ABC?style=for-the-badge&logo=redux&logoColor=white)
+![SASS](https://img.shields.io/badge/SASS-1.55.0-CC6699?style=for-the-badge&logo=sass&logoColor=white)
 
-In the project directory, you can run:
+</div>
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 📖 About
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+**Callmar Panel** is an admin dashboard for managing Callmar callback widgets. The application provides an interface for creating, configuring, and monitoring callback widgets, tracking call statistics, managing payments, and viewing analytics.
 
-### `npm test`
+This project was developed as a **freelance assignment** where the UI was implemented based on a **Figma design mockup**.
+**Note: This is a frontend-only project. No API integration is implemented.**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## ✨ Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 🎨 Widget Management
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Create Widgets**: Add new callback widgets for websites
+- **Widget Configuration**: Comprehensive settings panel with live preview
+- **Multiple Layouts**: Support for different widget templates:
+  - Standard layout
+  - With employee photo
+  - Banner style
+  - Full-screen mode
+- **Color Customization**: Multiple color schemes (Blue, Gray, Green, LightGreen, LightPurple, LightRed, Orange)
+- **Text Customization**: Configure headings, button text, and messages
+- **Timer Settings**: Configure callback countdown timer
+- **Logo Upload**: Custom logo support with drag-and-drop
+- **Widget Toggle**: Enable/disable widgets individually
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 📊 Statistics & Analytics
 
-### `npm run eject`
+- **Call Statistics**: View detailed call metrics and analytics
+- **Date Range Selection**: Filter statistics by date periods
+- **Widget Filtering**: Filter statistics by specific widgets
+- **Daily Reports**: View statistics by days
+- **Performance Metrics**: Track widget performance
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### 📞 Call Management
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Call History**: View all callback requests and calls
+- **Call Table**: Detailed table with call information
+- **Date Filtering**: Filter calls by date (Today, Yesterday, Week)
+- **Calendar Selection**: Custom date range selection
+- **Widget Filtering**: Filter calls by widget
+- **Reset Filters**: Quick filter reset functionality
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### 💳 Payment & Billing
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- **Payment Management**: Handle payments and billing
+- **Tariff Information**: View and manage subscription plans
+- **Expired Tariff Alerts**: Notifications for expired subscriptions
+- **Payment History**: Track payment transactions
 
-## Learn More
+### ⚙️ Settings & Configuration
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **Button Settings**: Configure callback button appearance and behavior
+- **Widget Settings**: Comprehensive widget customization
+- **Avatar Management**: Select and manage operator avatars
+- **Color Schemes**: Customize widget color palettes
+- **Text Configuration**: Customize all widget text elements
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 🔐 Authentication
+
+- **User Login**: Secure login system
+- **User Registration**: Account creation functionality
+- **Session Management**: Persistent user sessions
+
+---
+
+## 🛠 Tech Stack
+
+### Core Technologies
+
+<div align="center">
+
+| Category             | Technology                                                                                                | Version |
+| -------------------- | --------------------------------------------------------------------------------------------------------- | ------- |
+| **Library**          | ![React](https://img.shields.io/badge/React-18.2.0-61DAFB?logo=react&logoColor=black)                     | 18.2.0  |
+| **Language**         | ![TypeScript](https://img.shields.io/badge/TypeScript-4.8.4-3178C6?logo=typescript&logoColor=white)       | 4.8.4   |
+| **State Management** | ![Redux Toolkit](https://img.shields.io/badge/Redux_Toolkit-1.8.6-764ABC?logo=redux&logoColor=white)      | 1.8.6   |
+| **Routing**          | ![React Router](https://img.shields.io/badge/React_Router-6.4.2-CA4245?logo=react-router&logoColor=white) | 6.4.2   |
+| **Styling**          | ![SASS](https://img.shields.io/badge/SASS-1.55.0-CC6699?logo=sass&logoColor=white)                        | 1.55.0  |
+
+</div>
+
+### Key Libraries
+
+<div align="center">
+
+| Library             | Purpose                       | Version |
+| ------------------- | ----------------------------- | ------- |
+| **Framer Motion**   | Animations and transitions    | 7.6.5   |
+| **React Slick**     | Carousel components           | 0.29.0  |
+| **React Slider**    | Range sliders                 | 2.0.4   |
+| **Recharts**        | Charts and data visualization | 2.1.16  |
+| **React SVG**       | SVG icon rendering            | 15.1.10 |
+| **React Swipeable** | Swipe gestures                | 7.0.0   |
+| **Day.js**          | Date manipulation             | -       |
+
+</div>
+
+---
+
+## 🔥 Redux State Management
+
+The application uses Redux Toolkit for state management:
+
+- **Pages State**: Current active page and navigation
+- **Modals State**: Modal visibility and content
+- **Colors State**: Selected color schemes
+- **Avatar State**: Selected operator avatars
+- **Widget State**: Widget configuration and settings
+
+---
+
+## 🎨 Design Features
+
+- **Modern UI**: Clean, professional design
+- **Color System**: Consistent color palette
+- **Typography**: Clear, readable fonts
+- **Icons**: Comprehensive SVG icon set
+- **Animations**: Smooth transitions and effects
+- **Responsive Layout**: Mobile-friendly design
+- **Dark/Light Themes**: Theme support (if implemented)
+
+---
+
+## 📝 TypeScript Implementation
+
+The project is fully typed with TypeScript:
+
+- **Component Props**: Typed props interfaces
+- **Redux State**: Typed state and actions
+- **Widget Types**: Comprehensive widget type definitions
+- **Event Handlers**: Typed form and input handlers
+- **API Responses**: Typed API data structures
+
+---
+
+## 🔧 Development Highlights
+
+### State Management
+
+Redux Toolkit provides centralized state management for:
+
+- Page navigation
+- Modal visibility
+- Widget configuration
+- Color schemes
+- Avatar selection
+
+### Component Architecture
+
+- **Modular Design**: Reusable components
+- **SCSS Modules**: Scoped styling
+- **Type Safety**: Full TypeScript implementation
+- **Clean Code**: Well-organized structure
+
+### Widget Preview
+
+- **Live Preview**: Real-time widget preview
+- **Multiple Layouts**: Support for different templates
+- **Responsive Preview**: See how widget looks on different screens
+- **Drag & Drop**: Easy logo upload
+
+### Data Visualization
+
+- **Recharts Integration**: Professional charts
+- **Statistics Tables**: Detailed data tables
+- **Call History**: Comprehensive call tracking
+
+
