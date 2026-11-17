@@ -1,4 +1,5 @@
 import { DetailedHTMLProps, HTMLAttributes } from 'react'
+import { useTranslation } from 'react-i18next'
 import styles from './Banner.module.scss'
 
 import timerIcon from '../../../../assets/icons/timer.svg'
@@ -26,19 +27,23 @@ export const Banner = ({
   showTimer,
   className,
 }: BannerProps) => {
+  const { t } = useTranslation()
+
   return (
     <div className={clsx(styles.banner, className)}>
       <img src={banner} alt='' />
       <div className={styles.wrapper}>
         <p className={styles.heading}>{heading}</p>
         <p className={styles.text}>
-          Хотите, позвоним вам через {callSeconds} секунд?
+          {t('Хотите, позвоним вам через {{seconds}} секунд?', {
+          seconds: callSeconds,
+        })}
         </p>
         <div className={styles.actions}>
-          <input placeholder='+7' className={styles.input} type='phone' />
+          <input placeholder='+7' className={styles.input} type='tel' />
           <div className={styles.buttonRight}>
             <Button>{buttonText}</Button>
-            <p>Звонок бесплатный</p>
+            <p>{t('Звонок бесплатный')}</p>
           </div>
         </div>
         {!showTimer && (

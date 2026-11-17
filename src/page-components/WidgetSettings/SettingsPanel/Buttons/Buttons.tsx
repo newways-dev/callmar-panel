@@ -1,28 +1,27 @@
-import { useDispatch } from 'react-redux'
+import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router-dom'
 import { Button } from '../../../../components'
-import { setWidgetSettings } from '../../../../redux/pages/slice'
 import { Colors } from '../../../../types/colors'
 import styles from './Buttons.module.scss'
 
 export const Buttons = () => {
-  const dispatch = useDispatch()
+  const { t } = useTranslation()
+  const navigate = useNavigate()
 
-  const handleClick = () => {
-    dispatch(setWidgetSettings(false))
-  }
+  const backToList = () => navigate('/widgets')
 
   return (
     <div className={styles.buttons}>
       <div className={styles.wrapper}>
-        <Button onClick={() => handleClick()} className={styles.back}>
-          К списку виджетов
+        <Button onClick={backToList} className={styles.back}>
+          {t('К списку виджетов')}
         </Button>
         <Button
-          onClick={() => handleClick()}
+          onClick={backToList}
           className={styles.save}
           variant={Colors.Red}
         >
-          Сохранить
+          {t('Сохранить')}
         </Button>
       </div>
     </div>

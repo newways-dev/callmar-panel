@@ -20,25 +20,22 @@ a {
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--red) #999999;
+  scrollbar-color: var(--red) #e3e3e3;
 }
 
 *::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
 }
 
 *::-webkit-scrollbar-track {
-  background: #999999;
+  background: #e3e3e3;
   border-radius: 40px;
 }
 
 *::-webkit-scrollbar-thumb {
   background-color: var(--red);
   border-radius: 40px;
-
-  width: 4px;
-  height: 4px;
 }
 
 :root {

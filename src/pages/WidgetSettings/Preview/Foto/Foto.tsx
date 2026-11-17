@@ -1,6 +1,7 @@
 import clsx from 'clsx'
 import { ReactSVG } from 'react-svg'
 import { DetailedHTMLProps, HTMLAttributes } from 'react'
+import { useTranslation } from 'react-i18next'
 import styles from './Foto.module.scss'
 
 import timerIcon from '../../../../assets/icons/timer.svg'
@@ -25,23 +26,27 @@ export const Foto = ({
   showTimer,
   className,
 }: FotoProps) => {
+  const { t } = useTranslation()
+
   return (
     <div className={clsx(styles.foto, className)}>
       <div className={styles.image}>
         <img src={foto} alt='' />
-        <p className={styles.name}>Дима Алексеев</p>
-        <p>Отдел продаж</p>
+        <p className={styles.name}>{t('Дима Алексеев')}</p>
+        <p>{t('Отдел продаж')}</p>
       </div>
       <div className={styles.wrapper}>
         <p className={styles.heading}>{heading}</p>
         <p className={styles.text}>
-          Хотите, позвоним вам через {callSeconds} секунд?
+          {t('Хотите, позвоним вам через {{seconds}} секунд?', {
+          seconds: callSeconds,
+        })}
         </p>
         <div className={styles.actions}>
-          <input placeholder='+7' className={styles.input} type='phone' />
+          <input placeholder='+7' className={styles.input} type='tel' />
           <div className={styles.buttonRight}>
             <Button>{buttonText}</Button>
-            <p>Звонок бесплатный</p>
+            <p>{t('Звонок бесплатный')}</p>
           </div>
         </div>
       </div>

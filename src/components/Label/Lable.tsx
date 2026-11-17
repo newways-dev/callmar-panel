@@ -1,5 +1,6 @@
 import clsx from 'clsx'
 import { DetailedHTMLProps, HTMLAttributes } from 'react'
+import { useTranslation } from 'react-i18next'
 import styles from './Lable.module.scss'
 
 export interface LabelProps
@@ -8,6 +9,8 @@ export interface LabelProps
 }
 
 export const Lable = ({ mode, className, ...props }: LabelProps) => {
+  const { t } = useTranslation()
+
   return (
     <div className={styles.labelWrapper} {...props}>
       <span
@@ -18,7 +21,7 @@ export const Lable = ({ mode, className, ...props }: LabelProps) => {
           { [styles.off]: mode === 'off' }
         )}
       >
-        {mode === 'on' ? 'Включен' : 'Выключен'}
+        {mode === 'on' ? t('Включен') : t('Выключен')}
       </span>
     </div>
   )

@@ -1,5 +1,6 @@
 import clsx from 'clsx'
 import { ReactNode, DetailedHTMLProps, HTMLAttributes } from 'react'
+import { useTranslation } from 'react-i18next'
 import { ReactSVG } from 'react-svg'
 import { Buttons } from '../../types/buttons'
 import { Colors } from '../../types/colors'
@@ -27,6 +28,8 @@ export const Button = ({
   onClick,
   ...props
 }: ButtonProps) => {
+  const { t } = useTranslation()
+
   switch (type) {
     case Buttons.Add:
       return (
@@ -44,7 +47,7 @@ export const Button = ({
       return (
         <button className={clsx(styles.delete, className)} {...props}>
           <ReactSVG src={remove} />
-          Удалить
+          {t('Удалить')}
         </button>
       )
 

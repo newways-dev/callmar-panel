@@ -1,13 +1,11 @@
 import clsx from 'clsx'
 import { DetailedHTMLProps, HTMLAttributes } from 'react'
+import { useTranslation } from 'react-i18next'
+import { useLocation, useNavigate } from 'react-router-dom'
 import styles from './Sidebar.module.scss'
 
 import logo from '../../assets/images/logo.png'
 import { Button } from '../../components'
-import { setPage } from '../../redux/pages/slice'
-import { Pages } from '../../types/pages'
-import { useDispatch, useSelector } from 'react-redux'
-import { selectPages } from '../../redux/pages/selector'
 
 export interface SidebarProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
@@ -15,38 +13,41 @@ export interface SidebarProps
 }
 
 export const Sidebar = ({ mobile, className }: SidebarProps) => {
-  const page = useSelector(selectPages)
-  const dispatch = useDispatch()
+  const { t } = useTranslation()
+  const navigate = useNavigate()
+  const { pathname } = useLocation()
+
+  const isActive = (path: string) => pathname.startsWith(path)
 
   return (
     <div className={clsx(styles.sidebar, className)}>
       <div className={styles.logo}>
-        <img src={logo} alt='' />
+        <img src={logo} alt="Callmar" />
       </div>
       <div className={styles.buttons}>
         <Button
-          onClick={() => dispatch(setPage(Pages.Calls))}
-          className={clsx(styles.button, { [styles.active]: page === 'calls' })}
+          onClick={() => navigate('/calls')}
+          className={clsx(styles.button, { [styles.active]: isActive('/calls') })}
         >
-          Звонки
+          {t('Звонки')}
         </Button>
         {!mobile && (
           <Button
-            onClick={() => dispatch(setPage(Pages.Widgets))}
+            onClick={() => navigate('/widgets')}
             className={clsx(styles.button, {
-              [styles.active]: page === 'widgets',
+              [styles.active]: isActive('/widgets'),
             })}
           >
-            Виджеты
+            {t('Виджеты')}
           </Button>
         )}
         <Button
-          onClick={() => dispatch(setPage(Pages.Statistics))}
+          onClick={() => navigate('/statistics')}
           className={clsx(styles.button, {
-            [styles.active]: page === 'statistics',
+            [styles.active]: isActive('/statistics'),
           })}
         >
-          Статистика
+          {t('Статистика')}
         </Button>
       </div>
     </div>

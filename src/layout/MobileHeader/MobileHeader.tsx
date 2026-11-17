@@ -6,6 +6,7 @@ import styles from './MobileHeader.module.scss'
 import home from '../../assets/icons/home.svg'
 import menu from '../../assets/icons/menu.svg'
 import { Sidebar } from '../Sidebar/Sidebar'
+import { LanguageSwitcher } from '../../components'
 
 export interface MobileHeaderProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
@@ -26,6 +27,7 @@ export const MobileHeader = ({ className }: MobileHeaderProps) => {
       <header className={clsx(styles.mobileHeader, className)}>
         <div className={styles.wrapper}>
           <ReactSVG src={home} />
+          <LanguageSwitcher inverted className={styles.language} />
           <ReactSVG
             onClick={() => setOpen(!open)}
             className={styles.menuIcon}

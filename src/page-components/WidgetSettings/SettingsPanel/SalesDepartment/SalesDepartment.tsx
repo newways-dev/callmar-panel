@@ -1,4 +1,5 @@
 import { Reorder } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import { ReactSVG } from 'react-svg'
 import { SettingsSection } from '../SettingsSection/SettingsSection'
 import { WorkTimeTable } from './WorkTimeTable.tsx/WorkTimeTable'
@@ -24,15 +25,17 @@ const defaultClients = [
 ]
 
 export const SalesDepartment = () => {
+  const { t } = useTranslation()
   const [clients, setClients] = useState(defaultClients)
 
   const desc = (
     <>
       <span>
-        Укажите список номеров для приема звонков с сайта. Дозвон будет
-        производиться по списку сверху вниз. Порядок номеров можно менять
-        потащив за <ReactSVG style={{ display: 'inline-block' }} src={drag} />{' '}
-        около номера
+        {t(
+          'Укажите список номеров для приема звонков с сайта. Дозвон будет производиться по списку сверху вниз. Порядок номеров можно менять, потащив за'
+        )}{' '}
+        <ReactSVG style={{ display: 'inline-block' }} src={drag} />{' '}
+        {t('около номера')}
       </span>
     </>
   )
@@ -46,7 +49,7 @@ export const SalesDepartment = () => {
   return (
     <div className={styles.salesDepartment}>
       <SettingsSection
-        title='Номер телефона для приема звонкой'
+        title={t('Номера телефонов для приема звонков')}
         description={desc}
       >
         <div className={styles.phones}>
@@ -67,66 +70,75 @@ export const SalesDepartment = () => {
             ))}
           </Reorder.Group>
           <p>
-            Можно использовать сотовые и городские номера (через 7 или 8), а
-            также sip номера
+            {t(
+              'Можно использовать сотовые и городские номера (через 7 или 8), а также sip номера'
+            )}
           </p>
 
           <Button onClick={addClient} type={Buttons.Add}>
-            Добавить еще номер
+            {t('Добавить еще номер')}
           </Button>
         </div>
       </SettingsSection>
-      <SettingsSection title='Как звонить на номера для приема звонков?'>
+      <SettingsSection title={t('Как звонить на номера для приема звонков?')}>
         <div className={styles.callMethod}>
           <div>
-            <p>Способ дозвона</p>
+            <p>{t('Способ дозвона')}</p>
             <SelectWrapper className={styles.select} variant='gray'>
               <Select
                 className={styles.select}
-                options={['По количеству звонков', 'По порядку']}
+                options={[t('По количеству звонков'), t('По порядку')]}
               />
             </SelectWrapper>
           </div>
           <div className={styles.desc}>
             <p>
-              “По порядку” - дозвон на ваши номера будет производиться по
-              порядку сверху в низ.
+              {t(
+                '“По порядку” - дозвон на ваши номера будет производиться по порядку сверху вниз.'
+              )}
             </p>
             <p>
-              “По количеству звонков” - звонки будут распределяться так, что бы
-              все номера получили равное кол-во звонков за день.
+              {t(
+                '“По количеству звонков” - звонки будут распределяться так, чтобы все номера получили равное количество звонков за день.'
+              )}
             </p>
           </div>
         </div>
       </SettingsSection>
       <SettingsSection
-        title='График работы отдела продаж'
-        description='Укажите время работы вашего отдела продаж. В рабочее время виджет соеденять потенциальных клиентов с продажниками, а в нерабочее и выходные дни - будет собирать телефоны.'
+        title={t('График работы отдела продаж')}
+        description={t(
+          'Укажите время работы вашего отдела продаж. В рабочее время виджет соединяет потенциальных клиентов с менеджерами, а в нерабочее и выходные дни собирает телефоны.'
+        )}
       >
         <div className={styles.workTime}>
-          <Row title='Часовой пояс виджета'>
+          <Row title={t('Часовой пояс виджета')}>
             <SelectWrapper className={styles.select} variant='gray'>
               <Select
                 className={styles.select}
-                options={['GMT+03:00 - Москва, Санкт-Петербург']}
+                options={[t('GMT+03:00 - Москва, Санкт-Петербург')]}
               />
             </SelectWrapper>
           </Row>
-          <Row title='Единый график работы в будни'>
+          <Row title={t('Единый график работы в будни')}>
             <div>
               <Toggle className={styles.toggle} mode='on' />
               <Explanation
                 className={styles.exp}
-                text='Если у вас разное рабочее время по дням недели, отключите эту опцию.'
+                text={t(
+                  'Если у вас разное рабочее время по дням недели, отключите эту опцию.'
+                )}
               />
             </div>
           </Row>
-          <Row title='Учитывать праздники'>
+          <Row title={t('Учитывать праздники')}>
             <div>
               <Toggle className={styles.toggle} mode='off' />
               <Explanation
                 className={styles.exp}
-                text='Если включено, то в праздники, попавшие неа будни, виджет будет использовать выходной день'
+                text={t(
+                  'Если включено, то в праздники, попавшие на будни, виджет будет использовать выходной день'
+                )}
               />
             </div>
           </Row>

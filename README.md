@@ -1,122 +1,131 @@
-# 📞 Callmar Panel - Widget Management Dashboard
+# Callmar Panel
 
-<div align="center">
+**Freelance project** · **Design:** the client's Figma mockups · **Implementation:** me (frontend only)
 
-![React](https://img.shields.io/badge/React-18.2.0-61DAFB?style=for-the-badge&logo=react&logoColor=black)
-![TypeScript](https://img.shields.io/badge/TypeScript-4.8.4-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
-![Redux Toolkit](https://img.shields.io/badge/Redux_Toolkit-1.8.6-764ABC?style=for-the-badge&logo=redux&logoColor=white)
-![SASS](https://img.shields.io/badge/SASS-1.55.0-CC6699?style=for-the-badge&logo=sass&logoColor=white)
+Admin dashboard for **Callmar**, a callback-widget service: a visitor leaves a phone number on a website, and the service calls them back within seconds. The panel is where a site owner manages widgets, reviews calls and statistics, and tweaks how the widget looks and behaves.
 
-</div>
+> **What this repository is.** The frontend of a freelance job, built in October–November 2022 from the client's Figma design: layout, components, state and interactions are mine, the visual design is the client's. There is **no backend**: login, registration, payment and the settings forms are UI only, and all data you see is generated demo data. The interface is available in **English and Russian** (switch in the header, English by default): Russian is the product's original language.
+>
+> In 2026 I came back to it to bring it up to the standard I would hold myself to today (see [What changed](#what-changed-in-the-2026-pass)).
 
----
+<p align="center">
+  <img src="docs/screenshots/widget-preview.png" alt="Widget preview mode with live settings" width="820" />
+</p>
 
-## 📖 About
+## What it does
 
-**Callmar Panel** is an admin dashboard for managing Callmar callback widgets. The application provides an interface for creating, configuring, and monitoring callback widgets, tracking call statistics, managing payments, and viewing analytics.
+| Section | What you can do |
+| --- | --- |
+| **Calls** | Browse callback requests, filter by period (today, yesterday, week) and by site |
+| **Widgets** | See the status of every installed widget, switch it on or off, open its settings |
+| **Widget settings** | Six tabs: sales department and working hours, appearance, behaviour, chat, call settings, install code |
+| **Preview mode** | Change template, colour scheme, timer and texts and see the widget update live |
+| **Statistics** | Calls and widget views per day on a responsive chart |
+| **Payment** | Tariff and payment screens |
 
-This project was developed as a **freelance assignment** where the UI was implemented based on a **Figma design mockup**.
-**Note: This is a frontend-only project. No API integration is implemented.**
+It is also responsive (the sidebar collapses into a menu on narrow screens and tables scroll horizontally) and bilingual: an **EN / RU** switch in the header changes every text, date and time format, and the choice is remembered. A link such as `/calls?lng=ru` opens the app directly in Russian.
 
----
+## Screenshots
 
-## ✨ Features
+<table>
+  <tr>
+    <td><img src="docs/screenshots/calls.png" alt="Calls" /></td>
+    <td><img src="docs/screenshots/widgets.png" alt="Widgets" /></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Calls</b>, with period and site filters</td>
+    <td align="center"><b>Widgets</b>, with install status and toggles</td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/widget-settings.png" alt="Widget settings" /></td>
+    <td><img src="docs/screenshots/statistics.png" alt="Statistics" /></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Widget settings</b>, tabbed</td>
+    <td align="center"><b>Statistics</b></td>
+  </tr>
+</table>
 
-### 🎨 Widget Management
+<table>
+  <tr>
+    <td align="center"><img src="docs/screenshots/mobile-calls.png" alt="Calls on a phone" width="260" /></td>
+    <td align="center"><img src="docs/screenshots/calls-ru.png" alt="Calls in Russian" width="560" /></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Mobile layout</b></td>
+    <td align="center"><b>Same screen in Russian</b> (EN / RU switch)</td>
+  </tr>
+</table>
 
-- **Create Widgets**: Add new callback widgets for websites
-- **Widget Configuration**: Comprehensive settings panel with live preview
-- **Multiple Layouts**: Support for different widget templates:
-  - Standard layout
-  - With employee photo
-  - Banner style
-  - Full-screen mode
-- **Color Customization**: Multiple color schemes (Blue, Gray, Green, LightGreen, LightPurple, LightRed, Orange)
-- **Text Customization**: Configure headings, button text, and messages
-- **Timer Settings**: Configure callback countdown timer
-- **Logo Upload**: Custom logo support with drag-and-drop
-- **Widget Toggle**: Enable/disable widgets individually
+## Tech stack
 
-### 📊 Statistics & Analytics
+- **React 18** and **TypeScript**, bootstrapped with Create React App
+- **Redux Toolkit** for widget appearance (shape, colour), chat colours, selected avatar and modal state
+- **React Router 6** for navigation
+- **i18next** and **react-i18next** for the English / Russian interface
+- **SCSS Modules** for styling, implemented from the Figma design without a UI kit
+- **Recharts** for the statistics chart, **Framer Motion** for animations, **react-slick** and **react-slider** for carousels and range inputs
+- **Jest** and **React Testing Library** for tests, **GitHub Actions** for CI
 
-- **Call Statistics**: View detailed call metrics and analytics
-- **Date Range Selection**: Filter statistics by date periods
-- **Widget Filtering**: Filter statistics by specific widgets
-- **Daily Reports**: View statistics by days
-- **Performance Metrics**: Track widget performance
+## Routes
 
-### 📞 Call Management
+| Path | Screen |
+| --- | --- |
+| `/calls` | Calls (default) |
+| `/widgets` | Widgets list |
+| `/widgets/settings` | Settings of a widget |
+| `/statistics` | Statistics |
+| `/payment` | Payment |
+| `/widget-settings` | Full-screen preview mode |
+| `/button-settings` | Floating button settings |
+| `/login`, `/register` | Authentication screens (UI only) |
 
-- **Call History**: View all callback requests and calls
-- **Call Table**: Detailed table with call information
-- **Date Filtering**: Filter calls by date (Today, Yesterday, Week)
-- **Calendar Selection**: Custom date range selection
-- **Widget Filtering**: Filter calls by widget
-- **Reset Filters**: Quick filter reset functionality
+## Run locally
 
-### 💳 Payment & Billing
+```bash
+yarn install
+yarn start          # http://localhost:3000
+```
 
-- **Payment Management**: Handle payments and billing
-- **Tariff Information**: View and manage subscription plans
-- **Expired Tariff Alerts**: Notifications for expired subscriptions
-- **Payment History**: Track payment transactions
+```bash
+yarn test           # unit tests
+npx tsc --noEmit    # type check
+yarn build          # production build
+```
 
-### ⚙️ Settings & Configuration
+CI runs the type check, the tests and the production build (with warnings treated as errors) on every push and pull request.
 
-- **Button Settings**: Configure callback button appearance and behavior
-- **Widget Settings**: Comprehensive widget customization
-- **Avatar Management**: Select and manage operator avatars
-- **Color Schemes**: Customize widget color palettes
-- **Text Configuration**: Customize all widget text elements
+## Project structure
 
-### 🔐 Authentication
+```
+src/
+├── components/        # Reusable UI: Button, Input, Select, Toggle, Range, Tabs, Badge, Widget ...
+├── page-components/   # Larger blocks built from components: tables, modals, settings panels
+├── pages/             # One component per route
+├── layout/            # Sidebar, header, mobile header, app layout
+├── redux/             # Slices with selectors and types (widget, colors, avatar, modals)
+├── helpers/           # Demo data and its filters, tested
+├── i18n/              # i18next setup and the English dictionaries (locales/)
+└── types/             # Shared TypeScript types
+```
 
-- **User Login**: Secure login system
-- **User Registration**: Account creation functionality
-- **Session Management**: Persistent user sessions
+## What changed in the 2026 pass
 
----
+The original delivery worked but had gaps I would not leave today:
 
-## 🛠 Tech Stack
+- **Navigation by routes.** Sections used to be switched through Redux state, so they had no URLs and the browser's back button did nothing. They are now real routes, and the pages slice is gone.
+- **English translation with an EN / RU switch** (about 280 texts across 46 files). The original Russian texts are used as translation keys, so Russian needs no dictionary and English lives in `src/i18n/locales`. Labels and values are now separate (a `Select` takes `{ value, label }`), so translating a label cannot break the logic behind it. Dates and times follow the selected language. A test fails when a text is missing in English, when Russian text is left outside `t()`, when a dictionary entry is unused, or when `{{placeholders}}` differ.
+- **Demo data that looks alive.** The calls table used to open empty, with hardcoded 2021 dates. Demo data is now generated relative to today, and the period and site filters really filter it.
+- **Bug fix: `Input` dropped `onChange`** for the text, email, password and phone variants. Fixed, with a regression test that fails on the old code.
+- **`Widget` component:** four nested ternary chains with 24 image imports replaced by a typed lookup table.
+- **Statistics chart** now fills its container instead of using a window-size hack, and no longer gets clipped.
+- **Layout fix on phones:** an empty grid row was stretching and pushing the content down.
+- **Cleanup:** dead code, an unused hook, a duplicate lockfile, real-looking placeholder addresses replaced with `example.com` ones, and a CI workflow added.
 
-### Core Technologies
+## Known limitations
 
-<div align="center">
-
-| Category             | Technology                                                                                                | Version |
-| -------------------- | --------------------------------------------------------------------------------------------------------- | ------- |
-| **Library**          | ![React](https://img.shields.io/badge/React-18.2.0-61DAFB?logo=react&logoColor=black)                     | 18.2.0  |
-| **Language**         | ![TypeScript](https://img.shields.io/badge/TypeScript-4.8.4-3178C6?logo=typescript&logoColor=white)       | 4.8.4   |
-| **State Management** | ![Redux Toolkit](https://img.shields.io/badge/Redux_Toolkit-1.8.6-764ABC?logo=redux&logoColor=white)      | 1.8.6   |
-| **Routing**          | ![React Router](https://img.shields.io/badge/React_Router-6.4.2-CA4245?logo=react-router&logoColor=white) | 6.4.2   |
-| **Styling**          | ![SASS](https://img.shields.io/badge/SASS-1.55.0-CC6699?logo=sass&logoColor=white)                        | 1.55.0  |
-
-</div>
-
-### Key Libraries
-
-<div align="center">
-
-| Library             | Purpose                       | Version |
-| ------------------- | ----------------------------- | ------- |
-| **Framer Motion**   | Animations and transitions    | 7.6.5   |
-| **React Slick**     | Carousel components           | 0.29.0  |
-| **React Slider**    | Range sliders                 | 2.0.4   |
-| **Recharts**        | Charts and data visualization | 2.1.16  |
-| **React SVG**       | SVG icon rendering            | 15.1.10 |
-| **React Swipeable** | Swipe gestures                | 7.0.0   |
-| **Day.js**          | Date manipulation             | -       |
-
-</div>
-
----
-
-## 🔥 Redux State Management
-
-The application uses Redux Toolkit for state management:
-
-- **Pages State**: Current active page and navigation
-- **Modals State**: Modal visibility and content
-- **Colors State**: Selected color schemes
-- **Avatar State**: Selected operator avatars
-- **Widget State**: Widget configuration and settings
+- No backend and no persistence: settings forms keep local state only, and "Save" returns to the list.
+- Login and registration are screens, not an authentication system.
+- Prices stay in roubles in both languages, as in the original product.
+- Built on Create React App, which is no longer maintained. A migration to Vite would be the next step.
+- Accessibility is basic: some icons act as clickable elements without keyboard support.

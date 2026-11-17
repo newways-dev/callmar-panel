@@ -1,7 +1,13 @@
 import clsx from 'clsx'
 import { DetailedHTMLProps, HTMLAttributes, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { useSelector } from 'react-redux'
 import { ColorsType } from '../../types/colors'
 import { ActiveWidgetType } from '../../types/widget'
+import {
+  selectWidgetColor,
+  selectWidgetShape,
+} from '../../redux/widget/selector'
 import styles from './Widget.module.scss'
 
 import round_red from '../../assets/images/widget/circle/red.png'
@@ -31,11 +37,54 @@ import square_green from '../../assets/images/widget/square/green.png'
 import square_light_green from '../../assets/images/widget/square/light-green.png'
 import square_orange from '../../assets/images/widget/square/orange.png'
 import square_purple from '../../assets/images/widget/square/purple.png'
-import { useSelector } from 'react-redux'
-import {
-  selectWidgetColor,
-  selectWidgetShape,
-} from '../../redux/widget/selector'
+
+type ImagesByColor = Record<ColorsType, string>
+
+/**
+ * Widget artwork for every shape and colour.
+ * Colours without their own artwork (LightPurple, Gray) use the purple one.
+ */
+export const widgetImages: Record<ActiveWidgetType, ImagesByColor> = {
+  round: {
+    LightRed: round_red,
+    Blue: round_blue,
+    Orange: round_orange,
+    Green: round_green,
+    LightGreen: round_light_green,
+    LightPurple: round_purple,
+    Gray: round_purple,
+  },
+  'round-home': {
+    LightRed: round_home_red,
+    Blue: round_home_blue,
+    Orange: round_home_orange,
+    Green: round_home_green,
+    LightGreen: round_home_light_green,
+    LightPurple: round_home_purple,
+    Gray: round_home_purple,
+  },
+  'round-square': {
+    LightRed: round_square_red,
+    Blue: round_square_blue,
+    Orange: round_square_orange,
+    Green: round_square_green,
+    LightGreen: round_square_light_green,
+    LightPurple: round_square_purple,
+    Gray: round_square_purple,
+  },
+  square: {
+    LightRed: square_red,
+    Blue: square_blue,
+    Orange: square_orange,
+    Green: square_green,
+    LightGreen: square_light_green,
+    LightPurple: square_purple,
+    Gray: square_purple,
+  },
+}
+
+export const getWidgetImage = (shape: ActiveWidgetType, color: ColorsType) =>
+  widgetImages[shape]?.[color]
 
 export interface WidgetProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
@@ -45,134 +94,28 @@ export interface WidgetProps
 }
 
 export const Widget = ({ showHint, className }: WidgetProps) => {
+  const { t } = useTranslation()
   const [show, setShow] = useState<boolean>(false)
 
   const shape = useSelector(selectWidgetShape)
   const color = useSelector(selectWidgetColor)
 
-  switch (shape) {
-    case 'round':
-      return (
-        <div
-          onMouseOver={() => showHint && setShow(true)}
-          onMouseLeave={() => showHint && setShow(false)}
-          className={clsx(styles.widget, className)}
-        >
-          {show && (
-            <div className={styles.message}>
-              <p>Есть вопросы? Нажмите и мы перезвоним вам за 27 секунд!</p>
-            </div>
-          )}
-          <img
-            src={
-              color === 'LightRed'
-                ? round_red
-                : color === 'Blue'
-                ? round_blue
-                : color === 'Orange'
-                ? round_orange
-                : color === 'Green'
-                ? round_green
-                : color === 'LightGreen'
-                ? round_light_green
-                : round_purple
-            }
-            alt=''
-          />
-        </div>
-      )
-    case 'round-home':
-      return (
-        <div
-          onMouseOver={() => showHint && setShow(true)}
-          onMouseLeave={() => showHint && setShow(false)}
-          className={clsx(styles.widget, className)}
-        >
-          {show && (
-            <div className={styles.message}>
-              <p>Есть вопросы? Нажмите и мы перезвоним вам за 27 секунд!</p>
-            </div>
-          )}
-          <img
-            src={
-              color === 'LightRed'
-                ? round_home_red
-                : color === 'Blue'
-                ? round_home_blue
-                : color === 'Orange'
-                ? round_home_orange
-                : color === 'Green'
-                ? round_home_green
-                : color === 'LightGreen'
-                ? round_home_light_green
-                : round_home_purple
-            }
-            alt=''
-          />
-        </div>
-      )
-    case 'round-square':
-      return (
-        <div
-          onMouseOver={() => showHint && setShow(true)}
-          onMouseLeave={() => showHint && setShow(false)}
-          className={clsx(styles.widget, className)}
-        >
-          {show && (
-            <div className={styles.message}>
-              <p>Есть вопросы? Нажмите и мы перезвоним вам за 27 секунд!</p>
-            </div>
-          )}
-          <img
-            src={
-              color === 'LightRed'
-                ? round_square_red
-                : color === 'Blue'
-                ? round_square_blue
-                : color === 'Orange'
-                ? round_square_orange
-                : color === 'Green'
-                ? round_square_green
-                : color === 'LightGreen'
-                ? round_square_light_green
-                : round_square_purple
-            }
-            alt=''
-          />
-        </div>
-      )
-    case 'square':
-      return (
-        <div
-          onMouseOver={() => showHint && setShow(true)}
-          onMouseLeave={() => showHint && setShow(false)}
-          className={clsx(styles.widget, className)}
-        >
-          {show && (
-            <div className={styles.message}>
-              <p>Есть вопросы? Нажмите и мы перезвоним вам за 27 секунд!</p>
-            </div>
-          )}
-          <img
-            src={
-              color === 'LightRed'
-                ? square_red
-                : color === 'Blue'
-                ? square_blue
-                : color === 'Orange'
-                ? square_orange
-                : color === 'Green'
-                ? square_green
-                : color === 'LightGreen'
-                ? square_light_green
-                : square_purple
-            }
-            alt=''
-          />
-        </div>
-      )
+  const image = getWidgetImage(shape, color)
 
-    default:
-      return <></>
-  }
+  if (!image) return null
+
+  return (
+    <div
+      onMouseOver={() => showHint && setShow(true)}
+      onMouseLeave={() => showHint && setShow(false)}
+      className={clsx(styles.widget, className)}
+    >
+      {show && (
+        <div className={styles.message}>
+          <p>{t('Есть вопросы? Нажмите и мы перезвоним вам за 27 секунд!')}</p>
+        </div>
+      )}
+      <img src={image} alt={t('Виджет обратного звонка')} />
+    </div>
+  )
 }

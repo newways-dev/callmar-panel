@@ -1,27 +1,35 @@
 import clsx from 'clsx'
 import { DetailedHTMLProps, HTMLAttributes } from 'react'
-import { useDispatch } from 'react-redux'
+import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router-dom'
 import { Button } from '../../components/Button/Button'
-import { setPage } from '../../redux/pages/slice'
-import { Pages } from '../../types/pages'
+import { formatDate } from '../../helpers/demoData'
 import styles from './TimeLeft.module.scss'
 
 export interface TimeLeftProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
 
+const DEMO_DAYS_LEFT = 13
+
 export const TimeLeft = ({ className }: TimeLeftProps) => {
-  const dispatch = useDispatch()
+  const { t } = useTranslation()
+  const navigate = useNavigate()
+
+  const expires = new Date()
+  expires.setDate(expires.getDate() + DEMO_DAYS_LEFT)
+
   return (
     <div className={clsx(styles.timeWrapper, className)}>
       <div className={styles.timeLeft}>
         <span className={styles.date}>
-          Осталось <span> 13 мин.</span> до 12.11.21
+          {t('Осталось')} <span>{t('{{days}} дн.', { days: DEMO_DAYS_LEFT })}</span>{' '}
+          {t('до {{date}}', { date: formatDate(expires) })}
         </span>
         <Button
-          onClick={() => dispatch(setPage(Pages.Payment))}
+          onClick={() => navigate('/payment')}
           className={styles.timeLeftButton}
         >
-          Оплатить
+          {t('Оплатить')}
         </Button>
       </div>
     </div>

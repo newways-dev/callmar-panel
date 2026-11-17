@@ -1,6 +1,6 @@
 import { DetailedHTMLProps, HTMLAttributes } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
 import { Button } from '../../components'
 import {
   setAvatarModal,
@@ -16,8 +16,10 @@ export interface ModalButtonsProps
 }
 
 export const ModalButtons = ({ action }: ModalButtonsProps) => {
+  const { t } = useTranslation()
   const dispatch = useDispatch()
 
+  // Both buttons close the modal and leave the user on the current page
   const handleClick = () => {
     dispatch(setAvatarModal(false))
     dispatch(setNewWidgetModal(false))
@@ -27,16 +29,12 @@ export const ModalButtons = ({ action }: ModalButtonsProps) => {
 
   return (
     <div className={styles.buttons}>
-      <Link to="/">
-        <Button onClick={() => handleClick()} className={styles.closeButton}>
-          Закрыть
-        </Button>
-      </Link>
-      <Link to="/">
-        <Button onClick={() => handleClick()} className={styles.saveButton}>
-          {action ? action : 'Сохранить'}
-        </Button>
-      </Link>
+      <Button onClick={handleClick} className={styles.closeButton}>
+        {t('Закрыть')}
+      </Button>
+      <Button onClick={handleClick} className={styles.saveButton}>
+        {action ? action : t('Сохранить')}
+      </Button>
     </div>
   )
 }

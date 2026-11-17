@@ -1,5 +1,4 @@
-import { useSelector } from 'react-redux'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom'
 
 import {
   ButtonSettings,
@@ -8,34 +7,29 @@ import {
   Payment,
   Register,
   Statistics,
-  Widgets,
   WidgetSettings,
+  Widgets,
+  WidgetSettingsView,
 } from './pages'
-import { selectPages } from './redux/pages/selector'
-import { Layout } from './layout/Layout'
+import { AppLayout } from './layout/Layout'
 
 function App() {
-  const page = useSelector(selectPages)
-
   return (
     <Router>
       <Routes>
-        <Route
-          path='/'
-          element={
-            <Layout>
-              {page === 'calls' && <Calls />}
-              {page === 'widgets' && <Widgets />}
-              {page === 'statistics' && <Statistics />}
-              {page === 'payment' && <Payment />}
-            </Layout>
-          }
-        />
-        <Route path='/button-settings' element={<ButtonSettings />} />
-        <Route path='/widget-settings' element={<WidgetSettings />} />
-        <Route path='*' element={<h1>Not Found</h1>} />
-        <Route path='/register' element={<Register />} />
-        <Route path='/login' element={<Login />} />
+        <Route element={<AppLayout />}>
+          <Route path="/" element={<Navigate to="/calls" replace />} />
+          <Route path="/calls" element={<Calls />} />
+          <Route path="/widgets" element={<Widgets />} />
+          <Route path="/widgets/settings" element={<WidgetSettingsView />} />
+          <Route path="/statistics" element={<Statistics />} />
+          <Route path="/payment" element={<Payment />} />
+        </Route>
+        <Route path="/button-settings" element={<ButtonSettings />} />
+        <Route path="/widget-settings" element={<WidgetSettings />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="*" element={<h1>Not Found</h1>} />
       </Routes>
     </Router>
   )
