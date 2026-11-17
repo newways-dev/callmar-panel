@@ -1,8 +1,9 @@
 import clsx from 'clsx'
 import { ChangeEvent, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import { SelectWrapper } from '../../components/SelectWrapper/SelectWrapper'
-import { WidgetPostionType } from '../../types/widget'
+import { ActiveWidgetType, WidgetPostionType } from '../../types/widget'
 import { Section, SidebarSettings } from '../../page-components'
 import { ColorsList, Select, Toggle, Widget } from '../../components'
 import styles from './ButtonSettings.module.scss'
@@ -13,6 +14,7 @@ import {
 import { setWidgetShape } from '../../redux/widget/slice'
 
 export const ButtonSettings = () => {
+  const { t } = useTranslation()
   const dispatch = useDispatch()
   const widgetColor = useSelector(selectWidgetColor)
   const [showHint, setShowHint] = useState<boolean>(true)
@@ -20,72 +22,61 @@ export const ButtonSettings = () => {
   const [widgetPosition, setWidgetPosition] =
     useState<WidgetPostionType>('bottom-right')
 
+  const styleOptions: { value: ActiveWidgetType; label: string }[] = [
+    { value: 'round', label: t('Круглая кнопка с трубкой') },
+    { value: 'round-home', label: t('Круглая кнопка с телефоном') },
+    { value: 'round-square', label: t('Округлая кнопка с трубкой') },
+    { value: 'square', label: t('Квадратная кнопка с трубкой') },
+  ]
+
+  const positionOptions: { value: WidgetPostionType; label: string }[] = [
+    { value: 'bottom-right', label: t('Низ-право') },
+    { value: 'bottom-left', label: t('Низ-лево') },
+    { value: 'top-right', label: t('Верх-право') },
+    { value: 'top-left', label: t('Верх-лево') },
+  ]
+
   const selectWidget = (event: ChangeEvent<HTMLSelectElement>) => {
-    if (event.target.value === 'Круглая кнопка с трубкой') {
-      dispatch(setWidgetShape('round'))
-    }
-    if (event.target.value === 'Круглая кнопка с телефоном') {
-      dispatch(setWidgetShape('round-home'))
-    }
-    if (event.target.value === 'Округлая кнопка с трубкой') {
-      dispatch(setWidgetShape('round-square'))
-    }
-    if (event.target.value === 'Квадратная кнопка с трубкой') {
-      dispatch(setWidgetShape('square'))
-    }
+    dispatch(setWidgetShape(event.target.value as ActiveWidgetType))
   }
 
   const selectPosition = (event: ChangeEvent<HTMLSelectElement>) => {
-    if (event.target.value === 'Низ-лево') {
-      setWidgetPosition('bottom-left')
-    }
-    if (event.target.value === 'Низ-право') {
-      setWidgetPosition('bottom-right')
-    }
-    if (event.target.value === 'Верх-лево') {
-      setWidgetPosition('top-left')
-    }
-    if (event.target.value === 'Верх-право') {
-      setWidgetPosition('top-right')
-    }
+    setWidgetPosition(event.target.value as WidgetPostionType)
   }
 
   return (
     <div className={styles.buttonSettings}>
-      <SidebarSettings title='Настройки кнопки'>
+      <SidebarSettings title={t('Настройки кнопки')}>
         <div className={styles.wrapper}>
           <div className={styles.style}>
-            <p className={styles.settingTitle}>Стиль кнопки</p>
+            <p className={styles.settingTitle}>{t('Стиль кнопки')}</p>
             <SelectWrapper variant='gray'>
               <Select
                 onChange={selectWidget}
-                options={[
-                  'Круглая кнопка с трубкой',
-                  'Круглая кнопка с телефоном',
-                  'Округлая кнопка с трубкой',
-                  'Квадратная кнопка с трубкой',
-                ]}
+                options={styleOptions}
+                value={widgetShape}
               />
             </SelectWrapper>
           </div>
           <div className={styles.color}>
-            <p className={styles.settingTitle}>Цвет кнопки</p>
+            <p className={styles.settingTitle}>{t('Цвет кнопки')}</p>
             <ColorsList type='widget' className={styles.colors} />
           </div>
           <div className={styles.position}>
-            <p className={styles.settingTitle}>Расположение на сайте</p>
+            <p className={styles.settingTitle}>{t('Расположение на сайте')}</p>
             <SelectWrapper variant='gray'>
               <Select
                 onChange={selectPosition}
-                options={['Низ-право', 'Низ-лево', 'Верх-право', 'Верх-лево']}
+                options={positionOptions}
+                value={widgetPosition}
               />
             </SelectWrapper>
           </div>
         </div>
-        <Section title='Подсказка для кнопки'>
+        <Section title={t('Подсказка для кнопки')}>
           <div className={styles.wrapper}>
             <div className={styles.hint}>
-              <p>Показывать подсказку при наведении на кнопку</p>
+              <p>{t('Показывать подсказку при наведении на кнопку')}</p>
               <Toggle
                 onClick={() => setShowHint(!showHint)}
                 mode={showHint ? 'on' : 'off'}
@@ -103,26 +94,11 @@ export const ButtonSettings = () => {
         })}
       >
         <div className={styles.widgets}>
-          {widgetShape === 'round-square' && (
-            <Widget
-              showHint={showHint}
-              shape='round-square'
-              color={widgetColor}
-            />
-          )}
-          {widgetShape === 'square' && (
-            <Widget showHint={showHint} shape='square' color={widgetColor} />
-          )}
-          {widgetShape === 'round-home' && (
-            <Widget
-              showHint={showHint}
-              shape='round-home'
-              color={widgetColor}
-            />
-          )}
-          {widgetShape === 'round' && (
-            <Widget showHint={showHint} shape='round' color={widgetColor} />
-          )}
+          <Widget
+            showHint={showHint}
+            shape={widgetShape}
+            color={widgetColor}
+          />
         </div>
       </div>
     </div>

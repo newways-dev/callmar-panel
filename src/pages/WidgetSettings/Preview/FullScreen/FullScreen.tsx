@@ -1,5 +1,6 @@
 import { ReactSVG } from 'react-svg'
 import { DetailedHTMLProps, HTMLAttributes } from 'react'
+import { useTranslation } from 'react-i18next'
 import styles from './FullScreen.module.scss'
 
 import timerIcon from '../../../../assets/icons/timer.svg'
@@ -24,17 +25,21 @@ export const FullScreen = ({
   showTimer,
   className,
 }: StandartProps) => {
+  const { t } = useTranslation()
+
   return (
     <div className={clsx(styles.fullScreen, className)}>
       <p className={styles.heading}>{heading}</p>
       <p className={styles.text}>
-        Хотите, позвоним вам через {callSeconds} секунд?
+        {t('Хотите, позвоним вам через {{seconds}} секунд?', {
+          seconds: callSeconds,
+        })}
       </p>
       <div className={styles.actions}>
-        <input placeholder='+7' className={styles.input} type='phone' />
+        <input placeholder='+7' className={styles.input} type='tel' />
         <div className={styles.buttonRight}>
           <Button>{buttonText}</Button>
-          <p>Звонок бесплатный</p>
+          <p>{t('Звонок бесплатный')}</p>
         </div>
       </div>
       {!showTimer && (

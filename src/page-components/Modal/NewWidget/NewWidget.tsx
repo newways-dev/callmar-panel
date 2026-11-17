@@ -1,5 +1,6 @@
 import clsx from 'clsx'
 import { useEffect, DetailedHTMLProps, HTMLAttributes } from 'react'
+import { useTranslation } from 'react-i18next'
 import { ReactSVG } from 'react-svg'
 import { Toggle } from '../../../components'
 import styles from './NewWidget.module.scss'
@@ -14,6 +15,7 @@ export interface NewWidgetModalProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
 
 export const NewWidget = ({ className }: NewWidgetModalProps) => {
+  const { t } = useTranslation()
   const newWidget = useSelector(selectNewWidgetModal)
   const dispatch = useDispatch()
 
@@ -28,7 +30,7 @@ export const NewWidget = ({ className }: NewWidgetModalProps) => {
   return (
     <div className={clsx(styles.newWidget, className)}>
       <div className={styles.title}>
-        <p>Новый виджет</p>
+        <p>{t('Новый виджет')}</p>
         <ReactSVG
           onClick={() => dispatch(setNewWidgetModal(false))}
           src={close}
@@ -36,17 +38,17 @@ export const NewWidget = ({ className }: NewWidgetModalProps) => {
       </div>
       <div className={styles.wrapper}>
         <div className={styles.address}>
-          <p>Адрес сайта:</p>
-          <input placeholder="tehnix.su" className={styles.input} />
-          <p>Сайт куда будет установлен виджет</p>
+          <p>{t('Адрес сайта:')}</p>
+          <input placeholder="example-shop.com" className={styles.input} />
+          <p>{t('Сайт, куда будет установлен виджет')}</p>
         </div>
         <div className={styles.toggles}>
           <div className={styles.toggle}>
-            <p>Включить звонки</p>
+            <p>{t('Включить звонки')}</p>
             <Toggle mode="on" />
           </div>
           <div className={styles.toggle}>
-            <p>Включить чат</p>
+            <p>{t('Включить чат')}</p>
             <Toggle mode="on" />
           </div>
         </div>

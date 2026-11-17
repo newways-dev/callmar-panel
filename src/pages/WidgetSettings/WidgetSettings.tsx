@@ -1,4 +1,5 @@
 import { ChangeEvent, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { ColorsList, Input, Select, Toggle } from '../../components'
 import { SelectWrapper } from '../../components/SelectWrapper/SelectWrapper'
 import { Section, SidebarSettings } from '../../page-components'
@@ -9,60 +10,57 @@ import { WidgetLayout } from '../../types/widget'
 import { Preview } from './Preview/Preview'
 
 export const WidgetSettings = () => {
-  const [heading, setHeading] = useState<string>('У Вас остались вопросы?')
+  const { t } = useTranslation()
+
+  // `null` means "not edited yet": the default text then follows the language
+  const [headingEdit, setHeading] = useState<string | null>(null)
   const [callSeconds, setCallSeconds] = useState<number>(27)
-  const [noWorkText, setNoWorkText] = useState<string>(
-    'Сейчас мы уже не работаем, но мы можем перезвонить вам завтра.'
-  )
-  const [buttonText, setButtonText] = useState<string>('Жду звонка!')
+  const [noWorkTextEdit, setNoWorkText] = useState<string | null>(null)
+  const [buttonTextEdit, setButtonText] = useState<string | null>(null)
   const [showTimer, setShowTimer] = useState<boolean>(false)
   const [layout, setLayout] = useState<WidgetLayout>('standart')
 
-  const handleSelectLayout = (value: string) => {
-    if (value === 'Стандартный') {
-      setLayout('standart')
-    }
-    if (value === 'С фото сотрудника') {
-      setLayout('foto')
-    }
-    if (value === 'Баннер') {
-      setLayout('banner')
-    }
-    if (value === 'На весь экран') {
-      setLayout('full-screen')
-    }
-  }
+  const heading = headingEdit ?? t('У вас остались вопросы?')
+  const noWorkText =
+    noWorkTextEdit ??
+    t('Сейчас мы уже не работаем, но мы можем перезвонить вам завтра.')
+  const buttonText = buttonTextEdit ?? t('Жду звонка!')
+
+  const layoutOptions: { value: WidgetLayout; label: string }[] = [
+    { value: 'standart', label: t('Стандартный') },
+    { value: 'foto', label: t('С фото сотрудника') },
+    { value: 'banner', label: t('Баннер') },
+    { value: 'full-screen', label: t('На весь экран') },
+  ]
 
   return (
     <div className={styles.widgetSettings}>
       <div className={styles.previewMode}>
-        <p>Режим предпросмотра</p>
-        <p className={styles.url}>http://tehnix.su</p>
+        <p>{t('Режим предпросмотра')}</p>
+        <p className={styles.url}>http://example-shop.com</p>
       </div>
       <div className={styles.container}>
         <div className={styles.sidebarWrapper}>
-          <SidebarSettings className={styles.sidebar} title='Настройки виджета'>
+          <SidebarSettings
+            className={styles.sidebar}
+            title={t('Настройки виджета')}
+          >
             <div className={styles.wrapper}>
               <div className={styles.layout}>
-                <p className={styles.settingTitle}>Шаблон виджета</p>
+                <p className={styles.settingTitle}>{t('Шаблон виджета')}</p>
                 <SelectWrapper variant='gray'>
                   <Select
                     onChange={(e: ChangeEvent<HTMLSelectElement>) =>
-                      handleSelectLayout(e.target.value)
+                      setLayout(e.target.value as WidgetLayout)
                     }
-                    options={[
-                      'Стандартный',
-                      'С фото сотрудника',
-                      'Баннер',
-                      'На весь экран',
-                    ]}
-                    placeholder='Стандартный'
+                    options={layoutOptions}
+                    value={layout}
                   />
                 </SelectWrapper>
               </div>
               <div className={styles.color}>
                 <p className={styles.settingTitle}>
-                  Цветовая схема виджета <span> сбросить</span>
+                  {t('Цветовая схема виджета')} <span>{t('сбросить')}</span>
                 </p>
                 <ColorsList
                   type='widget'
@@ -78,10 +76,10 @@ export const WidgetSettings = () => {
                 />
               </div>
             </div>
-            <Section title='Таймер обратного звонка'>
+            <Section title={t('Таймер обратного звонка')}>
               <div className={styles.wrapper}>
                 <div className={styles.timer}>
-                  <p>Скрыть таймер обратного осчета заказа звонка</p>
+                  <p>{t('Скрыть таймер обратного отсчета заказа звонка')}</p>
                   <Toggle
                     onClick={() => setShowTimer(!showTimer)}
                     mode={showTimer ? 'on' : 'off'}
@@ -89,19 +87,21 @@ export const WidgetSettings = () => {
                 </div>
               </div>
             </Section>
-            <Section title='Настройка текста'>
+            <Section title={t('Настройка текста')}>
               <div className={styles.wrapper}>
                 <div className={styles.logo}>
                   <p className={styles.settingTitle}>
-                    Логотип (не менее 35 пикселей по любой из сторон):
+                    {t('Логотип (не менее 35 пикселей по любой из сторон):')}
                   </p>
                   <div className={styles.dad}>
                     <img src={dropLogo} alt='' />
-                    <p>Перетащите файл или нажмите чтобы установить логотип</p>
+                    <p>
+                      {t('Перетащите файл или нажмите, чтобы установить логотип')}
+                    </p>
                   </div>
                 </div>
                 <div className={styles.heading}>
-                  <p className={styles.settingTitle}>Заголовок:</p>
+                  <p className={styles.settingTitle}>{t('Заголовок:')}</p>
                   <Input
                     value={heading}
                     onChange={(e) => setHeading(e.target.value)}
@@ -110,7 +110,7 @@ export const WidgetSettings = () => {
                   />
                 </div>
                 <div className={styles.text}>
-                  <p className={styles.settingTitle}>Позвонить через:</p>
+                  <p className={styles.settingTitle}>{t('Позвонить через:')}</p>
                   <Input
                     value={isNaN(callSeconds) ? 27 : callSeconds}
                     onChange={(e: ChangeEvent<HTMLInputElement>) =>
@@ -118,29 +118,23 @@ export const WidgetSettings = () => {
                     }
                     type='main'
                   />
-                  {/* <p>
-                    Используйте <span>%seconds%</span> для замены на число
-                    секунд
-                  </p> */}
                 </div>
                 <div className={styles.noWorkText}>
                   <p className={styles.settingTitle}>
-                    Текст в нерабочее время:
+                    {t('Текст в нерабочее время:')}
                   </p>
                   <Input
                     value={noWorkText}
                     onChange={(e) => setNoWorkText(e.target.value)}
                     type='main'
-                    placeholder='Сейчас мы уже не работаем, но мы можем перезвонить вам завтра.'
                   />
                 </div>
                 <div className={styles.buttonText}>
-                  <p className={styles.settingTitle}>Текст кнопки:</p>
+                  <p className={styles.settingTitle}>{t('Текст кнопки:')}</p>
                   <Input
                     value={buttonText}
                     onChange={(e) => setButtonText(e.target.value)}
                     type='main'
-                    placeholder='Жду звонка!'
                   />
                 </div>
               </div>

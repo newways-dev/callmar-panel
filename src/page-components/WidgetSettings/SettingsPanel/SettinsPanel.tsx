@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { SettingsTabs } from '../../../components'
 import { SettingsPages } from '../../../types/pages'
 import { Behavior } from './Behavior/Behavior'
@@ -11,16 +12,17 @@ import styles from './SettingsPanel.module.scss'
 import { WidgetCode } from './WidgetCode/WidgetCode'
 
 export const SettinsPanel = () => {
+  const { t } = useTranslation()
   const [settingsPage, setSettingsPage] =
     useState<SettingsPages>('sales-department')
 
   const tabs = [
-    'Отдел продаж',
-    'Оформление',
-    'Поведение',
-    'Чат',
-    'Настройки звонка',
-    'Код виджета',
+    t('Отдел продаж'),
+    t('Оформление'),
+    t('Поведение'),
+    t('Чат'),
+    t('Настройки звонка'),
+    t('Код виджета'),
   ]
 
   return (

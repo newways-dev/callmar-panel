@@ -1,80 +1,50 @@
 import clsx from 'clsx'
-import { DetailedHTMLProps, HTMLAttributes } from 'react'
+import { DetailedHTMLProps, HTMLAttributes, useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
 import {
-  LineChart,
-  Line,
   CartesianGrid,
+  Legend,
+  Line,
+  LineChart,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  Tooltip,
-  Legend,
 } from 'recharts'
-import useWindowSize from '../../hooks/useWindowSize'
+import { getDemoStatistics } from '../../helpers/demoData'
 import styles from './StatisticsTable.module.scss'
 
-const data = [
-  {
-    name: '18.12',
-    Звонки: 2,
-    Показы: 3,
-    amt: 5,
-  },
-  {
-    name: '19.12',
-    Звонки: 3,
-    Показы: 3,
-    amt: 2210,
-  },
-  {
-    name: '20.12',
-    Звонки: 4,
-    Показы: 5,
-    amt: 100,
-  },
-  {
-    name: '21.12',
-    Звонки: 5,
-    Показы: 5,
-    amt: 100,
-  },
-  {
-    name: '22.12',
-    Звонки: 6,
-    Показы: 4,
-    amt: 100,
-  },
-  {
-    name: '23.12',
-    Звонки: 7,
-    Показы: 3,
-    amt: 100,
-  },
-]
-
 const Chart = () => {
-  const width = useWindowSize()
-
-  const chartWidth =
-    width && width > 2300
-      ? 2000
-      : width && width > 1800
-      ? 1500
-      : width && width > 1400
-      ? 1300
-      : width && width < 800
-      ? 600
-      : 1100
+  const { t, i18n } = useTranslation()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const data = useMemo(() => getDemoStatistics(), [i18n.language])
 
   return (
-    <LineChart width={chartWidth} height={400} data={data}>
-      <Legend />
-      <XAxis dataKey="name" />
-      <YAxis />
-      <CartesianGrid stroke="#999" strokeLinecap="square" strokeWidth={1} />
-      <Line type="monotone" dataKey="Звонки" strokeWidth={4} stroke="#81D880" />
-      <Line type="monotone" dataKey="Показы" strokeWidth={4} stroke="#D75C78" />
-      <Tooltip />
-    </LineChart>
+    <ResponsiveContainer width="100%" height={400}>
+      <LineChart data={data} margin={{ top: 5, right: 24, left: 0, bottom: 5 }}>
+        <Legend />
+        <XAxis dataKey="name" />
+        <YAxis allowDecimals={false} />
+        <CartesianGrid stroke="#999" strokeLinecap="square" strokeWidth={1} />
+        <Line
+          type="monotone"
+          dataKey="calls"
+          name={t('Звонки')}
+          strokeWidth={4}
+          stroke="#81D880"
+          isAnimationActive={false}
+        />
+        <Line
+          type="monotone"
+          dataKey="views"
+          name={t('Показы')}
+          strokeWidth={4}
+          stroke="#D75C78"
+          isAnimationActive={false}
+        />
+        <Tooltip />
+      </LineChart>
+    </ResponsiveContainer>
   )
 }
 
@@ -82,12 +52,14 @@ export interface StatisticTableProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
 
 export const StatisticsTable = ({ className }: StatisticTableProps) => {
+  const { t } = useTranslation()
+
   return (
     <div className={clsx(styles.statisticsTable, className)}>
       <div className={styles.wrapper}>
         <div className={styles.top}>
-          <p className={styles.daysStatTitle}>Сводная статистика по дням</p>
-          <p className={styles.widgetStatTitle}>по всем виджетам</p>
+          <p className={styles.daysStatTitle}>{t('Сводная статистика по дням')}</p>
+          <p className={styles.widgetStatTitle}>{t('по всем виджетам')}</p>
         </div>
         <div className={styles.chart}>
           <Chart />

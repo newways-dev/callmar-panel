@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { ReactSVG } from 'react-svg'
 import Slider from 'react-slick'
 
@@ -26,6 +27,7 @@ const NextArrow = ({ onClick }: ArrowProps) => {
 }
 
 export const AvatarsSlider = () => {
+  const { t } = useTranslation()
   const [active, setActive] = useState<number>(0)
   const dispatch = useDispatch()
 
@@ -45,7 +47,7 @@ export const AvatarsSlider = () => {
   return (
     <div className={styles.avatarSlider}>
       <p className={styles.title}>
-        Выберите аватарку для оператора из стандартных:
+        {t('Выберите аватарку для оператора из стандартных:')}
       </p>
       <Slider className={styles.slider} {...settings}>
         {avatars.map((item, index) => (

@@ -1,27 +1,31 @@
+@mixin calls-columns {
+  display: grid;
+  grid-template-columns: 30px 230px 230px 230px 270px minmax(315px, 1fr) 210px;
+
+  @media screen and (max-width: 1450px) {
+    grid-template-columns: 30px 150px 150px 150px 170px minmax(100px, 200px) minmax(
+        200px,
+        1fr
+      );
+  }
+
+  @media screen and (max-width: 790px) {
+    grid-template-columns: 30px 120px 120px 120px 140px minmax(100px, 150px) minmax(
+        170px,
+        1fr
+      );
+  }
+}
+
 .callsTable {
   position: relative;
   padding-right: 10px;
   padding-bottom: 10px;
 
-  overflow-x: scroll;
+  overflow-x: auto;
 
   .top {
-    display: grid;
-    grid-template-columns: 30px 230px 230px 230px 270px minmax(315px, 1fr) 210px;
-
-    @media screen and (max-width: 1450px) {
-      grid-template-columns: 30px 150px 150px 150px 170px minmax(100px, 200px) minmax(
-          200px,
-          1fr
-        );
-    }
-
-    @media screen and (max-width: 790px) {
-      grid-template-columns: 30px 120px 120px 120px 140px minmax(100px, 150px) minmax(
-          170px,
-          1fr
-        );
-    }
+    @include calls-columns;
 
     span {
       font-weight: 700;
@@ -44,23 +48,48 @@
     margin-top: 7px;
   }
 
+  .row {
+    @include calls-columns;
+
+    .cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      min-height: 64px;
+      padding: 0 10px;
+
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 21px;
+      color: var(--gray);
+      text-align: center;
+
+      background: var(--table);
+      border-right: 2px solid var(--border);
+      border-bottom: 3px solid var(--border);
+
+      @media screen and (max-width: 1440px) {
+        font-size: 14px;
+      }
+    }
+
+    &:first-child .cell {
+      border-top: 3px solid var(--border);
+    }
+
+    .playButton {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 19px;
+
+      padding: 8px 26px;
+      border-radius: 5px;
+    }
+  }
+
   .voidRow {
-    display: grid;
-    grid-template-columns: 30px 230px 230px 230px 270px minmax(315px, 1fr) 210px;
-
-    @media screen and (max-width: 1450px) {
-      grid-template-columns: 30px 150px 150px 150px 170px minmax(100px, 200px) minmax(
-          200px,
-          1fr
-        );
-    }
-
-    @media screen and (max-width: 790px) {
-      grid-template-columns: 30px 120px 120px 120px 140px minmax(100px, 150px) minmax(
-          170px,
-          1fr
-        );
-    }
+    @include calls-columns;
 
     height: 55vh;
 
@@ -71,16 +100,6 @@
       text-align: center;
 
       background: var(--table);
-
-      .play {
-        font-weight: 700;
-        font-size: 18px;
-        line-height: 21px;
-
-        margin-top: 40px;
-        padding: 9px 30px;
-        border-radius: 5px;
-      }
     }
 
     .noCalls {

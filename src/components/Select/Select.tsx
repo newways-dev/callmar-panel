@@ -1,33 +1,42 @@
 import clsx from 'clsx'
-import { ChangeEvent, DetailedHTMLProps, HTMLAttributes } from 'react'
+import { ChangeEvent, SelectHTMLAttributes } from 'react'
 import styles from './Select.module.scss'
 
+/** A plain string is used as both the value and the label. */
+export type SelectOption = string | { value: string; label: string }
+
 export interface SelectProps
-  extends DetailedHTMLProps<
-    HTMLAttributes<HTMLSelectElement>,
-    HTMLSelectElement
-  > {
-  options: string[]
+  extends Omit<SelectHTMLAttributes<HTMLSelectElement>, 'onChange'> {
+  options: SelectOption[]
   onChange?: (event: ChangeEvent<HTMLSelectElement>) => void
 }
 
 export const Select = ({
   onChange,
+  value,
   defaultValue,
   options,
-  placeholder,
   className,
 }: SelectProps) => {
   return (
     <select
       onChange={onChange}
-      defaultValue={defaultValue}
-      placeholder={placeholder}
+      value={value}
+      defaultValue={value === undefined ? defaultValue : undefined}
       className={clsx(styles.select, className)}
     >
-      {options.map((option, index) => (
-        <option key={index}>{option}</option>
-      ))}
+      {options.map((option) => {
+        const { value: optionValue, label } =
+          typeof option === 'string'
+            ? { value: option, label: option }
+            : option
+
+        return (
+          <option key={optionValue} value={optionValue}>
+            {label}
+          </option>
+        )
+      })}
     </select>
   )
 }
