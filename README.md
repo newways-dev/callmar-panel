@@ -1,6 +1,6 @@
 # Callmar Panel
 
-**Freelance project** · **Design:** the client's Figma mockups · **Implementation:** me (frontend only)
+**Freelance project** · **Design:** the client's Figma mockups · **Implementation:** frontend only
 
 Admin dashboard for **Callmar**, a callback-widget service: a visitor leaves a phone number on a website, and the service calls them back within seconds. The panel is where a site owner manages widgets, reviews calls and statistics, and tweaks how the widget looks and behaves.
 
